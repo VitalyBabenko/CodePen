@@ -1,0 +1,102 @@
+@import "../../scss/index.scss";
+
+.homePage {
+  position: relative;
+  width: 100vw;
+  background-color: $homeBg;
+  z-index: 0;
+
+  .logoBig {
+    width: 100px;
+    fill: white;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  p {
+    color: white;
+    margin-bottom: 50px;
+  }
+
+  .link {
+    @extend %buttonGreen;
+  }
+
+  .container {
+    margin: 0 auto;
+    padding: 100px 150px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+
+  .card {
+    background: #2c303a;
+    padding: 1.5rem 1.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    height: 300px;
+    width: 360px;
+  }
+
+  .card button {
+    @extend %buttonGrey;
+  }
+
+  .table h2 {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  .table p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+  }
+
+  .iconcard {
+    background: #131417;
+    border-radius: 10px;
+    width: 95px;
+    height: 95px;
+    position: absolute;
+    top: -70px;
+  }
+
+  .iconcard svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65px;
+    margin: auto 0;
+  }
+}
+
+.homeline {
+  bottom: 100px;
+  position: absolute;
+  right: 20px;
+  width: 600px;
+}
+
+.homelinetwo {
+  position: absolute;
+}

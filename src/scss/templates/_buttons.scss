@@ -1,0 +1,55 @@
+@import "../variables";
+
+%button {
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 15px 20px;
+  background-color: $greyMain;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.1s ease-in;
+  border: none;
+}
+
+%buttonGrey {
+  @extend %button;
+
+  &:hover {
+    background-color: $greyMain-hover;
+  }
+
+  &:active {
+    background-color: $greyMain-active;
+  }
+}
+
+%buttonGreen {
+  @extend %button;
+  background-color: $greenMain;
+  color: black;
+
+  &:hover {
+    color: white;
+    background-color: $greenMain-hover;
+  }
+
+  &:active {
+    background-color: $greenMain-active;
+  }
+}
+
+%buttonRed {
+  @extend %button;
+  background-color: $redMain;
+  color: white;
+
+  &:hover {
+    color: white;
+    background-color: $redMain-hover;
+  }
+
+  &:active {
+    background-color: $redMain-active;
+  }
+}

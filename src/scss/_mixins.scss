@@ -1,0 +1,34 @@
+@import "./variables";
+
+@mixin container($width: $containerWidth, $max-width: $maxContainerWidth) {
+  width: $width;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin flex($direction: row, $align: initial, $justify: initial) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
+}
+
+@mixin flex-stretch {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+@mixin gradient($start-color, $end-color, $direction) {
+  background: $start-color;
+  background: linear-gradient($direction, $start-color, $end-color);
+}
