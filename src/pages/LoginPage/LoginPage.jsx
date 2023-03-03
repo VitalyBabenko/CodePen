@@ -1,17 +1,24 @@
 import style from "./LoginPage.module.scss";
 import { ReactComponent as LogoBig } from "../../assets/img/logoBig.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { User } from "../../service";
+import { Validator } from "../../utils/validator";
 
 export const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
-  const handelLogin = (e) => {
+  const navigate = useNavigate();
+  const handelLogin = async (e) => {
     e.preventDefault();
-    if (userName && password) {
-      User.login(userName, password);
+    if (
+      Validator.validateLogin(userName) &&
+      Validator.validatePassword(password)
+    ) {
+      const login = await User.login(userName, password);
+      if (login) {
+        navigate("/your-works");
+      }
     }
   };
 
