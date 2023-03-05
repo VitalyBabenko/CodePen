@@ -1,12 +1,12 @@
-import style from './LoginPage.module.scss';
-import { ReactComponent as LogoBig } from '../../../assets/img/logoBig.svg';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../../store/auth/loginAction';
+import style from "./LoginPage.module.scss";
+import { ReactComponent as LogoBig } from "../../../assets/img/logoBig.svg";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../store/auth/actions/loginAction";
 
 export const LoginPage = () => {
-  const [loginData, setLoginData] = useState({ login: '', password: '' });
+  const [loginData, setLoginData] = useState({ login: "", password: "" });
   const { loading, isLogged, error } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,8 +22,9 @@ export const LoginPage = () => {
   };
 
   useEffect(() => {
-    if (isLogged) navigate('/your-works');
+    if (isLogged) navigate("/your-works");
   }, [isLogged]);
+
   return (
     <form onSubmit={handleFormSubmit} className={style.container}>
       <NavLink to="/">
@@ -34,7 +35,12 @@ export const LoginPage = () => {
 
       <label>
         Login:
-        <input type="text" name="login" value={loginData.login} onChange={handleInputChange} />
+        <input
+          type="text"
+          name="login"
+          value={loginData.login}
+          onChange={handleInputChange}
+        />
       </label>
 
       <label>

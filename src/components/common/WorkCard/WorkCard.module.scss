@@ -1,11 +1,10 @@
 .card {
-  box-shadow: 0 4px 8px 0 white;
-  transition: 0.3s;
   border-radius: 10px;
   background-color: #2c303a;
-  width: 400px;
+  width: 30%;
+  min-width: 300px;
   height: 300px;
-  margin: 8% 5%;
+
   color: white;
 
   .external {

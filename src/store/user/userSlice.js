@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUser } from "./getUserAction";
-import { getWorks } from "./getWorks";
+import { getUser } from "./actions/getUserAction";
+import { getWorks } from "./actions/getWorks";
 
 const initialState = {
   user: {},

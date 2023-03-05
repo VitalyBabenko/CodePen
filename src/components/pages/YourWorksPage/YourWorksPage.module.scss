@@ -1,74 +1,45 @@
-@import '../../../scss/index.scss';
+@import "../../../scss/index.scss";
 
-.YourWorks {
+.yourWorks {
   position: relative;
   width: 100vw;
   height: 100vh;
   background-color: #131417;
-}
 
-.container {
-  display: flex;
-  justify-content: center;
-}
+  .container {
+    @include container();
 
-.worksTab {
-  width: 80%;
-  border-bottom: 3px solid #2c303a;
-  padding-bottom: 5px;
+    .worksTab {
+      margin-top: 20px;
+      width: 100%;
+      border-bottom: 3px solid #2c303a;
+      padding-bottom: 10px;
 
-  .active {
-    text-decoration: none;
-    color: white;
-    font-size: 30px;
-    border-bottom: 3px solid #47cf73;
-    padding-bottom: 5px;
-  }
+      .active {
+        text-decoration: none;
+        color: white;
+        font-size: 30px;
+        border-bottom: 3px solid $greenMain;
+        padding-bottom: 10px;
+      }
 
-  .active:hover {
-    border-bottom: 3px solid #529768;
-  }
-}
-
-.card {
-  transition: 0.3s;
-  border-radius: 10px;
-  background-color: #2c303a;
-  width: 400px;
-  height: 300px;
-  margin: 8% 5%;
-  color: white;
-  transition: 0.5s;
-
-  &:hover {
-    box-shadow: 0 4px 8px 0 white;
-  }
-
-  .external {
-    padding: 2px 16px;
-  }
-
-  .footerCard {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    .menuSmall {
-      cursor: pointer;
-      fill: #eaebee;
-      width: 30px;
+      .active:hover {
+        border-bottom: 3px solid $greenMain-hover;
+      }
+      button {
+        @extend %buttonGreen;
+        margin-top: 5px;
+        font-size: 28px;
+        padding: 0px 20px;
+        float: right;
+      }
     }
-  }
 
-  .img {
-    transition: 0.5s;
-    padding-top: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
-  .img:hover {
-    transform: scale(1.1);
+    .works {
+      @include flex($justify: space-between, $align: center);
+      flex-wrap: wrap;
+      padding-top: 50px;
+    }
   }
 }
 

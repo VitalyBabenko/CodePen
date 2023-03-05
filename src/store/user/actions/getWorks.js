@@ -1,9 +1,9 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getGql } from '../../services/api';
-import { queries } from '../../services/queries';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getGql } from "../../../services/api";
+import { queries } from "../../../services/queries";
 
 export const getWorks = createAsyncThunk(
-  'user/getWorks',
+  "user/getWorks",
 
   async (id) => {
     const gql = getGql();
@@ -11,8 +11,7 @@ export const getWorks = createAsyncThunk(
       const { SnippetFind } = await gql.request(queries.getWorks(id));
       return SnippetFind;
     } catch (error) {
-      console.log('getUserWorks Error');
       console.error(error);
     }
-  },
+  }
 );

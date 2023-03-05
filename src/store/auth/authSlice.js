@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login } from "./loginAction";
+import { login } from "./actions/loginAction";
+import { registration } from "./actions/registrationAction";
 
 const initialState = {
   isLogged: localStorage.getItem("authToken") ? true : false,
@@ -16,6 +17,7 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // login
     builder.addCase(login.pending, (state) => {
       state.error = null;
     });
@@ -23,6 +25,20 @@ export const authSlice = createSlice({
       state.isLogged = true;
     });
     builder.addCase(login.rejected, (state, action) => {
+      state.isLogged = false;
+      state.loading = false;
+      state.error = action.error.message;
+    });
+
+    // registration
+    builder.addCase(registration.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(registration.fulfilled, (state) => {
+      state.isLogged = true;
+    });
+    builder.addCase(registration.rejected, (state, action) => {
       state.isLogged = false;
       state.loading = false;
       state.error = action.error.message;

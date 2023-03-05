@@ -1,14 +1,14 @@
-import { Routes, Route } from 'react-router-dom';
-import { LoginPage } from './components/pages/LoginPage/LoginPage';
-import { ErrorPage } from './components/pages/ErrorPage/ErrorPage';
-import { HomePage } from './components/pages/HomePage/HomePage';
-import { PenPage } from './components/pages/PenPage/PenPage';
-import { SignUpPage } from './components/pages/SignUpPage/SignUpPage';
-import { YourWorks } from './components/pages/YourWorksPage/YourWorksPage';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getUserIdFromJwt } from './utils/getUserIdFromJwt';
-import { getWorks } from './store/user/getWorks';
+import { Routes, Route } from "react-router-dom";
+import { LoginPage } from "./components/pages/LoginPage/LoginPage";
+import { ErrorPage } from "./components/pages/ErrorPage/ErrorPage";
+import { HomePage } from "./components/pages/HomePage/HomePage";
+import { PenPage } from "./components/pages/PenPage/PenPage";
+import { SignUpPage } from "./components/pages/SignUpPage/SignUpPage";
+import { YourWorks } from "./components/pages/YourWorksPage/YourWorksPage";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUserIdFromJwt } from "./utils/getUserIdFromJwt";
+import { getWorks } from "./store/user/actions/getWorks";
 
 function App() {
   const dispatch = useDispatch();
