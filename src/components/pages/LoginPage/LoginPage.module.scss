@@ -1,14 +1,13 @@
-@import "../../scss/index.scss";
+@import '../../../scss/index.scss';
 
 .container {
+  position: relative;
+  height: 100vh;
+  background-color: #131417;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: #131417;
 
   h1 {
     color: white;

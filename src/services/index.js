@@ -101,20 +101,4 @@ export class User {
       console.error(error);
     }
   }
-
-  static async addWork(title, description) {
-    const query = `
-      mutation addWork {
-        SnippetUpsert(snippet: {title:"${title}",description: "${description}"}) {
-          _id
-        }
-      }`;
-
-    try {
-      const data = await gql.request(query);
-      return data;
-    } catch (error) {
-      console.error(error);
-    }
-  }
 }

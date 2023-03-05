@@ -1,19 +1,18 @@
-import style from "./SignUpPage.module.scss";
-import { ReactComponent as LogoBig } from "../../assets/img/logoBig.svg";
-import { NavLink } from "react-router-dom";
-import { User } from "../../service";
-import { useState } from "react";
+import style from './SignUpPage.module.scss';
+import { ReactComponent as LogoBig } from '../../../assets/img/logoBig.svg';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 export const SignUpPage = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSignUp = async (e) => {
     e.preventDefault();
 
     if (password === confirmPassword && userName) {
-      User.createUser(userName, password);
+      // User.createUser(userName, password);
     }
   };
 
@@ -31,11 +30,7 @@ export const SignUpPage = () => {
 
       <div>
         <p>Password</p>
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type={"password"}
-        />
+        <input value={password} onChange={(e) => setPassword(e.target.value)} type={'password'} />
       </div>
 
       <div>
@@ -43,7 +38,7 @@ export const SignUpPage = () => {
         <input
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          type={"password"}
+          type={'password'}
         />
       </div>
       <button type="submit" className={style.login}>

@@ -1,4 +1,4 @@
-import { Header } from '../../components/Header/Header';
+import { Header } from '../../common/Header/Header';
 import style from './PenPage.module.scss';
 import { useState } from 'react';
 
