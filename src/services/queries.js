@@ -39,4 +39,28 @@ export const queries = {
         }
       }`;
   },
+
+  addWork(title, description) {
+    return `
+      mutation addWork {
+        SnippetUpsert(snippet: {title:"${title}",description: "${description}"}) {
+          _id
+          title
+          description
+          createdAt
+        }
+      }`;
+  },
+
+  deleteWork(id) {
+    return `
+      mutation removeWork {
+        SnippetDelete(snippet: {_id:"${id}"}) {
+            _id
+            owner {
+              login
+            }
+        }
+      }`;
+  },
 };

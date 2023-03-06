@@ -1,33 +1,59 @@
 import style from "./WorkCard.module.scss";
-import { ReactComponent as MenuSmall } from "../../../assets/img/menuSmall.svg";
 import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 export const WorkCard = ({ work }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
+
+  const openMenu = (e) => {
+    e.preventDefault();
+    setIsMenuOpen(true);
+  };
+
+  const deleteWork = (e) => {
+    e.preventDefault();
+    console.log("work");
+  };
+
   return (
-    // <div className={style.card}>
-    //   <div className={style.external}>
-    //     <img
-    //       className={style.img}
-    //       src="https://upmostly.com/wp-content/uploads/react-hello-world-first-react-app.jpg"
-    //       alt="Hello World"
-    //       style={{ width: '100%' }}
-    //     />
-    //     <div className={style.footerCard}>
-    //       <h2>
-    //         <b>A Pen By</b>
-    //       </h2>
-    //       <MenuSmall className={style.menuSmall} />
-    //     </div>
-    //   </div>
-    // </div>
     <NavLink className={style.card} to={`/you-work/${work._id}`}>
       <div className={style.preview}></div>
-      <div className={style.footerCard}>
-        <h2>
-          <b>A Pen By</b>
-        </h2>
-        <MenuSmall className={style.menuSmall} />
+
+      <div className={style.info}>
+        <span className={style.title}>{work.title}</span>
+        <span className={style.desc}>{work.description}</span>
       </div>
+
+      <div onClick={openMenu} className={style.menu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {isMenuOpen && (
+        <ul ref={menuRef} className={style.menuPopup}>
+          <li>Rename work</li>
+          <li>Change Description</li>
+          <li className={style.delete} onClick={deleteWork}>
+            Delete work
+          </li>
+        </ul>
+      )}
     </NavLink>
   );
 };

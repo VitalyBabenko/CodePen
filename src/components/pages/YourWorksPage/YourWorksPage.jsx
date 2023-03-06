@@ -30,7 +30,7 @@ export const YourWorks = () => {
         </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
