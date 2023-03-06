@@ -4,6 +4,7 @@ import { ReactComponent as LogoBig } from "../../../assets/img/logoBig.svg";
 import { useSelector } from "react-redux";
 import { WorkCard } from "../../common/WorkCard/WorkCard";
 import { Loader } from "../../common/Loader/Loader";
+import { Footer } from "../../common/Footer/Footer";
 
 export const YourWorks = () => {
   const { works, isLoading } = useSelector((state) => state.user);
@@ -24,16 +25,12 @@ export const YourWorks = () => {
         </div>
 
         <div className={style.works}>
-          {works && works.map((work) => <WorkCard key={work._id} />)}
+          {works &&
+            works.map((work) => <WorkCard key={work._id} work={work} />)}
         </div>
       </div>
 
-      <footer className={style.footer}>
-        <div className={style.main}>
-          <LogoBig className={style.logoBig} />
-          <p>©2023 CodePen</p>
-        </div>
-      </footer>
+      {/* <Footer /> */}
     </div>
   );
 };

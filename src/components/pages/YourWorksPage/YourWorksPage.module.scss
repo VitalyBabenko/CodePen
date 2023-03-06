@@ -1,17 +1,14 @@
 @import "../../../scss/index.scss";
 
 .yourWorks {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  @include flex($direction: column, $justify: center);
   background-color: #131417;
 
   .container {
     @include container();
 
     .worksTab {
-      margin-top: 20px;
-      width: 100%;
+      margin: 25px 0;
       border-bottom: 3px solid #2c303a;
       padding-bottom: 10px;
 
@@ -36,27 +33,15 @@
     }
 
     .works {
-      @include flex($justify: space-between, $align: center);
-      flex-wrap: wrap;
+      // width: 100%;
+
+      margin-bottom: auto;
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 400px 400px;
       padding-top: 50px;
     }
-  }
-}
-
-.footer {
-  background-color: black;
-  color: white;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  text-align: right;
-  font-size: 10px;
-
-  .main {
-    padding: 20px 20px;
-  }
-  .logoBig {
-    width: 50px;
-    fill: white;
   }
 }

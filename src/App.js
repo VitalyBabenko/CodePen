@@ -22,6 +22,7 @@ function App() {
       }, 2000);
     }
   }, [isLogged, dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
