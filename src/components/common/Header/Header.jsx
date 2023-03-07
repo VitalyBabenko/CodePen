@@ -1,14 +1,14 @@
-import { NavLink } from 'react-router-dom';
-import style from './Header.module.scss';
-import { ReactComponent as LogoBig } from '../../../assets/img/logoBig.svg';
-import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from "react-router-dom";
+import style from "./Header.module.scss";
+import { ReactComponent as LogoBig } from "../../../assets/img/logoBig.svg";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {
   const dispatch = useDispatch();
   const { isLogged } = useSelector((state) => state.auth);
 
   const logout = () => {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem("authToken");
     dispatch(logout());
   };
 
@@ -17,10 +17,15 @@ export const Header = () => {
       <NavLink className={style.logoBlock} to="/">
         <LogoBig />
       </NavLink>
+
       {isLogged ? (
         <nav>
           <NavLink to="/your-works">Your works</NavLink>
-          <NavLink style={{ backgroundColor: '#dc143c' }} onClick={logout} to="/">
+          <NavLink
+            style={{ backgroundColor: "#dc143c" }}
+            onClick={logout}
+            to="/"
+          >
             Log out
           </NavLink>
         </nav>
