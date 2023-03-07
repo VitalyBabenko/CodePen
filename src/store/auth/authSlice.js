@@ -21,11 +21,17 @@ export const authSlice = createSlice({
     builder.addCase(login.pending, (state) => {
       state.error = null;
     });
-    builder.addCase(login.fulfilled, (state) => {
-      state.isLogged = true;
+    builder.addCase(login.fulfilled, (state, action) => {
+      if (action.payload === null) {
+        state.isLogged = false;
+        state.error =
+          "The username or password you entered is incorrect, please try again.";
+      } else {
+        state.isLogged = true;
+      }
     });
     builder.addCase(login.rejected, (state, action) => {
-      state.isLogged = false;
+      state.isLogged = action.payload;
       state.loading = false;
       state.error = action.error.message;
     });

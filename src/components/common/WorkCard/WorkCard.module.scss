@@ -43,7 +43,8 @@
     bottom: 69px;
     right: 5%;
     @include flex(row, center, space-around);
-    width: 35px;
+    width: 45px;
+    padding: 0 5px;
     height: 20px;
     background-color: #2c303a;
     z-index: 2;
@@ -94,8 +95,8 @@
     z-index: 1;
 
     li {
-      border-radius: 5px;
-      padding: 5px 3px;
+      border-radius: 3px;
+      padding: 5px 7px;
       list-style: none;
       text-decoration: none;
     }

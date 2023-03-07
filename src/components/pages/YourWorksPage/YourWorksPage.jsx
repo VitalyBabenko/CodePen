@@ -1,6 +1,5 @@
 import { Header } from "../../common/Header/Header";
 import style from "./YourWorksPage.module.scss";
-import { ReactComponent as LogoBig } from "../../../assets/img/logoBig.svg";
 import { useSelector } from "react-redux";
 import { WorkCard } from "../../common/WorkCard/WorkCard";
 import { Loader } from "../../common/Loader/Loader";

@@ -1,24 +1,34 @@
 import style from "./SignUpPage.module.scss";
 import { ReactComponent as LogoBig } from "../../../assets/img/logoBig.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registration } from "../../../store/auth/actions/registrationAction";
+import useInput from "../../../hooks/useInput";
+import { Input } from "../../common/Input/Input";
+import { Validate } from "../../../utils/Validate";
 
 export const SignUpPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const { isLogged } = useSelector((state) => state.auth);
+  const userName = useInput("", Validate.userName);
+  const password = useInput("", Validate.password);
+  const confirmPassword = useInput("", (value) =>
+    Validate.confirmPassword(value, password.value)
+  );
+  const isError =
+    userName.error ||
+    password.error ||
+    confirmPassword.error ||
+    !userName.value ||
+    !password.value ||
+    !confirmPassword.value;
 
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if (password === confirmPassword && userName) {
-      dispatch(registration({ userName, password }));
-    }
+    if (!isError) dispatch(registration({ userName, password }));
   };
 
   useEffect(() => {
@@ -32,29 +42,31 @@ export const SignUpPage = () => {
       </NavLink>
 
       <h1>Sign up!</h1>
-      <div>
-        <p>Username or Email</p>
-        <input value={userName} onChange={(e) => setUserName(e.target.value)} />
-      </div>
 
-      <div>
-        <p>Password</p>
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type={"password"}
-        />
-      </div>
+      <Input
+        title="Username"
+        value={userName.value}
+        onChange={userName.onChange}
+        error={userName.error}
+      />
 
-      <div>
-        <p>Confirm Password</p>
-        <input
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          type={"password"}
-        />
-      </div>
-      <button type="submit" className={style.login}>
+      <Input
+        title="Password"
+        type={"password"}
+        value={password.value}
+        onChange={password.onChange}
+        error={password.error}
+      />
+
+      <Input
+        title="Confirm Password"
+        type={"password"}
+        value={confirmPassword.value}
+        onChange={confirmPassword.onChange}
+        error={confirmPassword.error}
+      />
+
+      <button type="submit" disabled={isError} className={style.login}>
         Sign Up
       </button>
     </form>

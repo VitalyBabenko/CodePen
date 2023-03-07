@@ -52,15 +52,16 @@ export const queries = {
       }`;
   },
 
-  deleteWork(id) {
+  updateWork(id, title) {
     return `
-      mutation removeWork {
-        SnippetDelete(snippet: {_id:"${id}"}) {
-            _id
-            owner {
-              login
-            }
+      mutation updateWork {
+        SnippetUpsert(snippet: {title:"newWork",description: "12345"}) {
+          _id
+          title
+          description
+          createdAt
         }
-      }`;
+      }
+  `;
   },
 };

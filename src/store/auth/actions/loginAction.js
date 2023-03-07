@@ -12,8 +12,10 @@ export const login = createAsyncThunk(
       if (response.login) {
         localStorage.setItem("authToken", response.login);
       }
+      return response.login;
     } catch (error) {
       console.error(error);
+      return false;
     }
   }
 );

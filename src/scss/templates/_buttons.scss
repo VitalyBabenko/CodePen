@@ -37,6 +37,10 @@
   &:active {
     background-color: $greenMain-active;
   }
+
+  &:disabled {
+    background-color: $greenMain-disabled;
+  }
 }
 
 %buttonRed {

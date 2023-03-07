@@ -1,28 +1,23 @@
 import style from "./WorkCard.module.scss";
 import { NavLink } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import usePopup from "../../../hooks/usePopup";
 
 export const WorkCard = ({ work }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuRef]);
+  const { isPopupVisible, toggle, ref: menuRef } = usePopup();
 
   const openMenu = (e) => {
     e.preventDefault();
-    setIsMenuOpen(true);
+    toggle();
+  };
+  // TODO: rename && changeDesc && delete
+  const renameWork = (e) => {
+    e.preventDefault();
+    console.log("renameWork");
+  };
+
+  const changeDescription = (e) => {
+    e.preventDefault();
+    console.log("changeDescription");
   };
 
   const deleteWork = (e) => {
@@ -45,10 +40,10 @@ export const WorkCard = ({ work }) => {
         <span></span>
       </div>
 
-      {isMenuOpen && (
+      {isPopupVisible && (
         <ul ref={menuRef} className={style.menuPopup}>
-          <li>Rename work</li>
-          <li>Change Description</li>
+          <li onClick={renameWork}>Rename work</li>
+          <li onClick={changeDescription}>Change Description</li>
           <li className={style.delete} onClick={deleteWork}>
             Delete work
           </li>

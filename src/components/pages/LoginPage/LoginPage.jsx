@@ -1,29 +1,36 @@
 import style from "./LoginPage.module.scss";
 import { ReactComponent as LogoBig } from "../../../assets/img/logoBig.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../store/auth/actions/loginAction";
+import { Input } from "../../common/Input/Input";
+import useInput from "../../../hooks/useInput";
 
 export const LoginPage = () => {
-  const [loginData, setLoginData] = useState({ login: "", password: "" });
-  const { loading, isLogged, error } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setLoginData({ ...loginData, [name]: value });
-  };
+  const { isLogged, error } = useSelector((state) => state.auth);
+  const loginName = useInput("");
+  const password = useInput("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const loginData = {
+      login: loginName.value,
+      password: password.value,
+    };
+
     dispatch(login(loginData));
   };
 
   useEffect(() => {
     if (isLogged) navigate("/your-works");
-  }, [isLogged]);
+    if (error) {
+      loginName.setValue("");
+      password.setValue("");
+    }
+  }, [isLogged, error]);
 
   return (
     <form onSubmit={handleFormSubmit} className={style.container}>
@@ -33,28 +40,19 @@ export const LoginPage = () => {
 
       <h1>Log In!</h1>
 
-      <label>
-        Login:
-        <input
-          type="text"
-          name="login"
-          value={loginData.login}
-          onChange={handleInputChange}
-        />
-      </label>
+      {error && <span>{error}</span>}
 
-      <label>
-        Password:
-        <input
-          type="password"
-          name="password"
-          value={loginData.password}
-          onChange={handleInputChange}
-        />
-      </label>
+      <Input
+        title={"Login"}
+        value={loginName.value}
+        onChange={loginName.onChange}
+      />
 
-      {loading ? <p>Loading...</p> : null}
-      {error ? <p>Error: {error}</p> : null}
+      <Input
+        title={"Password"}
+        value={password.value}
+        onChange={password.onChange}
+      />
 
       <button type="submit" className={style.login}>
         Log In
