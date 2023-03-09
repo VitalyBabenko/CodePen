@@ -1,6 +1,7 @@
 import style from "./WorkCard.module.scss";
 import { NavLink } from "react-router-dom";
-import usePopup from "../../../hooks/usePopup";
+import { usePopup } from "../../../hooks/usePopup";
+import { WorkCardPopup } from "./WorkCardPopup/WorkCardPopup";
 
 export const WorkCard = ({ work }) => {
   const { isPopupVisible, toggle, ref: menuRef } = usePopup();
@@ -9,22 +10,7 @@ export const WorkCard = ({ work }) => {
     e.preventDefault();
     toggle();
   };
-  // TODO: rename && changeDesc && delete
-  const renameWork = (e) => {
-    e.preventDefault();
-    console.log("renameWork");
-  };
-
-  const changeDescription = (e) => {
-    e.preventDefault();
-    console.log("changeDescription");
-  };
-
-  const deleteWork = (e) => {
-    e.preventDefault();
-    console.log("work");
-  };
-
+  if (work.title === null) return null;
   return (
     <NavLink className={style.card} to={`/you-work/${work._id}`}>
       <div className={style.preview}></div>
@@ -40,15 +26,7 @@ export const WorkCard = ({ work }) => {
         <span></span>
       </div>
 
-      {isPopupVisible && (
-        <ul ref={menuRef} className={style.menuPopup}>
-          <li onClick={renameWork}>Rename work</li>
-          <li onClick={changeDescription}>Change Description</li>
-          <li className={style.delete} onClick={deleteWork}>
-            Delete work
-          </li>
-        </ul>
-      )}
+      <WorkCardPopup menuRef={menuRef} isVisible={isPopupVisible} work={work} />
     </NavLink>
   );
 };

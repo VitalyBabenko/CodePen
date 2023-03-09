@@ -1,0 +1,32 @@
+@import "../../../../scss/index.scss";
+
+.menuPopup {
+  position: absolute;
+  bottom: 89px;
+  right: 5%;
+  width: 180px;
+  height: 98px;
+  background-color: #2c303a;
+  padding: 5px;
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 1));
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+  z-index: 1;
+
+  li {
+    border-radius: 3px;
+    padding: 5px 7px;
+    list-style: none;
+    text-decoration: none;
+  }
+
+  li:hover {
+    background-color: $greyMain-hover;
+  }
+
+  .delete:hover {
+    background-color: $redMain;
+  }
+}

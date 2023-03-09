@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 
-const usePopup = () => {
+export const usePopup = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const ref = useRef(null);
 
   const toggle = () => setIsPopupVisible(!isPopupVisible);
+  const close = () => setIsPopupVisible(false);
+  const open = () => setIsPopupVisible(true);
 
   const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
@@ -21,9 +23,9 @@ const usePopup = () => {
 
   return {
     isPopupVisible,
+    close,
+    open,
     toggle,
     ref,
   };
 };
-
-export default usePopup;

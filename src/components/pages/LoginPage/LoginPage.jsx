@@ -49,6 +49,7 @@ export const LoginPage = () => {
       />
 
       <Input
+        type={"password"}
         title={"Password"}
         value={password.value}
         onChange={password.onChange}

@@ -52,16 +52,27 @@ export const queries = {
       }`;
   },
 
-  updateWork(id, title) {
+  deleteWork(id) {
     return `
       mutation updateWork {
-        SnippetUpsert(snippet: {title:"newWork",description: "12345"}) {
+        SnippetUpsert(snippet:{ _id: "${id}" title:null}) {
           _id
           title
           description
           createdAt
         }
-      }
-  `;
+      }`;
+  },
+
+  updateWork(id, title) {
+    return `
+      mutation updateWork {
+        SnippetUpsert(snippet:{ _id: "${id}" title:"${title}",description: "12345"}) {
+          _id
+          title
+          description
+          createdAt
+        }
+      }`;
   },
 };
