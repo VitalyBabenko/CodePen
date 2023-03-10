@@ -12,7 +12,7 @@ export const WorkCard = ({ work }) => {
   };
   if (work.title === null) return null;
   return (
-    <NavLink className={style.card} to={`/you-work/${work._id}`}>
+    <NavLink className={style.card} to={`/your-works/${work._id}`}>
       <div className={style.preview}></div>
 
       <div className={style.info}>

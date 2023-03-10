@@ -24,7 +24,7 @@ export const registration = createAsyncThunk(
         );
       }
 
-      console.log(createUser);
+      return createUser;
     } catch (error) {
       console.error(error);
     }

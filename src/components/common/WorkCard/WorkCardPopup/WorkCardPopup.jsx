@@ -5,7 +5,7 @@ import style from "./WorkCardPopup.module.scss";
 export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   const dispatch = useDispatch();
 
-  // TODO: rename && changeDesc && delete
+  // TODO: rename && changeDesc
   const renameWork = (e) => {
     e.preventDefault();
     console.log("renameWork");
@@ -18,7 +18,6 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    console.log("work");
     dispatch(deleteWork(work._id));
   };
 

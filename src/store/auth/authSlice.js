@@ -41,8 +41,14 @@ export const authSlice = createSlice({
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(registration.fulfilled, (state) => {
-      state.isLogged = true;
+    builder.addCase(registration.fulfilled, (state, action) => {
+      if (action.payload === null) {
+        state.error =
+          "This user name is already in use, please try another one";
+        state.isLogged = false;
+      } else {
+        state.isLogged = true;
+      }
     });
     builder.addCase(registration.rejected, (state, action) => {
       state.isLogged = false;

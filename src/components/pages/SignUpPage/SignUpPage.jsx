@@ -11,7 +11,7 @@ import { Validate } from "../../../utils/Validate";
 export const SignUpPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLogged } = useSelector((state) => state.auth);
+  const { isLogged, error } = useSelector((state) => state.auth);
   const userName = useInput("", Validate.userName);
   const password = useInput("", Validate.password);
   const confirmPassword = useInput("", (value) =>
@@ -28,7 +28,10 @@ export const SignUpPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if (!isError) dispatch(registration({ userName, password }));
+    if (!isError)
+      dispatch(
+        registration({ userName: userName.value, password: password.value })
+      );
   };
 
   useEffect(() => {
@@ -42,6 +45,8 @@ export const SignUpPage = () => {
       </NavLink>
 
       <h1>Sign up!</h1>
+
+      {error && <span>{error}</span>}
 
       <Input
         title="Username"
