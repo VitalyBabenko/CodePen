@@ -1,18 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
-
 import { authSlice } from "./auth/authSlice";
-import { userSlice } from "./user/userSlice";
-import { workSlice } from "./work/workSlice";
+import { worksSlice } from "./works/worksSlice";
 
 const loggerMiddleware = createLogger();
 
 export const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
-    user: userSlice.reducer,
-    work: workSlice.reducer,
+    works: worksSlice.reducer,
 
     middleware: [thunkMiddleware, loggerMiddleware],
   },

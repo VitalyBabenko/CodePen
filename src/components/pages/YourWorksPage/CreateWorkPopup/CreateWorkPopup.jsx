@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import useInput from "../../../../hooks/useInput";
-import { createWork } from "../../../../store/user/actions/createWorkAction";
+import { createWork } from "../../../../store/works/actions/createWork";
 import { Input } from "../../../common/Input/Input";
 import style from "./CreateWorkPopup.module.scss";
 

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getGql } from "../../../services/api";
 import { getUserIdFromJwt } from "../../../utils/getUserIdFromJwt";
-import { getWorks } from "../../user/actions/getWorksAction";
+import { fetchWorks } from "../../works/actions/fetchWorks";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -25,7 +25,7 @@ export const login = createAsyncThunk(
         localStorage.setItem("authToken", response.login);
 
         const userId = getUserIdFromJwt(localStorage.authToken);
-        dispatch(getWorks(userId));
+        dispatch(fetchWorks(userId));
       } else {
         return rejectWithValue(
           "The username or password you entered is incorrect, please try again."

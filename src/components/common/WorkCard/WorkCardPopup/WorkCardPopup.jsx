@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteWork } from "../../../../store/user/actions/deleteWorkAction";
+import { deleteWork } from "../../../../store/works/actions/deleteWork";
 import style from "./WorkCardPopup.module.scss";
 
 export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
