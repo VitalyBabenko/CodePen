@@ -1,32 +1,43 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getGql } from "../../../services/api";
-import { queries } from "../../../services/queries";
 import { login } from "./loginAction";
 
 export const registration = createAsyncThunk(
   "auth/registration",
 
-  async ({ userName, password }, { dispatch }) => {
+  async (userData, { dispatch, rejectWithValue }) => {
     const gql = getGql();
 
     try {
-      const { createUser } = await gql.request(queries.createUser, {
-        login: userName,
-        password,
-      });
+      const { createUser } = await gql.request(
+        `
+          mutation registration($login: String!,$password: String!) {
+            createUser(login: $login, password: $password) {
+              _id
+              login
+            }
+          }
+        `,
+        {
+          login: userData.login,
+          password: userData.password,
+        }
+      );
 
-      if (createUser !== null) {
+      if (createUser === null) {
+        return rejectWithValue(
+          "This user name is already in use, please try another one"
+        );
+      } else {
         dispatch(
           login({
-            login: userName,
-            password,
+            login: userData.login,
+            password: userData.password,
           })
         );
       }
-
-      return createUser;
     } catch (error) {
-      console.error(error);
+      return rejectWithValue("Something went wrong please try again.");
     }
   }
 );

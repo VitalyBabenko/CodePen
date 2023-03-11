@@ -7,11 +7,12 @@ import { registration } from "../../../store/auth/actions/registrationAction";
 import useInput from "../../../hooks/useInput";
 import { Input } from "../../common/Input/Input";
 import { Validate } from "../../../utils/Validate";
+import { LoadingPage } from "../LoadingPage/LoadingPage";
 
 export const SignUpPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLogged, error } = useSelector((state) => state.auth);
+  const { isLogged, error, loading } = useSelector((state) => state.auth);
   const userName = useInput("", Validate.userName);
   const password = useInput("", Validate.password);
   const confirmPassword = useInput("", (value) =>
@@ -28,16 +29,21 @@ export const SignUpPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if (!isError)
-      dispatch(
-        registration({ userName: userName.value, password: password.value })
-      );
+    if (!isError) {
+      const userData = {
+        login: userName.value,
+        password: password.value,
+      };
+
+      dispatch(registration(userData));
+    }
   };
 
   useEffect(() => {
     if (isLogged) navigate("/your-works");
   }, [isLogged]);
 
+  if (loading) return <LoadingPage />;
   return (
     <form onSubmit={handleSignUp} className={style.container}>
       <NavLink to="/">

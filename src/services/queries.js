@@ -1,17 +1,4 @@
 export const queries = {
-  login: `
-    query login($login: String!,$password: String!) {
-        login(login: $login, password: $password)
-    }`,
-
-  createUser: `
-    mutation createUser($login: String!,$password: String!) {
-        createUser(login: $login, password: $password) {
-            _id
-            login
-        }
-    }`,
-
   getWorks(id) {
     return `
       query SnippetByOwner {

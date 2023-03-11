@@ -6,22 +6,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../store/auth/actions/loginAction";
 import { Input } from "../../common/Input/Input";
 import useInput from "../../../hooks/useInput";
+import { LoadingPage } from "../LoadingPage/LoadingPage";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLogged, error } = useSelector((state) => state.auth);
+  const { isLogged, loading, error } = useSelector((state) => state.auth);
   const loginName = useInput("");
   const password = useInput("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const loginData = {
+
+    const userData = {
       login: loginName.value,
       password: password.value,
     };
 
-    dispatch(login(loginData));
+    dispatch(login(userData));
   };
 
   useEffect(() => {
@@ -32,6 +34,7 @@ export const LoginPage = () => {
     }
   }, [isLogged, error]);
 
+  if (loading) return <LoadingPage />;
   return (
     <form onSubmit={handleFormSubmit} className={style.container}>
       <NavLink to="/">

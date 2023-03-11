@@ -19,41 +19,27 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     // login
     builder.addCase(login.pending, (state) => {
-      state.error = null;
+      state.loading = true;
     });
-    builder.addCase(login.fulfilled, (state, action) => {
-      if (action.payload === null) {
-        state.isLogged = false;
-        state.error =
-          "The username or password you entered is incorrect, please try again.";
-      } else {
-        state.isLogged = true;
-      }
+    builder.addCase(login.fulfilled, (state) => {
+      state.loading = false;
+      state.isLogged = true;
     });
     builder.addCase(login.rejected, (state, action) => {
-      state.isLogged = action.payload;
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload;
     });
 
     // registration
     builder.addCase(registration.pending, (state) => {
       state.loading = true;
-      state.error = null;
     });
-    builder.addCase(registration.fulfilled, (state, action) => {
-      if (action.payload === null) {
-        state.error =
-          "This user name is already in use, please try another one";
-        state.isLogged = false;
-      } else {
-        state.isLogged = true;
-      }
+    builder.addCase(registration.fulfilled, (state) => {
+      state.loading = false;
     });
     builder.addCase(registration.rejected, (state, action) => {
-      state.isLogged = false;
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload;
     });
   },
 });

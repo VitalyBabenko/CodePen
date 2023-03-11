@@ -6,7 +6,7 @@ import { getWorks } from "./actions/getWorksAction";
 const initialState = {
   user: {},
   works: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
 };
 

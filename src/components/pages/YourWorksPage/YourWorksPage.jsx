@@ -9,6 +9,7 @@ import { getUserIdFromJwt } from "../../../utils/getUserIdFromJwt";
 import { getWorks } from "../../../store/user/actions/getWorksAction";
 import { usePopup } from "../../../hooks/usePopup";
 import { CreateWorkPopup } from "./CreateWorkPopup/CreateWorkPopup";
+import { LoadingPage } from "../LoadingPage/LoadingPage";
 
 export const YourWorks = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export const YourWorks = () => {
     }
   }, []);
 
+  if (isLoading) return <LoadingPage />;
   return (
     <div className={style.yourWorks}>
       <Header />
@@ -36,12 +38,6 @@ export const YourWorks = () => {
           </a>
           <button onClick={open}>+</button>
         </div>
-
-        {isLoading && (
-          <div className={style.loading}>
-            <Loader />
-          </div>
-        )}
 
         <div className={style.works}>
           {works &&
