@@ -2,8 +2,11 @@ import style from "./WorkCard.module.scss";
 import { NavLink } from "react-router-dom";
 import { usePopup } from "../../../hooks/usePopup";
 import { WorkCardPopup } from "./WorkCardPopup/WorkCardPopup";
+import { useDispatch } from "react-redux";
+import { setCurrentWork } from "../../../store/works/worksSlice";
 
 export const WorkCard = ({ work }) => {
+  const dispatch = useDispatch();
   const { isPopupVisible, toggle, ref: menuRef } = usePopup();
 
   const openMenu = (e) => {
@@ -12,7 +15,11 @@ export const WorkCard = ({ work }) => {
   };
   if (work.title === null) return null;
   return (
-    <NavLink className={style.card} to={`/your-works/${work._id}`}>
+    <NavLink
+      onClick={() => dispatch(setCurrentWork(work))}
+      className={style.card}
+      to={`/your-works/${work._id}`}
+    >
       <div className={style.preview}></div>
 
       <div className={style.info}>

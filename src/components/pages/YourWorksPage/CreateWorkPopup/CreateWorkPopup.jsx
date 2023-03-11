@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useInput from "../../../../hooks/useInput";
 import { createWork } from "../../../../store/works/actions/createWork";
 import { Input } from "../../../common/Input/Input";
@@ -8,12 +8,14 @@ export const CreateWorkPopup = ({ popupRef, close }) => {
   const dispatch = useDispatch();
   const title = useInput("");
   const description = useInput("");
+  const { error } = useSelector((state) => state.works);
 
   const handleCreateWork = (e) => {
     e.preventDefault();
     dispatch(
       createWork({ title: title.value, description: description.value })
     );
+    if (!error) close();
   };
 
   return (

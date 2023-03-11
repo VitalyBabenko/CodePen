@@ -5,7 +5,6 @@ import { deleteWork } from "./actions/deleteWork";
 
 const initialState = {
   works: [],
-  currentWork: {},
   isLoading: true,
   error: null,
 };
@@ -13,13 +12,7 @@ const initialState = {
 export const worksSlice = createSlice({
   name: "works",
   initialState,
-  reducers: {
-    setCurrentWork(state, action) {
-      state.currentWork = state.works.find(
-        (work) => (work.id = action.payload)
-      );
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     // fetchWorks
     builder.addCase(fetchWorks.pending, (state) => {
@@ -36,7 +29,7 @@ export const worksSlice = createSlice({
 
     // createWork
     builder.addCase(createWork.fulfilled, (state, action) => {
-      state.works = [...state.works, action.payload];
+      state.works = [action.payload, ...state.works];
     });
     builder.addCase(createWork.rejected, (state, action) => {
       state.error = action.payload;
@@ -53,3 +46,5 @@ export const worksSlice = createSlice({
     });
   },
 });
+
+export const { setCurrentWork } = worksSlice.actions;

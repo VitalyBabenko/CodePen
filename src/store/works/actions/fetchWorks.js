@@ -14,6 +14,7 @@ export const fetchWorks = createAsyncThunk(
               _id
               title
               description
+              createdAt
               files {
                 _id
                 text
@@ -28,6 +29,9 @@ export const fetchWorks = createAsyncThunk(
               ___owner: {
                 $in: [id],
               },
+            },
+            {
+              sort: [{ _id: -1 }],
             },
           ]),
         }
