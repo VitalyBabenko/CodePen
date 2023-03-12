@@ -1,62 +1,9 @@
 @import "../../../scss/index.scss";
 
-// .header {
-//   @include container;
-//   @include flex($align: center, $justify: space-between);
-
-//   padding: 20px 16px;
-//   height: 50px;
-
-//   &::before {
-//     width: 100%;
-//     height: 50px;
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     background-color: black;
-//     border-bottom: 1px solid #2f2f2f;
-//     z-index: 2;
-//   }
-
-//   .logoBlock {
-//     display: flex;
-//     align-items: center;
-//     svg {
-//       width: 150px;
-//       height: auto;
-//     }
-//   }
-
-//   nav {
-//     a:first-child {
-//       @extend %buttonGrey;
-//       padding: 13px 16px;
-//     }
-
-//     a:last-child {
-//       @extend %buttonGreen;
-//       margin-left: 10px;
-//       padding: 13px 16px;
-//     }
-//   }
-// }
-
 .header {
   @include container();
   @include flex($justify: space-between, $align: center);
   padding: 25px 0;
-
-  // &:before {
-  //   content: "";
-  //   display: block;
-  //   height: 80px;
-  //   width: 100vw;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   background-color: grey;
-  //   z-index: -1;
-  // }
 
   a {
     svg {

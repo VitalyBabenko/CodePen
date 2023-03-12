@@ -8,6 +8,7 @@ import { fetchCurrentWork } from "../../../store/currentWork/actions/fetchCurren
 import { useParams } from "react-router-dom";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
 import { saveFiles } from "../../../store/currentWork/actions/saveFiles";
+import { HeaderPen } from "../../common/HeaderPen/HeaderPen";
 
 export const PenPage = () => {
   const { currentWork, isLoading, error } = useSelector(
@@ -37,8 +38,8 @@ export const PenPage = () => {
   if (isLoading) return <LoadingPage />;
   return (
     <>
-      <Header />
-      <button onClick={handleUpdate}>save</button>
+      <HeaderPen />
+      {/* <button onClick={handleUpdate}>save</button> */}
       <div className="pane top-pane">
         <Editor
           language="xml"

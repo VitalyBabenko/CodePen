@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import style from "./Header.module.scss";
 import { ReactComponent as LogoBig } from "../../../assets/img/logoBig.svg";
 import { useDispatch, useSelector } from "react-redux";
