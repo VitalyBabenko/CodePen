@@ -8,18 +8,21 @@ import { Controlled as ControlledEditor } from "react-codemirror2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCompressAlt, faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 import "./pen.css";
+import { useDispatch } from "react-redux";
+import style from "./Editor.module.scss";
 
 export default function Editor(props) {
   const { language, displayName, value, onChange } = props;
   const [open, setOpen] = useState(true);
+  const dispatch = useDispatch();
 
   function handleChange(editor, data, value) {
-    onChange(value);
+    dispatch(onChange(value));
   }
 
   return (
-    <div className={`editor-container ${open ? "" : "collapsed"}`}>
-      <div className="editor-title">
+    <div className={open ? style.editorOpen : style.collapsed}>
+      <div className={style.header}>
         {displayName}
         <button
           type="button"
@@ -32,13 +35,15 @@ export default function Editor(props) {
       <ControlledEditor
         onBeforeChange={handleChange}
         value={value}
-        className="code-mirror-wrapper"
+        className={style.codeMirrorWrapper}
         options={{
           lineWrapping: true,
           lint: true,
           mode: language,
           theme: "material",
           lineNumbers: true,
+          autoCorrect: true,
+          autocapitalize: true,
         }}
       />
     </div>

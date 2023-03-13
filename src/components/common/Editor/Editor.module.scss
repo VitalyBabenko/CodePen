@@ -1,0 +1,29 @@
+.editorOpen {
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 7px;
+  background-color: black;
+  border-left: 1px solid #2f2f2f;
+  border-right: 1px solid #2f2f2f;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    // background-color: red;
+  }
+
+  .codeMirrorWrapper {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+}
+
+.collapsed {
+  @extend .editorOpen;
+  flex-grow: 0;
+}

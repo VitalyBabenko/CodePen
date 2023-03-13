@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Header } from "../../common/Header/Header";
+import React, { useEffect } from "react";
 import Editor from "../../common/Editor/Editor";
 import "../../common/Editor/pen.css";
 import { Preview } from "../../common/Preview/Preview";
@@ -9,59 +8,67 @@ import { useParams } from "react-router-dom";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
 import { saveFiles } from "../../../store/currentWork/actions/saveFiles";
 import { HeaderPen } from "../../common/HeaderPen/HeaderPen";
+import style from "./PenPage.module.scss";
+import {
+  setHtml,
+  setCss,
+  setJs,
+} from "../../../store/currentWork/currentWorkSlice";
 
 export const PenPage = () => {
-  const { currentWork, isLoading, error } = useSelector(
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const { title, owner, files, isLoading, error } = useSelector(
     (state) => state.currentWork
   );
-  const dispatch = useDispatch();
-  const [html, setHtml] = useState("");
-  const [css, setCss] = useState("");
-  const [js, setJs] = useState("");
-  const { id } = useParams();
+  const [html, css, js] = files;
 
   useEffect(() => {
     dispatch(fetchCurrentWork(id));
   }, []);
 
-  useEffect(() => {
-    const [HTML, CSS, JS] = currentWork.files;
-    setHtml(HTML.text);
-    setCss(CSS.text);
-    setJs(JS.text);
-  }, [currentWork.files]);
+  const handleSave = () => {
+    const newFiles = {
+      id,
+      html: html.text,
+      css: css.text,
+      js: js.text,
+    };
 
-  const handleUpdate = () => {
-    dispatch(saveFiles({ id, html, css, js }));
+    dispatch(saveFiles(newFiles));
   };
 
   if (isLoading) return <LoadingPage />;
   return (
     <>
-      <HeaderPen />
-      {/* <button onClick={handleUpdate}>save</button> */}
-      <div className="pane top-pane">
+      <HeaderPen
+        workTitle={title}
+        onSave={handleSave}
+        workOwner={owner.login}
+      />
+
+      <div className={style.editors}>
         <Editor
           language="xml"
           displayName="HTML"
-          value={html}
+          value={html.text}
           onChange={setHtml}
         />
         <Editor
           language="css"
           displayName="CSS"
-          value={css}
+          value={css.text}
           onChange={setCss}
         />
         <Editor
           language="javascript"
           displayName="JS"
-          value={js}
+          value={js.text}
           onChange={setJs}
         />
       </div>
 
-      <Preview html={html} css={css} js={js} />
+      <Preview html={html.text} css={css.text} js={js.text} />
     </>
   );
 };

@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from "../../../assets/img/logo.svg";
 import { NavLink } from "react-router-dom";
 import style from "./HeaderPen.module.scss";
 
-export const HeaderPen = () => {
+export const HeaderPen = ({ onSave, workTitle, workOwner }) => {
   const dispatch = useDispatch();
   const { isLogged } = useSelector((state) => state.auth);
 
@@ -20,13 +20,13 @@ export const HeaderPen = () => {
           <Logo />
         </NavLink>
         <div className={style.workInfo}>
-          <h1>Title</h1>
-          <span>Captain Anonymous</span>
+          <h1>{workTitle}</h1>
+          <span>{workOwner}</span>
         </div>
       </div>
 
       <nav>
-        <button>Save</button>
+        <button onClick={() => onSave()}>Save</button>
 
         {isLogged ? (
           <>

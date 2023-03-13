@@ -13,8 +13,10 @@ export const fetchCurrentWork = createAsyncThunk(
             SnippetFindOne(query: $query) {
               _id
               title
-              description
-              createdAt
+              owner {
+                _id
+                login
+              }
               files {
                 _id
                 text
