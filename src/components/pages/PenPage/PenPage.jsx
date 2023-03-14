@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Editor from "../../common/Editor/Editor";
-import "../../common/Editor/pen.css";
 import { Preview } from "../../common/Preview/Preview";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentWork } from "../../../store/currentWork/actions/fetchCurrentWork";
@@ -14,6 +13,8 @@ import {
   setCss,
   setJs,
 } from "../../../store/currentWork/currentWorkSlice";
+
+import htmlLogo from "../../../assets/img/htmlLogo.svg";
 
 export const PenPage = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ export const PenPage = () => {
       <div className={style.editors}>
         <Editor
           language="xml"
-          displayName="HTML"
+          displayName={`HTML`}
           value={html.text}
           onChange={setHtml}
         />
@@ -67,6 +68,8 @@ export const PenPage = () => {
           onChange={setJs}
         />
       </div>
+
+      <div className={style.line}></div>
 
       <Preview html={html.text} css={css.text} js={js.text} />
     </>
