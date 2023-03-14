@@ -7,7 +7,7 @@ export const Preview = ({ html, css, js }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setSrcDoc(`
-            <html>
+            <html >
               <body>${html}</body>
               <style>${css}</style>
               <script>${js}</script>
@@ -24,9 +24,7 @@ export const Preview = ({ html, css, js }) => {
         srcDoc={srcDoc}
         title="output"
         sandbox="allow-scripts"
-        frameBorder="none"
-        width="100%"
-        height="100%"
+        allowfullscreen
       />
     </div>
   );

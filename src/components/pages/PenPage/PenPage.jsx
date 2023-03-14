@@ -14,8 +14,6 @@ import {
   setJs,
 } from "../../../store/currentWork/currentWorkSlice";
 
-import htmlLogo from "../../../assets/img/htmlLogo.svg";
-
 export const PenPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();

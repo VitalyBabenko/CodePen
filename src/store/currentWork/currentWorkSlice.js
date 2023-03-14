@@ -27,12 +27,6 @@ export const currentWorkSlice = createSlice({
     setJs(state, action) {
       state.files[2].text = action.payload;
     },
-
-    setCurrentWork(state, action) {
-      state.currentWork = state.works.find(
-        (work) => (work.id = action.payload)
-      );
-    },
   },
   extraReducers: (builder) => {
     // fetchWorks
