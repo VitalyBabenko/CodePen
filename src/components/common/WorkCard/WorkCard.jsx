@@ -12,11 +12,21 @@ export const WorkCard = ({ work }) => {
     e.preventDefault();
     toggle();
   };
+
   if (work.title === null) return null;
   return (
     <NavLink className={style.card} to={`/your-works/${work._id}`}>
       <div className={style.preview}>
-        <Preview html={html.text} css={css.text} js={js.text} />
+        <Preview
+          html={html.text}
+          css={`
+            html {
+              zoom: 0.3;
+            }
+            ${css.text}
+          `}
+          js={js.text}
+        />
       </div>
 
       <div className={style.info}>

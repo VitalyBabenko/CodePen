@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { deleteWork } from "../../../../store/works/actions/deleteWork";
+import { updateWorkInfo } from "../../../../store/works/actions/updateWorkInfo";
 import style from "./WorkCardPopup.module.scss";
 
 export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
@@ -8,12 +9,36 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   // TODO: rename && changeDesc
   const renameWork = (e) => {
     e.preventDefault();
-    console.log("renameWork");
+
+    const newTitle = prompt(`rename work: ${work.title}`, work.title);
+    if (newTitle) {
+      const updatedWorkInfo = {
+        id: work._id,
+        title: newTitle,
+        description: work.description,
+        files: work.files,
+      };
+
+      dispatch(updateWorkInfo(updatedWorkInfo));
+    }
   };
 
   const changeDescription = (e) => {
     e.preventDefault();
-    console.log("changeDescription");
+    const newDescription = prompt(
+      `change description: ${work.title}`,
+      work.description
+    );
+    if (newDescription) {
+      const updatedWorkInfo = {
+        id: work._id,
+        title: work.title,
+        description: newDescription,
+        files: work.files,
+      };
+
+      dispatch(updateWorkInfo(updatedWorkInfo));
+    }
   };
 
   const handleDelete = (e) => {
