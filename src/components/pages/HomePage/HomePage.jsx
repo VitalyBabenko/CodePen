@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Header } from "../../common/Header/Header";
+import { Footer } from "../../common/Footer/Footer";
 import style from "./HomePage.module.scss";
 
 import { ReactComponent as HomeLine } from "../../../assets/img/homeline.svg";
@@ -9,8 +10,11 @@ import { ReactComponent as HomeLineTwo } from "../../../assets/img/linehometwo.s
 import { ReactComponent as Icon1 } from "../../../assets/img/icon1.svg";
 import { ReactComponent as Icon2 } from "../../../assets/img/icon2.svg";
 import { ReactComponent as Icon3 } from "../../../assets/img/icon3.svg";
+import { useSelector } from "react-redux";
 
 export const HomePage = () => {
+  const { isLogged } = useSelector((state) => state.auth);
+
   return (
     <div className={style.homePage}>
       <Header />
@@ -26,7 +30,10 @@ export const HomePage = () => {
             build test cases to learn and debug, and find inspiration.
           </p>
 
-          <Link className={style.link} to="/pen">
+          <Link
+            className={style.link}
+            to={isLogged ? "/your-works" : "/sandbox"}
+          >
             Start Codding
           </Link>
         </div>
@@ -82,6 +89,7 @@ export const HomePage = () => {
           <button>Explore Trending</button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

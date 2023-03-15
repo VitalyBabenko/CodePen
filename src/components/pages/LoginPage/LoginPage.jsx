@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../store/auth/actions/loginAction";
 import { Input } from "../../common/Input/Input";
-import useInput from "../../../hooks/useInput";
+import { useInput } from "../../../hooks/useInput";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
 
 export const LoginPage = () => {

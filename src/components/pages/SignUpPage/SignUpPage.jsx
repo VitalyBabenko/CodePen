@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registration } from "../../../store/auth/actions/registrationAction";
-import useInput from "../../../hooks/useInput";
+import { useInput } from "../../../hooks/useInput";
 import { Input } from "../../common/Input/Input";
 import { Validate } from "../../../utils/Validate";
 import { LoadingPage } from "../LoadingPage/LoadingPage";

@@ -6,7 +6,6 @@ import style from "./WorkCardPopup.module.scss";
 export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   const dispatch = useDispatch();
 
-  // TODO: rename && changeDesc
   const renameWork = (e) => {
     e.preventDefault();
 
@@ -25,6 +24,7 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
 
   const changeDescription = (e) => {
     e.preventDefault();
+
     const newDescription = prompt(
       `change description: ${work.title}`,
       work.description

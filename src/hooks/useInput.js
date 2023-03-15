@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useInput = (initialValue, validator) => {
+export const useInput = (initialValue, validator) => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState(null);
 
@@ -21,5 +21,3 @@ const useInput = (initialValue, validator) => {
     onChange,
   };
 };
-
-export default useInput;
