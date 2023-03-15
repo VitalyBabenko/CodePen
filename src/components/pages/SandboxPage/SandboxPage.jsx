@@ -4,6 +4,9 @@ import { HeaderPen } from "../../common/HeaderPen/HeaderPen";
 import style from "../../pages/PenPage/PenPage.module.scss";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
+import { Container, Section, Bar } from "react-simple-resizer";
+import { Editors } from "../../common/Editors/Editors";
+import { useCallback, useState } from "react";
 
 export const SandboxPage = () => {
   const [html, setHtmlValue] = useLocalStorage(`html`, "");
@@ -14,7 +17,7 @@ export const SandboxPage = () => {
   const handleSave = () => {
     if (
       // eslint-disable-next-line no-restricted-globals
-      confirm(`You’ll have to Log In or Sign Up to save your Pen.
+      confirm(`You’ll have to Log In or Sign Up  to save your Pen.
     Don’t worry! All your work will be saved to your account.`)
     ) {
       navigate("/login");
@@ -22,37 +25,27 @@ export const SandboxPage = () => {
   };
 
   return (
-    <>
+    <Container vertical={true} className={style.container}>
       <HeaderPen
         workTitle={"Untitled"}
         onSave={handleSave}
         workOwner={"Captain anonymous"}
       />
+      <Section
+        children={
+          <Editors
+            html={html}
+            setHtmlValue={setHtmlValue}
+            css={css}
+            setCssValue={setCssValue}
+            js={js}
+            setJsValue={setJsValue}
+          />
+        }
+      />
 
-      <div className={style.editors}>
-        <Editor
-          language="xml"
-          displayName={`HTML`}
-          value={html}
-          onChange={setHtmlValue}
-        />
-        <Editor
-          language="css"
-          displayName="CSS"
-          value={css}
-          onChange={setCssValue}
-        />
-        <Editor
-          language="javascript"
-          displayName="JS"
-          value={js}
-          onChange={setJsValue}
-        />
-      </div>
-
-      <div className={style.line}></div>
-
-      <Preview html={html} css={css} js={js} />
-    </>
+      <Bar className={style.barVertical} />
+      <Section children={<Preview html={html} css={css} js={js} />} />
+    </Container>
   );
 };

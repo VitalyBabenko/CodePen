@@ -1,17 +1,9 @@
-.editorOpen {
-  flex-grow: 1;
-  flex-basis: 0;
+.editor {
   display: flex;
   flex-direction: column;
-  margin: 0 7px;
   background-color: black;
-  border-left: 1px solid #2f2f2f;
-  border-right: 1px solid #2f2f2f;
-
-  &:last-of-type {
-    margin: 0 0 0 7px;
-    border-right: none;
-  }
+  height: 100%;
+  width: auto;
 
   .header {
     display: flex;
@@ -36,21 +28,8 @@
   }
 
   .codeMirrorWrapper {
+    width: 100%;
     flex-grow: 1;
     overflow: hidden;
   }
-
-  .collapseBtn {
-    margin-left: 0.5rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-left: auto;
-  }
-}
-
-.collapsed {
-  @extend .editorOpen;
-  flex-grow: 0;
 }

@@ -5,6 +5,8 @@
   @include flex($justify: space-between, $align: center);
   height: 65px;
 
+  margin-bottom: 1px;
+
   &::before {
     content: "";
     display: block;

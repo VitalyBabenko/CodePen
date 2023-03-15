@@ -1,0 +1,12 @@
+.editors {
+  height: 100%;
+  display: flex;
+  background-color: black;
+
+  .bar {
+    background: black;
+    border-left: 1px solid #2f2f2f;
+    border-right: 1px solid #2f2f2f;
+    width: 15px;
+  }
+}

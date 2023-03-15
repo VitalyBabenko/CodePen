@@ -14,7 +14,6 @@ import { ReactComponent as CssLogo } from "../../../assets/img/cssLogo.svg";
 import { ReactComponent as JsLogo } from "../../../assets/img/jsLogo.svg";
 export default function Editor(props) {
   const { language, displayName, value, onChange } = props;
-  const [open, setOpen] = useState(true);
   const dispatch = useDispatch();
 
   const logos = {
@@ -28,19 +27,12 @@ export default function Editor(props) {
   }
 
   return (
-    <div className={open ? style.editorOpen : style.collapsed}>
+    <div className={style.editor}>
       <div className={style.header}>
         <h2>
           {logos[language]}
           {displayName}
         </h2>
-
-        <button
-          className={style.collapseBtn}
-          onClick={() => setOpen((prevOpen) => !prevOpen)}
-        >
-          <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
-        </button>
       </div>
 
       <ControlledEditor

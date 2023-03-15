@@ -1,10 +1,29 @@
 @import "../../../scss/index.scss";
 
-.editors {
-  height: 50vh;
-  display: flex;
-  background-color: black;
-  border-left: 8px solid black;
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  // .editors {
+  //   height: 50%;
+  //   display: flex;
+  //   background-color: black;
+  //   width: 100%;
+
+  //   .bar {
+  //     background: black;
+  //     border-left: 1px solid #2f2f2f;
+  //     border-right: 1px solid #2f2f2f;
+  //     width: 15px;
+  //   }
+  // }
+  .barVertical {
+    background: black;
+    width: 100%;
+    height: 15px;
+    border-top: 1px solid #2f2f2f;
+    border-bottom: 1px solid #2f2f2f;
+  }
 }
 
 .line {
