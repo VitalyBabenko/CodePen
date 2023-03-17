@@ -1,75 +1,45 @@
-import React, { useEffect } from "react";
-import Editor from "../../common/Editor/Editor";
+import React, { useEffect, useState } from "react";
 import { Preview } from "../../common/Preview/Preview";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentWork } from "../../../store/currentWork/actions/fetchCurrentWork";
 import { useParams } from "react-router-dom";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
-import { saveFiles } from "../../../store/currentWork/actions/saveFiles";
 import { HeaderPen } from "../../common/HeaderPen/HeaderPen";
 import style from "./PenPage.module.scss";
-import {
-  setHtml,
-  setCss,
-  setJs,
-} from "../../../store/currentWork/currentWorkSlice";
+import { Bar, Container, Section } from "react-simple-resizer";
+import { Editors } from "../../common/Editors/Editors";
+import { ErrorPage } from "../ErrorPage/ErrorPage";
 
 export const PenPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { title, owner, files, isLoading, error } = useSelector(
-    (state) => state.currentWork
-  );
-  const [html, css, js] = files;
+  const { isLoading, error, files } = useSelector((state) => state.currentWork);
+  const [isSizeChanged, setIsSizeChanged] = useState(false);
+  const { html, css, js } = files;
 
   useEffect(() => {
     dispatch(fetchCurrentWork(id));
   }, []);
 
-  const handleSave = () => {
-    const newFiles = {
-      id,
-      html: html.text,
-      css: css.text,
-      js: js.text,
-    };
-
-    dispatch(saveFiles(newFiles));
-  };
-
   if (isLoading) return <LoadingPage />;
+  if (error) return <ErrorPage />;
   return (
-    <>
-      <HeaderPen
-        workTitle={title}
-        onSave={handleSave}
-        workOwner={owner.login}
+    <Container
+      vertical={true}
+      className={style.container}
+      onActivate={() => setIsSizeChanged(true)}
+      afterResizing={() => setIsSizeChanged(false)}
+    >
+      <HeaderPen />
+
+      <Section children={<Editors />} />
+
+      <Bar className={style.barVertical} />
+
+      <Section
+        style={isSizeChanged ? { pointerEvents: "none" } : null}
+        children={<Preview html={html.text} css={css.text} js={js.text} />}
       />
-
-      <div className={style.editors}>
-        <Editor
-          language="xml"
-          displayName={`HTML`}
-          value={html.text}
-          onChange={setHtml}
-        />
-        <Editor
-          language="css"
-          displayName="CSS"
-          value={css.text}
-          onChange={setCss}
-        />
-        <Editor
-          language="javascript"
-          displayName="JS"
-          value={js.text}
-          onChange={setJs}
-        />
-      </div>
-
-      <div className={style.line}></div>
-
-      <Preview html={html.text} css={css.text} js={js.text} />
-    </>
+    </Container>
   );
 };

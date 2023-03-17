@@ -12,7 +12,7 @@ import { LoadingPage } from "../LoadingPage/LoadingPage";
 export const SignUpPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLogged, error, loading } = useSelector((state) => state.auth);
+  const { isAuth, error, loading } = useSelector((state) => state.auth);
   const userName = useInput("", Validate.userName);
   const password = useInput("", Validate.password);
   const confirmPassword = useInput("", (value) =>
@@ -40,8 +40,8 @@ export const SignUpPage = () => {
   };
 
   useEffect(() => {
-    if (isLogged) navigate("/your-works");
-  }, [isLogged]);
+    if (isAuth) navigate("/your-works");
+  }, [isAuth]);
 
   if (loading) return <LoadingPage />;
   return (

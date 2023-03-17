@@ -13,11 +13,11 @@ import { fetchWorks } from "../../../store/works/actions/fetchWorks";
 export const YourWorks = () => {
   const dispatch = useDispatch();
   const { works, isLoading } = useSelector((state) => state.works);
-  const { isLogged } = useSelector((state) => state.auth);
+  const { isAuth } = useSelector((state) => state.auth);
   const { isPopupVisible, ref, open, close } = usePopup();
 
   useEffect(() => {
-    if (isLogged) {
+    if (isAuth) {
       const userId = getUserIdFromJwt(localStorage.authToken);
       dispatch(fetchWorks(userId));
     }

@@ -3,7 +3,7 @@ import { login } from "./actions/loginAction";
 import { registration } from "./actions/registrationAction";
 
 const initialState = {
-  isLogged: localStorage.getItem("authToken") ? true : false,
+  isAuth: localStorage.getItem("authToken") ? true : false,
   loading: false,
   error: null,
 };
@@ -13,7 +13,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     logout(state) {
-      state.loggedIn = false;
+      state.isAuth = false;
     },
   },
   extraReducers: (builder) => {
@@ -23,7 +23,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(login.fulfilled, (state) => {
       state.loading = false;
-      state.isLogged = true;
+      state.isAuth = true;
     });
     builder.addCase(login.rejected, (state, action) => {
       state.loading = false;

@@ -11,7 +11,7 @@ import { LoadingPage } from "../LoadingPage/LoadingPage";
 export const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLogged, loading, error } = useSelector((state) => state.auth);
+  const { isAuth, loading, error } = useSelector((state) => state.auth);
   const loginName = useInput("");
   const password = useInput("");
 
@@ -27,12 +27,12 @@ export const LoginPage = () => {
   };
 
   useEffect(() => {
-    if (isLogged) navigate("/your-works");
+    if (isAuth) navigate("/your-works");
     if (error) {
       loginName.setValue("");
       password.setValue("");
     }
-  }, [isLogged, error]);
+  }, [isAuth, error]);
 
   if (loading) return <LoadingPage />;
   return (

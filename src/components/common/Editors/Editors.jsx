@@ -1,46 +1,52 @@
 import React from "react";
-import { Bar, Container, Section } from "react-simple-resizer";
+import { Bar, Container } from "react-simple-resizer";
 import Editor from "../Editor/Editor";
 import style from "./Editors.module.scss";
+import { useSelector } from "react-redux";
+import {
+  setHtml,
+  setCss,
+  setJs,
+  setLocalHtml,
+  setLocalCss,
+  setLocalJs,
+} from "../../../store/currentWork/currentWorkSlice";
 
-export const Editors = (props) => {
-  const { html, setHtmlValue, css, setCssValue, js, setJsValue } = props;
+export const Editors = () => {
+  const { isAuth } = useSelector((state) => state.auth);
+  const { files } = useSelector((state) => state.currentWork);
+  const { html, css, js } = files;
 
+  const setHtmlText = isAuth ? setHtml : setLocalHtml;
+  const setCssText = isAuth ? setCss : setLocalCss;
+  const setJsText = isAuth ? setJs : setLocalJs;
   return (
-    <Container width={"100vw"} height={"100%"} className={style.editors}>
+    <Container className={style.editors}>
       <Bar className={style.bar} />
-      <Section
-        children={
-          <Editor
-            language="xml"
-            displayName={`HTML`}
-            value={html}
-            onChange={setHtmlValue}
-          />
-        }
+
+      <Editor
+        language="xml"
+        displayName={`HTML`}
+        value={html.text}
+        onChange={setHtmlText}
       />
 
       <Bar className={style.bar} />
-      <Section
-        children={
-          <Editor
-            language="css"
-            displayName="CSS"
-            value={css}
-            onChange={setCssValue}
-          />
-        }
+
+      <Editor
+        language="css"
+        displayName="CSS"
+        value={css.text}
+        onChange={setCssText}
       />
+
       <Bar className={style.bar} />
-      <Section
-        children={
-          <Editor
-            language="javascript"
-            displayName="JS"
-            value={js}
-            onChange={setJsValue}
-          />
-        }
+
+      <Editor
+        language="javascript"
+        displayName="JS"
+        value={js.text}
+        onChange={setJsText}
       />
     </Container>
   );

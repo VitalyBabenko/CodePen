@@ -13,7 +13,7 @@ import { ReactComponent as Icon3 } from "../../../assets/img/icon3.svg";
 import { useSelector } from "react-redux";
 
 export const HomePage = () => {
-  const { isLogged } = useSelector((state) => state.auth);
+  const { isAuth } = useSelector((state) => state.auth);
 
   return (
     <div className={style.homePage}>
@@ -30,10 +30,7 @@ export const HomePage = () => {
             build test cases to learn and debug, and find inspiration.
           </p>
 
-          <Link
-            className={style.link}
-            to={isLogged ? "/your-works" : "/sandbox"}
-          >
+          <Link className={style.link} to={isAuth ? "/your-works" : "/pen"}>
             Start Codding
           </Link>
         </div>

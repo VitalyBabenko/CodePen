@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/xml/xml";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/css/css";
 import { Controlled as ControlledEditor } from "react-codemirror2";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCompressAlt, faExpandAlt } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import style from "./Editor.module.scss";
 import "./themes/twilight.css";
 import { ReactComponent as HtmlLogo } from "../../../assets/img/htmlLogo.svg";
 import { ReactComponent as CssLogo } from "../../../assets/img/cssLogo.svg";
 import { ReactComponent as JsLogo } from "../../../assets/img/jsLogo.svg";
+import { Section } from "react-simple-resizer";
+
 export default function Editor(props) {
   const { language, displayName, value, onChange } = props;
   const dispatch = useDispatch();
@@ -27,7 +27,8 @@ export default function Editor(props) {
   }
 
   return (
-    <div className={style.editor}>
+    // Section use for resizers
+    <Section className={style.editor}>
       <div className={style.header}>
         <h2>
           {logos[language]}
@@ -48,6 +49,6 @@ export default function Editor(props) {
           autoCorrect: true,
         }}
       />
-    </div>
+    </Section>
   );
 }

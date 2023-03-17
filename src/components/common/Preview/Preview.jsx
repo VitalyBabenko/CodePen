@@ -23,7 +23,7 @@ export const Preview = ({ html, css, js }) => {
       <iframe
         srcDoc={srcDoc}
         title="output"
-        sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+        sandbox="allow-forms allow-modals  allow-popups  allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
       />
     </div>
   );

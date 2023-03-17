@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const { isLogged } = useSelector((state) => state.auth);
+  const { isAuth } = useSelector((state) => state.auth);
 
   const logout = () => {
     localStorage.removeItem("authToken");
@@ -18,7 +18,7 @@ export const Header = () => {
         <LogoBig />
       </NavLink>
 
-      {isLogged ? (
+      {isAuth ? (
         <nav>
           <NavLink to="/your-works">Your works</NavLink>
           <NavLink
