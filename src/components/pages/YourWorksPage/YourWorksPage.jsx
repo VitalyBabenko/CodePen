@@ -1,7 +1,6 @@
 import { Header } from "../../common/Header/Header";
 import style from "./YourWorksPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { WorkCard } from "../../common/WorkCard/WorkCard";
 import { Footer } from "../../common/Footer/Footer";
 import { useEffect } from "react";
 import { getUserIdFromJwt } from "../../../utils/getUserIdFromJwt";
@@ -9,11 +8,12 @@ import { usePopup } from "../../../hooks/usePopup";
 import { CreateWorkPopup } from "./CreateWorkPopup/CreateWorkPopup";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
 import { fetchWorks } from "../../../store/works/actions/fetchWorks";
+import { Works } from "../../common/Works/Works";
 
 export const YourWorks = () => {
   const dispatch = useDispatch();
-  const { works, isLoading } = useSelector((state) => state.works);
   const { isAuth } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.works);
   const { isPopupVisible, ref, open, close } = usePopup();
 
   useEffect(() => {
@@ -21,6 +21,7 @@ export const YourWorks = () => {
       const userId = getUserIdFromJwt(localStorage.authToken);
       dispatch(fetchWorks(userId));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) return <LoadingPage />;
@@ -36,10 +37,7 @@ export const YourWorks = () => {
           <button onClick={open}>+</button>
         </div>
 
-        <div className={style.works}>
-          {works &&
-            works.map((work) => <WorkCard key={work._id} work={work} />)}
-        </div>
+        <Works openPopup={open} />
       </div>
 
       {isPopupVisible && <CreateWorkPopup popupRef={ref} close={close} />}
