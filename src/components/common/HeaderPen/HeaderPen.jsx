@@ -1,9 +1,11 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ReactComponent as Logo } from "../../../assets/img/logo.svg";
-import { NavLink, useNavigate } from "react-router-dom";
-import { saveFiles } from "../../../store/currentWork/actions/saveFiles";
-import style from "./HeaderPen.module.scss";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as Logo } from '../../../assets/img/logo.svg';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { saveFiles } from '../../../store/currentWork/actions/saveFiles';
+import style from './HeaderPen.module.scss';
+import { setFormatCode } from '../../../store/currentWork/currentWorkSlice';
+import { askToLogin } from '../../../utils/askToLogin';
 
 export const HeaderPen = () => {
   const dispatch = useDispatch();
@@ -11,20 +13,17 @@ export const HeaderPen = () => {
   const { isAuth } = useSelector((state) => state.auth);
   const { id, title, owner, files } = useSelector((state) => state.currentWork);
 
-  const askToLogin = () => {
-    const unAuthMessage = `You’ll have to Log In or Sign Up  to save your Pen.
-    Don’t worry! All your work will be saved to your account.`;
-    // eslint-disable-next-line no-restricted-globals
-    if (confirm(unAuthMessage)) navigate("/login");
-  };
-
   const logout = () => {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem('authToken');
     dispatch(logout());
   };
 
   const handleSaveFiles = () => {
-    if (isAuth) {
+    dispatch(setFormatCode());
+
+    if (!isAuth) {
+      if (askToLogin()) navigate('/login');
+    } else {
       dispatch(
         saveFiles({
           id,
@@ -33,8 +32,6 @@ export const HeaderPen = () => {
           js: files.js.text,
         })
       );
-    } else {
-      askToLogin();
     }
   };
 
@@ -57,7 +54,7 @@ export const HeaderPen = () => {
           <>
             <NavLink to="/your-works">Your works</NavLink>
             <NavLink
-              style={{ backgroundColor: "#dc143c" }}
+              style={{ backgroundColor: '#dc143c' }}
               onClick={logout}
               to="/"
             >

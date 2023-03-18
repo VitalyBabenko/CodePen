@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchWorks } from "./actions/fetchWorks";
 import { createWork } from "./actions/createWork";
 import { deleteWork } from "./actions/deleteWork";
-import { updateWorkInfo } from "./actions/updateWorkInfo";
 
 const initialState = {
   works: [],
@@ -45,14 +44,6 @@ export const worksSlice = createSlice({
     builder.addCase(deleteWork.rejected, (state, action) => {
       state.error = action.payload;
     });
-
-    // // updateWorkInfo (title | description)
-    // builder.addCase(updateWorkInfo.fulfilled, (state, action) => {
-    //   state.work
-    // });
-    // builder.addCase(updateWorkInfo.rejected, (state, action) => {
-    //   state.error = action.payload;
-    // });
   },
 });
 

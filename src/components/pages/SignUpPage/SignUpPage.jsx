@@ -41,6 +41,7 @@ export const SignUpPage = () => {
 
   useEffect(() => {
     if (isAuth) navigate("/your-works");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth]);
 
   if (loading) return <LoadingPage />;

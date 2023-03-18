@@ -1,14 +1,14 @@
-import { Header } from "../../common/Header/Header";
-import style from "./YourWorksPage.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { Footer } from "../../common/Footer/Footer";
-import { useEffect } from "react";
-import { getUserIdFromJwt } from "../../../utils/getUserIdFromJwt";
-import { usePopup } from "../../../hooks/usePopup";
-import { CreateWorkPopup } from "./CreateWorkPopup/CreateWorkPopup";
-import { LoadingPage } from "../LoadingPage/LoadingPage";
-import { fetchWorks } from "../../../store/works/actions/fetchWorks";
-import { Works } from "../../common/Works/Works";
+import { Header } from '../../common/Header/Header';
+import style from './YourWorksPage.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { Footer } from '../../common/Footer/Footer';
+import { useEffect } from 'react';
+import { getUserIdFromJwt } from '../../../utils/getUserIdFromJwt';
+import { usePopup } from '../../../hooks/usePopup';
+import { CreateWorkPopup } from './CreateWorkPopup/CreateWorkPopup';
+import { LoadingPage } from '../LoadingPage/LoadingPage';
+import { fetchWorks } from '../../../store/works/actions/fetchWorks';
+import { Works } from '../../common/Works/Works';
 
 export const YourWorks = () => {
   const dispatch = useDispatch();

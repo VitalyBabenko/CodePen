@@ -1,10 +1,20 @@
-import { Routes, Route } from "react-router-dom";
-import { LoginPage } from "./components/pages/LoginPage/LoginPage";
-import { ErrorPage } from "./components/pages/ErrorPage/ErrorPage";
-import { HomePage } from "./components/pages/HomePage/HomePage";
-import { PenPage } from "./components/pages/PenPage/PenPage";
-import { SignUpPage } from "./components/pages/SignUpPage/SignUpPage";
-import { YourWorks } from "./components/pages/YourWorksPage/YourWorksPage";
+import { Routes, Route } from 'react-router-dom';
+import { LoginPage } from './components/pages/LoginPage/LoginPage';
+import { ErrorPage } from './components/pages/ErrorPage/ErrorPage';
+import { HomePage } from './components/pages/HomePage/HomePage';
+import { PenPage } from './components/pages/PenPage/PenPage';
+import { SignUpPage } from './components/pages/SignUpPage/SignUpPage';
+import { YourWorks } from './components/pages/YourWorksPage/YourWorksPage';
+
+//  TODO:
+//  1. icons
+//  2. console
+//  3. search
+//  4. sort
+//  5. deleted
+//  6. aliases
+//  7. extraKeys for Editor
+//  8. dropFile
 
 function App() {
   return (

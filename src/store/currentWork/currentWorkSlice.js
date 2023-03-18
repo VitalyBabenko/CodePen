@@ -1,22 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchCurrentWork } from "./actions/fetchCurrentWork";
-import { saveFiles } from "./actions/saveFiles";
+import { createSlice } from '@reduxjs/toolkit';
+import { formatCode } from '../../utils/formatCode';
+import { fetchCurrentWork } from './actions/fetchCurrentWork';
+import { saveFiles } from './actions/saveFiles';
 
 const initialState = {
-  id: "",
-  title: "",
-  owner: { id: "", login: "" },
+  id: '',
+  title: '',
+  owner: { id: '', login: '' },
   files: {
-    html: { text: "", type: "HTML" },
-    css: { text: "", type: "CSS" },
-    js: { text: "", type: "JS" },
+    html: { text: '', type: 'HTML' },
+    css: { text: '', type: 'CSS' },
+    js: { text: '', type: 'JS' },
   },
   isLoading: false,
   error: null,
 };
 
 export const currentWorkSlice = createSlice({
-  name: "currentWork",
+  name: 'currentWork',
   initialState,
   reducers: {
     setHtml(state, action) {
@@ -32,31 +33,46 @@ export const currentWorkSlice = createSlice({
     setLocalHtml(state, action) {
       state.files.html.text = action.payload;
       localStorage.setItem(
-        "localFiles",
+        'localFiles',
         JSON.stringify({
           ...state.files,
-          html: { type: "HTML", text: action.payload },
+          html: { type: 'HTML', text: action.payload },
         })
       );
     },
     setLocalCss(state, action) {
       state.files.css.text = action.payload;
       localStorage.setItem(
-        "localFiles",
+        'localFiles',
         JSON.stringify({
           ...state.files,
-          css: { type: "CSS", text: action.payload },
+          css: { type: 'CSS', text: action.payload },
         })
       );
     },
     setLocalJs(state, action) {
       state.files.js.text = action.payload;
       localStorage.setItem(
-        "localFiles",
+        'localFiles',
         JSON.stringify({
           ...state.files,
-          js: { type: "JS", text: action.payload },
+          js: { type: 'JS', text: action.payload },
         })
+      );
+    },
+
+    setFormatCode(state, action) {
+      state.files.html.text = formatCode(
+        state.files.html.text,
+        state.files.html.type
+      );
+      state.files.css.text = formatCode(
+        state.files.css.text,
+        state.files.css.type
+      );
+      state.files.js.text = formatCode(
+        state.files.js.text,
+        state.files.js.type
       );
     },
   },
@@ -89,5 +105,12 @@ export const currentWorkSlice = createSlice({
   },
 });
 
-export const { setHtml, setCss, setJs, setLocalHtml, setLocalCss, setLocalJs } =
-  currentWorkSlice.actions;
+export const {
+  setHtml,
+  setCss,
+  setJs,
+  setLocalHtml,
+  setLocalCss,
+  setLocalJs,
+  setFormatCode,
+} = currentWorkSlice.actions;

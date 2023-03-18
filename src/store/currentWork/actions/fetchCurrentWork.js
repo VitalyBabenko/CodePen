@@ -1,20 +1,20 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getGql } from "../../../services/api";
-import { setEmptyFilesInLS } from "../../../utils/setEmptyFilesInLS";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getGql } from '../../../services/api';
+import { setEmptyFilesInLS } from '../../../utils/setEmptyFilesInLS';
 
 export const fetchCurrentWork = createAsyncThunk(
-  "currentWork/fetch",
+  'currentWork/fetch',
 
   async (id) => {
     if (!id) {
-      if (!localStorage.getItem("localFiles")) {
+      if (!localStorage.getItem('localFiles')) {
         setEmptyFilesInLS();
       }
       return {
         _id: null,
-        title: "Untitled",
-        owner: { login: "Captain anonymous" },
-        files: JSON.parse(localStorage.getItem("localFiles")),
+        title: 'Untitled',
+        owner: { login: 'Captain anonymous' },
+        files: JSON.parse(localStorage.getItem('localFiles')),
       };
     }
 
@@ -49,9 +49,9 @@ export const fetchCurrentWork = createAsyncThunk(
       };
 
       SnippetFindOne.files.forEach((file) => {
-        if (file.type === "HTML") files.html = file;
-        if (file.type === "CSS") files.css = file;
-        if (file.type === "JS") files.js = file;
+        if (file.type === 'HTML') files.html = file;
+        if (file.type === 'CSS') files.css = file;
+        if (file.type === 'JS') files.js = file;
       });
 
       return { ...SnippetFindOne, files: files };
