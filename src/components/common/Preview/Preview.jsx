@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import style from "./Preview.module.scss";
+import { useEffect, useState } from 'react';
+import style from './Preview.module.scss';
 
 export const Preview = ({ html, css, js }) => {
   const [srcDoc, setSrcDoc] = useState();

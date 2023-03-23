@@ -1,0 +1,65 @@
+@import '../../../scss/index.scss';
+
+.console {
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #060606;
+    color: #aaaebd;
+    padding: 7px 10px;
+
+    h2 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-right: auto;
+    }
+
+    button {
+      @extend %buttonGrey;
+      border-radius: 3px;
+      padding: 5px 8px;
+    }
+
+    button:last-of-type {
+      margin-left: 5px;
+    }
+  }
+
+  .out {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #1d1e22;
+    color: white;
+    overflow: scroll;
+  }
+
+  // FIXME: height
+  input {
+    color: white;
+    height: auto;
+    padding: 7px;
+    font-size: 15px;
+    background-color: #343539;
+    border: none;
+    margin-bottom: 0;
+    resize: none;
+    outline: none;
+  }
+  .entryField {
+    display: flex;
+    text-align: center;
+    background-color: #343539;
+    height: 30px;
+    color: white;
+
+    & span {
+      padding: 5px 0 5px 10px;
+    }
+  }
+}

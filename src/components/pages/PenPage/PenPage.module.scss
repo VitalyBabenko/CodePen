@@ -4,19 +4,6 @@
   width: 100vw;
   height: 100vh;
 
-  // .editors {
-  //   height: 50%;
-  //   display: flex;
-  //   background-color: black;
-  //   width: 100%;
-
-  //   .bar {
-  //     background: black;
-  //     border-left: 1px solid #2f2f2f;
-  //     border-right: 1px solid #2f2f2f;
-  //     width: 15px;
-  //   }
-  // }
   .barVertical {
     background: black;
     width: 100%;
@@ -33,4 +20,18 @@
   background-color: black;
   border-top: 1px solid #2f2f2f;
   border-bottom: 1px solid #2f2f2f;
+}
+
+footer {
+  @include flex($direction: row, $align: center, $justify: start) ;
+  padding: 0 5px;
+  height:30px;
+  background-color: #060606;
+
+  button {
+    @extend %buttonGrey;
+    padding: 3px 7px;
+    border-radius: 2px;
+    font-size: 15px;
+  }
 }
