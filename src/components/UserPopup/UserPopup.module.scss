@@ -1,0 +1,50 @@
+@import '../../scss/index.scss';
+
+.userPopup {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    padding: 10px 0;
+    background-color: #1E1F25;   
+    border-radius: 6px 0 6px 6px;
+    z-index: 3;
+  
+
+    li,a {
+        
+        list-style: none;
+        color: #e3e4e8;
+        padding: 0.6rem 25px 0.6rem 20px;
+       font-weight: 700;
+       font-size: 17px;
+       text-decoration:none;
+      
+      
+
+       &:hover {
+        background-color: #444958;
+       }
+
+       &:last-of-type {
+        &:hover {
+            background-color: $redMain;
+        }
+       }
+    }
+
+    a {
+        display: block;
+        width:100%;
+    }
+
+    hr {
+        width: 92%;
+        height: 2px;
+        margin: 5px auto;
+        background-color: #2C3039 ;
+        border: none;
+    }
+
+   
+}

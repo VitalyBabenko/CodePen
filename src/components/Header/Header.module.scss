@@ -4,14 +4,27 @@
   @include container();
   @include flex($justify: space-between, $align: center);
   padding: 25px 0;
+  position: relative;
+  z-index: 2;
 
   a {
     svg {
       @extend %logo;
-
-      z-index: 10 !important;
+     
     }
   }
+
+
+
+  img {
+    width: 44px;
+    height: 44px;
+    border-radius: 3px;
+    background-size: contain;
+    background-position: 50%;
+    cursor: pointer;
+  }
+
 
   nav {
     z-index: 0;

@@ -1,10 +1,11 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getGql } from "../../../services/api";
-import { getUserIdFromJwt } from "../../../utils/getUserIdFromJwt";
-import { fetchWorks } from "../../works/actions/fetchWorks";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getGql } from '../../../services/api';
+import { getUserIdFromJwt } from '../../../utils/getUserIdFromJwt';
+import { fetchUser } from '../../user/actions/fetchUser';
+import { fetchWorks } from '../../works/actions/fetchWorks';
 
 export const login = createAsyncThunk(
-  "auth/login",
+  'auth/login',
 
   async (userData, { dispatch, rejectWithValue }) => {
     const gql = getGql();
@@ -22,18 +23,19 @@ export const login = createAsyncThunk(
       );
 
       if (response.login) {
-        localStorage.setItem("authToken", response.login);
+        localStorage.setItem('authToken', response.login);
 
         const userId = getUserIdFromJwt(localStorage.authToken);
         dispatch(fetchWorks(userId));
+        dispatch(fetchUser(userId));
       } else {
         return rejectWithValue(
-          "The username or password you entered is incorrect, please try again."
+          'The username or password you entered is incorrect, please try again.'
         );
       }
     } catch (error) {
       console.log(error);
-      return rejectWithValue("Something went wrong please try again.");
+      return rejectWithValue('Something went wrong please try again.');
     }
   }
 );
