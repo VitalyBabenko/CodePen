@@ -1,0 +1,40 @@
+@import "../../scss/index.scss";
+
+.root {
+  @include flex(column);
+  color: white;
+  font-size: 1.4rem;
+  font-family: 400;
+  margin-bottom: 20px;
+
+  input {
+    height: 45px;
+    width: 390px;
+    background-color: #d5d7dd;
+    border-radius: 3px;
+    border: 3px solid #d5d7de;
+    font-size: 1.7rem;
+    padding: 5px;
+    outline: 0;
+    margin: 6px 0 0 0;
+  }
+}
+
+.error {
+  @extend .root;
+
+  & > input:first-of-type {
+    border: 2px solid $redMain;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  & > span:first-of-type {
+    padding: 10px 8px;
+    font-size: 17px;
+    background-color: $redMain;
+    border-radius: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+}

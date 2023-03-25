@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import { LoginPage } from './components/pages/LoginPage/LoginPage';
-import { ErrorPage } from './components/pages/ErrorPage/ErrorPage';
-import { HomePage } from './components/pages/HomePage/HomePage';
-import { PenPage } from './components/pages/PenPage/PenPage';
-import { SignUpPage } from './components/pages/SignUpPage/SignUpPage';
-import { YourWorks } from './components/pages/YourWorksPage/YourWorksPage';
+import { ErrorPage } from './pages/ErrorPage/ErrorPage';
+import { HomePage } from './pages/HomePage/HomePage';
+import { PenPage } from './pages/PenPage/PenPage';
+import { YourWorksPage } from './pages/YourWorksPage/YourWorksPage';
+import { LoginPage } from './pages/LoginPage/LoginPage';
+import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 
 //  TODO:
 //  1. icons
@@ -23,7 +23,7 @@ function App() {
       <Route path="/pen" element={<PenPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/your-works" element={<YourWorks />} />
+      <Route path="/your-works" element={<YourWorksPage />} />
       <Route path="/your-works/:id" element={<PenPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
