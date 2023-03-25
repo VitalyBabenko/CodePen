@@ -5,6 +5,7 @@ import { PenPage } from './pages/PenPage/PenPage';
 import { YourWorksPage } from './pages/YourWorksPage/YourWorksPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+import { SettingsPage } from './pages/SettingsPage/SettingsPage';
 
 //  TODO:
 //  1. icons
@@ -23,6 +24,7 @@ function App() {
       <Route path="/pen" element={<PenPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/settings" element={<SettingsPage />} />
       <Route path="/your-works" element={<YourWorksPage />} />
       <Route path="/your-works/:id" element={<PenPage />} />
       <Route path="*" element={<ErrorPage />} />
