@@ -1,0 +1,11 @@
+.cropper {
+    position: absolute;
+    top:18%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 750px;
+    height: 500px;
+    background-color: #1e1f26;
+    z-index: 5;
+    border-radius: 6px;
+}
