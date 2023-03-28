@@ -8,4 +8,9 @@
     background-color: #1e1f26;
     z-index: 5;
     border-radius: 6px;
+
+    img {
+        display: block;
+        z-index: 5;
+    }
 }
