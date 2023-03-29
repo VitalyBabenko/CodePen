@@ -1,18 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { changeAvatar } from './actions/changeAvatar';
 import { fetchUser } from './actions/fetchUser';
+import { uploadAvatar } from './actions/uploadAvatar';
 
 const initialState = {
   id: '',
   login: '',
   nick: '',
-  avatar: '',
+  avatar: {},
   isLoading: false,
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    setAvatar(state, action) {
+      state.avatar = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUser.pending, (state) => {
       state.isLoading = true;
@@ -29,5 +35,15 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.error = action.error.message;
     });
+
+    builder.addCase(uploadAvatar.fulfilled, (state, action) => {
+      console.log(action.payload);
+    });
+
+    builder.addCase(changeAvatar.fulfilled, (state, action) => {
+      state.avatar = action.payload.avatar;
+    });
   },
 });
+
+export const { setAvatar } = userSlice.actions;

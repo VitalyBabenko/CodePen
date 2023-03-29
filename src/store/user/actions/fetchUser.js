@@ -15,7 +15,12 @@ export const fetchUser = createAsyncThunk(
               login
               nick
               avatar {
+                _id
                 url
+                text
+                userAvatar {
+                  _id
+                }
               }
             }
           }
@@ -28,7 +33,6 @@ export const fetchUser = createAsyncThunk(
           ]),
         }
       );
-      console.log(response.UserFindOne);
 
       if (response.UserFindOne) {
         return response.UserFindOne;

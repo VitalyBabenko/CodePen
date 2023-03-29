@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import style from './DragAndDropPopup.module.scss';
 import { ReactComponent as IconAddFile } from '../../assets/img/iconAddFile.svg';
 import { usePopup } from '../../hooks/usePopup';
 import { CropperPopup } from '../CropperPopup/CropperPopup';
+import { getImageUrlFromFile } from '../../utils/getImageUrlFromFile';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeAvatar } from '../../store/user/actions/changeAvatar';
+import { uploadAvatar } from '../../store/user/actions/uploadAvatar';
 
 export const DragAndDropPopup = ({ isOpen, close }) => {
   const [isDragging, setIsDragging] = useState(false);
-  const [file, setFile] = useState({});
+  const [imageSrc, setImageSrc] = useState('');
   const cropper = usePopup();
+  const formRef = useRef();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const handleDragEnter = (e) => {
     e.preventDefault();
@@ -18,31 +25,39 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
     setIsDragging(false);
   };
 
-  const handleDrop = (e) => {
-    e.preventDefault();
+  const handleDrop = async (event) => {
+    event.preventDefault();
     setIsDragging(false);
-    const files = Array.from(e.dataTransfer.files);
-    setFile(files[0]);
+    const image = await getImageUrlFromFile(event.dataTransfer.files[0]);
+    setImageSrc(image);
     cropper.open();
   };
 
-  const handleUpload = (e) => {
-    setFile(e.target.files[0]);
-    cropper.open();
+  const handleUpload = async (event) => {
+    const currentFile = event.target.files[0];
+
+    dispatch(uploadAvatar(currentFile));
+    // cropper.open();
+  };
+
+  const handleClose = () => {
+    close();
+    cropper.close();
   };
 
   if (!isOpen) return null;
   return (
     <>
-      <div className={style.overlay} onClick={close} />
+      <div className={style.overlay} onClick={handleClose} />
 
       <CropperPopup
         isOpen={cropper.isPopupVisible}
         close={cropper.close}
-        image={file}
+        imageSrc={imageSrc}
       />
 
-      <div
+      <form
+        ref={formRef}
         className={style.container}
         onDragEnter={handleDragEnter}
         onDragOver={(e) => e.preventDefault()}
@@ -56,13 +71,19 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
           />
           <span onClick={close}>x</span>
         </div>
-        <label for="upload" className={style.dropArea}>
+        <label htmlFor="upload" className={style.dropArea}>
           <IconAddFile />
           <span>Select Files to Upload</span>
           <span>or Drag and Drop, Copy and Paste Files</span>
-          <input type="file" id="upload" onChange={handleUpload} hidden />
+          <input
+            type="file"
+            id="upload"
+            onChange={handleUpload}
+            hidden
+            accept="image/*,.png,.jpg.,.web"
+          />
         </label>
-      </div>
+      </form>
     </>
   );
 };
