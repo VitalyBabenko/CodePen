@@ -6,35 +6,37 @@
   min-height: 100vh;
   height: fit-content;
 
-  .container {
-    @include container();
-    flex-grow: 1;
-    height: 100%;
-    margin-bottom: 40px;
+  
+}
 
-    .worksTab {
-      margin: 20px 0 10px;
-      border-bottom: 3px solid #2c303a;
+.container {
+  @include container();
+  flex-grow: 1;
+  height: 100%;
+  margin-bottom: 40px;
+
+  .worksTab {
+    margin: 20px 0 10px;
+    border-bottom: 3px solid #2c303a;
+    padding-bottom: 10px;
+
+    .active {
+      text-decoration: none;
+      color: white;
+      font-size: 30px;
+      border-bottom: 3px solid $greenMain;
       padding-bottom: 10px;
+    }
 
-      .active {
-        text-decoration: none;
-        color: white;
-        font-size: 30px;
-        border-bottom: 3px solid $greenMain;
-        padding-bottom: 10px;
-      }
-
-      .active:hover {
-        border-bottom: 3px solid $greenMain-hover;
-      }
-      button {
-        @extend %buttonGreen;
-        margin-top: 5px;
-        font-size: 28px;
-        padding: 0px 20px;
-        float: right;
-      }
+    .active:hover {
+      border-bottom: 3px solid $greenMain-hover;
+    }
+    button {
+      @extend %buttonGreen;
+      margin-top: 5px;
+      font-size: 28px;
+      padding: 0px 20px;
+      float: right;
     }
   }
 }

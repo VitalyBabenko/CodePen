@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Route, useNavigate } from 'react-router-dom';
+import { SettingsPage } from '../pages/SettingsPage/SettingsPage';
 
 export const PrivateRoute = ({ children }) => {
   const { isAuth } = useSelector((state) => state.auth);

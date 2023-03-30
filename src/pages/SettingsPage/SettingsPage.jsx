@@ -1,14 +1,11 @@
-import React from 'react';
-import { Header } from '../../components/Header/Header';
 import style from './SettingsPage.module.scss';
 import { ImageUploader } from '../../components/ImageUploader/ImageUploader';
 import { UpdatePassword } from '../../components/UpdatePassword/UpdatePassword';
+import { MainLayout } from '../../layouts/MainLayout';
 
 export const SettingsPage = () => {
   return (
-    <div className={style.settings}>
-      <Header />
-
+    <MainLayout className={style.settings}>
       <div className={style.container}>
         <h1>Settings</h1>
 
@@ -21,6 +18,6 @@ export const SettingsPage = () => {
           <UpdatePassword />
         </div>
       </div>
-    </div>
+    </MainLayout>
   );
 };

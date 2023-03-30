@@ -9,6 +9,7 @@ import { CreateWorkPopup } from '../../components/CreateWorkPopup/CreateWorkPopu
 import { LoadingPage } from '../LoadingPage/LoadingPage';
 import { fetchWorks } from '../../store/works/actions/fetchWorks';
 import { Works } from '../../components/Works/Works';
+import { MainLayout } from '../../layouts/MainLayout';
 
 export const YourWorksPage = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,7 @@ export const YourWorksPage = () => {
 
   if (isLoading) return <LoadingPage />;
   return (
-    <div className={style.yourWorks}>
-      <Header />
-
+    <MainLayout className={style.yourWorks}>
       <div className={style.container}>
         <div className={style.worksTab}>
           <a className={style.active} href="/your-works">
@@ -41,8 +40,6 @@ export const YourWorksPage = () => {
       </div>
 
       {isPopupVisible && <CreateWorkPopup popupRef={ref} close={close} />}
-
-      <Footer />
-    </div>
+    </MainLayout>
   );
 };
