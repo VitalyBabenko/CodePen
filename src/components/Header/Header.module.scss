@@ -27,6 +27,17 @@
 
 
   nav {
+    display: flex;
+    align-items: flex-end;
+    
+    span {
+      font-size: 20px;
+      color: #c7c9d3;
+      margin-right: 15px;
+      font-weight: 700;
+     
+    }
+
     z-index: 0;
     a:first-child {
       @extend %buttonGrey;

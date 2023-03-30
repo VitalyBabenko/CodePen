@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from '../../components/Header/Header';
 import style from './SettingsPage.module.scss';
 import { ImageUploader } from '../../components/ImageUploader/ImageUploader';
+import { UpdatePassword } from '../../components/UpdatePassword/UpdatePassword';
 
 export const SettingsPage = () => {
   return (
@@ -14,8 +15,11 @@ export const SettingsPage = () => {
         <h2>Profile Image</h2>
         <ImageUploader />
 
-        <h2>About You</h2>
-        <div className={style.imageSection}></div>
+        <div className={style.updatePassword}>
+          <h2>Update Password</h2>
+
+          <UpdatePassword />
+        </div>
       </div>
     </div>
   );

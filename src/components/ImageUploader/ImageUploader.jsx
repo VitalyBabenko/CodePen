@@ -1,5 +1,4 @@
 import style from './ImageUploader.module.scss';
-import initialUserImage from '../../assets/img/initialUserImage.jpeg';
 import { usePopup } from '../../hooks/usePopup';
 import { DragAndDropPopup } from '../DragAndDropPopup/DragAndDropPopup';
 import { useSelector } from 'react-redux';
@@ -11,7 +10,7 @@ export const ImageUploader = () => {
   return (
     <>
       <div className={style.imageUploader}>
-        <img src={avatar ? avatar : initialUserImage} alt="userImage" />
+        <img src={avatar} alt="userImage" />
         <div className={style.info}>
           <span>Upload a New Profile Image</span>
           <button onClick={dndPopup.open}>Choose File</button>

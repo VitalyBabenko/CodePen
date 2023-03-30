@@ -2,12 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { changeAvatar } from './actions/changeAvatar';
 import { fetchUser } from './actions/fetchUser';
 import { uploadImage } from './actions/uploadImage';
+import { changePassword } from './actions/changePassword';
+import initialUserAvatar from '../../assets/img/initialUserImage.jpeg';
 
 const initialState = {
   id: '',
   login: '',
   nick: '',
-  avatar: '',
+  avatar: initialUserAvatar,
   isLoading: false,
 };
 
@@ -26,7 +28,11 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.id = action.payload._id;
       state.login = action.payload.login;
-      state.avatar = `${proxy}${action.payload.avatar.url}`;
+      if (action.payload?.avatar?.url) {
+        state.avatar = `${proxy}${action.payload.avatar.url}`;
+      } else {
+        state.avatar = initialUserAvatar;
+      }
     });
 
     builder.addCase(fetchUser.rejected, (state, action) => {
@@ -57,6 +63,17 @@ export const userSlice = createSlice({
     });
     builder.addCase(changeAvatar.fulfilled, (state, action) => {
       state.avatar = `${proxy}${action.payload}`;
+    });
+
+    // changePassword
+    builder.addCase(changePassword.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(changePassword.rejected, (state) => {
+      state.isLoading = false;
+    });
+    builder.addCase(changePassword.fulfilled, (state, action) => {
+      state.isLoading = false;
     });
   },
 });

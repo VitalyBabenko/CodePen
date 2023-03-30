@@ -1,14 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getGql } from '../../../services/api';
 import { uploadImage } from './uploadImage';
+import initialUserAvatar from '../../../assets/img/initialUserImage.jpeg';
 
 export const changeAvatar = createAsyncThunk(
   'user/changeAvatar',
 
   async ({ user, file }, { rejectWithValue, dispatch }) => {
     const gql = getGql();
-
-    console.log({ user, file });
 
     try {
       const imageAction = await dispatch(uploadImage(file));
@@ -19,22 +18,32 @@ export const changeAvatar = createAsyncThunk(
 
       const response = await gql.request(
         `
-            mutation setAvatar{
-              UserUpsert(user:{_id: "${user.id}", avatar: {_id: "${imageAction.payload._id}"}}){
-                  _id,
-                  avatar{
-                      _id
-                      url
-                      text
-                      userAvatar {
-                        login
-                      }
-                  }
+        mutation setAvatar($userId: String!, $imageId: ID!) {
+          UserUpsert(
+            user: {
+              _id: $userId,
+              avatar: {
+                _id: $imageId
               }
+            }
+          ) {
+            _id
+            avatar {
+              url
+            }
           }
-          `
+        }
+        `,
+        {
+          userId: user.id,
+          imageId: imageAction.payload._id,
+        }
       );
-      return response.UserUpsert.avatar.url;
+      if (response.UserUpsert.avatar.url) {
+        return response.UserUpsert.avatar.url;
+      } else {
+        return initialUserAvatar;
+      }
     } catch (error) {
       console.log(error);
       return rejectWithValue('Something went wrong please try again.');

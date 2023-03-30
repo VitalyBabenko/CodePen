@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../../store/user/actions/fetchUser';
 import { useEffect } from 'react';
 import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
-import userInitImage from '../../assets/img/initialUserImage.jpeg';
 import { usePopup } from '../../hooks/usePopup';
 import { UserPopup } from '../UserPopup/UserPopup';
+import { LoadingPage } from '../../pages/LoadingPage/LoadingPage';
 
 export const Header = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
-  const { avatar } = useSelector((state) => state.user);
+  const { login, avatar, isLoading } = useSelector((state) => state.user);
   const userPopup = usePopup();
 
   useEffect(() => {
@@ -23,6 +23,7 @@ export const Header = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (isLoading) return <LoadingPage />;
   return (
     <header className={style.header}>
       <NavLink className={style.logoBlock} to="/">
@@ -31,11 +32,8 @@ export const Header = () => {
 
       {isAuth ? (
         <nav>
-          <img
-            src={avatar ? avatar : userInitImage}
-            onClick={userPopup.open}
-            alt="userImage"
-          />
+          <span>Hello, {login}!</span>
+          <img src={avatar} onClick={userPopup.open} alt="userImage" />
           <UserPopup
             popupRef={userPopup.ref}
             isOpen={userPopup.isPopupVisible}

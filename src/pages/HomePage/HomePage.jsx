@@ -31,7 +31,7 @@ export const HomePage = () => {
           </p>
 
           <Link className={style.link} to={isAuth ? '/your-works' : '/pen'}>
-            Start Codding
+            {isAuth ? 'Your works' : 'Start Codding'}
           </Link>
         </div>
         <div>

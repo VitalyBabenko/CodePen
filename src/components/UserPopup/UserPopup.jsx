@@ -9,6 +9,7 @@ export const UserPopup = ({ isOpen, popupRef }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
+
     navigate('/');
     dispatch(logout());
   };
@@ -17,7 +18,6 @@ export const UserPopup = ({ isOpen, popupRef }) => {
   return (
     <ul ref={popupRef} className={style.userPopup}>
       <li onClick={() => navigate('/your-works')}>Your Works</li>
-      <li>New Pen</li>
       <hr />
       <li onClick={() => navigate('/settings')}>Settings</li>
       <li onClick={handleLogout}>Log Out</li>

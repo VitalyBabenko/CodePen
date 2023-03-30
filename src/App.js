@@ -6,16 +6,10 @@ import { YourWorksPage } from './pages/YourWorksPage/YourWorksPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { SettingsPage } from './pages/SettingsPage/SettingsPage';
+import { PrivateRoute } from './layouts/PrivateRoute';
 
 //  TODO:
 //  1. icons
-//  2. console
-//  3. search
-//  4. sort
-//  5. deleted
-//  6. aliases
-//  7. extraKeys for Editor
-//  8. dropFile
 
 function App() {
   return (
@@ -24,9 +18,34 @@ function App() {
       <Route path="/pen" element={<PenPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/settings" element={<SettingsPage />} />
-      <Route path="/your-works" element={<YourWorksPage />} />
-      <Route path="/your-works/:id" element={<PenPage />} />
+
+      <Route
+        path="/settings"
+        element={
+          <PrivateRoute>
+            <SettingsPage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/your-works"
+        element={
+          <PrivateRoute>
+            <YourWorksPage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/your-works/:id"
+        element={
+          <PrivateRoute>
+            <PenPage />
+          </PrivateRoute>
+        }
+      />
+
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
