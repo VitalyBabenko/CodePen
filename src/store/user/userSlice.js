@@ -16,11 +16,7 @@ const proxy = 'http://snippet.node.ed.asmer.org.ua/';
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    setAvatar(state, action) {
-      state.avatar = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUser.pending, (state) => {
       state.isLoading = true;
@@ -31,7 +27,6 @@ export const userSlice = createSlice({
       state.id = action.payload._id;
       state.login = action.payload.login;
       state.avatar = `${proxy}${action.payload.avatar.url}`;
-      console.log(action.payload);
     });
 
     builder.addCase(fetchUser.rejected, (state, action) => {
@@ -65,5 +60,3 @@ export const userSlice = createSlice({
     });
   },
 });
-
-export const { setAvatar } = userSlice.actions;

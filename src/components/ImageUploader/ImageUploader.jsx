@@ -5,7 +5,7 @@ import { DragAndDropPopup } from '../DragAndDropPopup/DragAndDropPopup';
 import { useSelector } from 'react-redux';
 
 export const ImageUploader = () => {
-  const uploader = usePopup();
+  const dndPopup = usePopup();
   const { avatar } = useSelector((state) => state.user);
 
   return (
@@ -14,7 +14,7 @@ export const ImageUploader = () => {
         <img src={avatar ? avatar : initialUserImage} alt="userImage" />
         <div className={style.info}>
           <span>Upload a New Profile Image</span>
-          <button onClick={uploader.open}>Choose File</button>
+          <button onClick={dndPopup.open}>Choose File</button>
           <span>or drag and drop an image here</span>
           <span>Ideal dimensions are 500px x 500px.</span>
           <span>Maximum file size is 5mb.</span>
@@ -22,8 +22,8 @@ export const ImageUploader = () => {
       </div>
 
       <DragAndDropPopup
-        isOpen={uploader.isPopupVisible}
-        close={uploader.close}
+        isOpen={dndPopup.isPopupVisible}
+        close={dndPopup.close}
       />
     </>
   );

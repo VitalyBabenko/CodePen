@@ -8,6 +8,8 @@ export const changeAvatar = createAsyncThunk(
   async ({ user, file }, { rejectWithValue, dispatch }) => {
     const gql = getGql();
 
+    console.log({ user, file });
+
     try {
       const imageAction = await dispatch(uploadImage(file));
 
@@ -33,40 +35,9 @@ export const changeAvatar = createAsyncThunk(
           `
       );
       return response.UserUpsert.avatar.url;
-      console.log(response.UserUpsert);
     } catch (error) {
       console.log(error);
       return rejectWithValue('Something went wrong please try again.');
     }
-
-    // try {
-    //   const response = await gql.request(
-    //     `
-    //     mutation ChangeAvatar($user: UserInput!) {
-    //       UserUpsert(user: $user) {
-    //         _id
-    //         login
-    //         nick
-    //         avatar {
-    //           url
-    //         }
-    //       }
-    //     }
-    //     `,
-    //     {
-    //       user: {
-    //         _id: user.id,
-    //         avatar,
-    //       },
-    //     }
-    //   );
-
-    //   if (response.UserFindOne) {
-    //     return response.UserFindOne;
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    //   return rejectWithValue('Something went wrong please try again.');
-    // }
   }
 );

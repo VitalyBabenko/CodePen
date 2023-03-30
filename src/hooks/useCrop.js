@@ -25,7 +25,8 @@ export const useCrop = (imageSrc) => {
   const getResult = async () => {
     try {
       const croppedImage = await getCroppedImg(imageSrc, croppedArea);
-      return croppedImage;
+      const imageFile = await getImageFile(croppedImage);
+      return imageFile;
     } catch (error) {
       console.error(error);
     }
@@ -43,6 +44,13 @@ export const useCrop = (imageSrc) => {
     setCroppedArea,
     getResult,
   };
+};
+
+const getImageFile = async (url) => {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  const file = new File([blob], 'image.jpg', { type: blob.type });
+  return file;
 };
 
 export const createImage = (url) =>
@@ -75,7 +83,7 @@ export function rotateSize(width, height, rotation) {
 /**
  * This function was adapted from the one in the ReadMe of https://github.com/DominicTobias/react-image-crop
  */
-export default async function getCroppedImg(
+async function getCroppedImg(
   imageSrc,
   pixelCrop,
   rotation = 0,

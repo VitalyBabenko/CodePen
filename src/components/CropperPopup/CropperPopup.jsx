@@ -1,32 +1,37 @@
-import { useState, useCallback, useEffect } from 'react';
 import Cropper from 'react-easy-crop';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCrop } from '../../hooks/useCrop';
-import { setAvatar } from '../../store/user/userSlice';
 import { changeAvatar } from '../../store/user/actions/changeAvatar';
 import style from './CropperPopup.module.scss';
+import { useRef } from 'react';
 
-export const CropperPopup = ({ isOpen, close, imageSrc, onCropComplete }) => {
+export const CropperPopup = ({
+  isOpen,
+  close,
+  closeParent,
+  imageUrl,
+  onCropComplete,
+}) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const formRef = useRef();
   const {
     crop,
     zoom,
     setZoom,
-    croppedArea,
     onCropChange,
     onZoomChange,
     onCropCompleted,
     getResult,
-  } = useCrop(imageSrc);
+  } = useCrop(imageUrl);
 
-  const handleSave = async () => {
-    const avatar = await getResult();
+  const handleSave = async (e) => {
+    e.preventDefault();
+    const avatarFile = await getResult();
 
-    const formData = new FormData();
-    formData.append('url', avatar);
-    console.log(formData);
-    dispatch(changeAvatar({ user, formData }));
+    dispatch(changeAvatar({ user, file: avatarFile }));
+    close();
+    closeParent();
   };
 
   if (!isOpen) return null;
@@ -39,7 +44,7 @@ export const CropperPopup = ({ isOpen, close, imageSrc, onCropComplete }) => {
 
       <div className={style.cropContainer}>
         <Cropper
-          image={imageSrc}
+          image={imageUrl}
           crop={crop}
           zoom={zoom}
           aspect={1}
@@ -49,25 +54,31 @@ export const CropperPopup = ({ isOpen, close, imageSrc, onCropComplete }) => {
         />
       </div>
 
-      <div className={style.control}>
-        <label>
-          zoom
-          <input
-            type="range"
-            value={zoom}
-            min={1}
-            max={3}
-            step={0.1}
-            aria-labelledby="Zoom"
-            onChange={(e) => {
-              setZoom(e.target.value);
-            }}
-            className="zoom-range"
-          />
-        </label>
+      <form
+        action="/upload"
+        method="post"
+        encType="multipart/form-data"
+        ref={formRef}
+      >
+        <div className={style.control}>
+          <label>
+            zoom
+            <input
+              type="range"
+              value={zoom}
+              min={1}
+              max={3}
+              step={0.1}
+              onChange={(e) => {
+                setZoom(e.target.value);
+              }}
+              className="zoom-range"
+            />
+          </label>
 
-        <button onClick={handleSave}>Save</button>
-      </div>
+          <button onClick={handleSave}>Save</button>
+        </div>
+      </form>
     </div>
   );
 };
