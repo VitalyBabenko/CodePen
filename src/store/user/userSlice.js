@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { changeAvatar } from './actions/changeAvatar';
 import { fetchUser } from './actions/fetchUser';
-import { uploadAvatar } from './actions/uploadAvatar';
+import { uploadImage } from './actions/uploadImage';
 
 const initialState = {
   id: '',
   login: '',
   nick: '',
-  avatar: {},
+  avatar: '',
   isLoading: false,
 };
+
+const proxy = 'http://snippet.node.ed.asmer.org.ua/';
 
 export const userSlice = createSlice({
   name: 'user',
@@ -23,12 +25,13 @@ export const userSlice = createSlice({
     builder.addCase(fetchUser.pending, (state) => {
       state.isLoading = true;
     });
-
+    // fetch user
     builder.addCase(fetchUser.fulfilled, (state, action) => {
       state.isLoading = false;
       state.id = action.payload._id;
       state.login = action.payload.login;
-      state.avatar = action.payload.avatar;
+      state.avatar = `${proxy}${action.payload.avatar.url}`;
+      console.log(action.payload);
     });
 
     builder.addCase(fetchUser.rejected, (state, action) => {
@@ -36,12 +39,29 @@ export const userSlice = createSlice({
       state.error = action.error.message;
     });
 
-    builder.addCase(uploadAvatar.fulfilled, (state, action) => {
-      console.log(action.payload);
+    // upload image
+    builder.addCase(uploadImage.pending, (state) => {
+      state.isLoading = true;
     });
 
+    builder.addCase(uploadImage.fulfilled, (state) => {
+      state.isLoading = false;
+    });
+
+    builder.addCase(uploadImage.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
+    });
+
+    // changeAvatar
+    builder.addCase(changeAvatar.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(changeAvatar.rejected, (state) => {
+      state.isLoading = false;
+    });
     builder.addCase(changeAvatar.fulfilled, (state, action) => {
-      state.avatar = action.payload.avatar;
+      state.avatar = `${proxy}${action.payload}`;
     });
   },
 });

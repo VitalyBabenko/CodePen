@@ -32,7 +32,7 @@ export const Header = () => {
       {isAuth ? (
         <nav>
           <img
-            src={avatar.url ? avatar.url : userInitImage}
+            src={avatar ? avatar : userInitImage}
             onClick={userPopup.open}
             alt="userImage"
           />

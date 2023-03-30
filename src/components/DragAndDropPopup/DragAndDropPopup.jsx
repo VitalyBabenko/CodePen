@@ -6,7 +6,6 @@ import { CropperPopup } from '../CropperPopup/CropperPopup';
 import { getImageUrlFromFile } from '../../utils/getImageUrlFromFile';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeAvatar } from '../../store/user/actions/changeAvatar';
-import { uploadAvatar } from '../../store/user/actions/uploadAvatar';
 
 export const DragAndDropPopup = ({ isOpen, close }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -34,9 +33,9 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
   };
 
   const handleUpload = async (event) => {
-    const currentFile = event.target.files[0];
+    const file = event.target.files[0];
 
-    dispatch(uploadAvatar(currentFile));
+    dispatch(changeAvatar({ user, file }));
     // cropper.open();
   };
 
@@ -57,7 +56,6 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
       />
 
       <form
-        ref={formRef}
         className={style.container}
         onDragEnter={handleDragEnter}
         onDragOver={(e) => e.preventDefault()}
@@ -71,18 +69,26 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
           />
           <span onClick={close}>x</span>
         </div>
-        <label htmlFor="upload" className={style.dropArea}>
-          <IconAddFile />
-          <span>Select Files to Upload</span>
-          <span>or Drag and Drop, Copy and Paste Files</span>
-          <input
-            type="file"
-            id="upload"
-            onChange={handleUpload}
-            hidden
-            accept="image/*,.png,.jpg.,.web"
-          />
-        </label>
+        <form
+          action="/upload"
+          method="post"
+          encType="multipart/form-data"
+          ref={formRef}
+        >
+          <label htmlFor="upload" className={style.dropArea}>
+            <IconAddFile />
+            <span>Select Files to Upload</span>
+            <span>or Drag and Drop, Copy and Paste Files</span>
+
+            <input
+              type="file"
+              id="upload"
+              onChange={handleUpload}
+              hidden
+              accept="image/*,.png,.jpg.,.web"
+            />
+          </label>
+        </form>
       </form>
     </>
   );

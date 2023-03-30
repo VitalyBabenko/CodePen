@@ -11,7 +11,7 @@ export const ImageUploader = () => {
   return (
     <>
       <div className={style.imageUploader}>
-        <img src={avatar.url ? avatar.url : initialUserImage} alt="userImage" />
+        <img src={avatar ? avatar : initialUserImage} alt="userImage" />
         <div className={style.info}>
           <span>Upload a New Profile Image</span>
           <button onClick={uploader.open}>Choose File</button>

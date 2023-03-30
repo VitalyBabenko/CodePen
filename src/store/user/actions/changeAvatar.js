@@ -1,48 +1,39 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getGql } from '../../../services/api';
+import { uploadImage } from './uploadImage';
 
 export const changeAvatar = createAsyncThunk(
   'user/changeAvatar',
 
-  async ({ user, formData }, { rejectWithValue }) => {
+  async ({ user, file }, { rejectWithValue, dispatch }) => {
     const gql = getGql();
 
     try {
+      const imageAction = await dispatch(uploadImage(file));
+
+      if (!imageAction.payload._id) {
+        return rejectWithValue('Something went wrong please try again.');
+      }
+
       const response = await gql.request(
         `
-        mutation uploadImage($image: ImageInput!) {
-          ImageUpsert(image: $image) {
-            _id
-            text
-            url
+            mutation setAvatar{
+              UserUpsert(user:{_id: "${user.id}", avatar: {_id: "${imageAction.payload._id}"}}){
+                  _id,
+                  avatar{
+                      _id
+                      url
+                      text
+                      userAvatar {
+                        login
+                      }
+                  }
+              }
           }
-        }
-        
-        `,
-        {
-          image: formData,
-        }
+          `
       );
-
-      console.log(response.ImageUpsert);
-
-      const imageId = response.ImageUpsert._id;
-
-      // if (imageId) {
-      //   const response = await gql.request(
-      //     `
-      //       mutation setAvatar{
-      //         UserUpsert(user:{_id: "${user.id}", avatar: {_id: "${imageId}"}}){
-      //             _id, avatar{
-      //                 _id
-      //             }
-      //         }
-      //     }
-      //     `
-      //   );
-
-      //   console.log(response.UserUpsert);
-      // }
+      return response.UserUpsert.avatar.url;
+      console.log(response.UserUpsert);
     } catch (error) {
       console.log(error);
       return rejectWithValue('Something went wrong please try again.');
