@@ -1,0 +1,46 @@
+.card {
+    background: #2c303a;
+    padding: 60px 30px;
+    margin: 2rem 0;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    // height: fit-content;
+    height: 300px;
+    width: 32%;
+
+    svg {
+        position: absolute;
+        top:-45px;
+        left:25px;
+        padding: 10px;
+        background-color: black;
+        width: 75px;
+        height: 75px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        color:white;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color:#c7c9d3;
+        font-size: 17px;
+        line-height: 23px;
+    }
+}
+
+@media (max-width: 1003px) {
+.card {
+    height: 335px;
+}
+}
+
+@media (max-width: 900px) {
+    .card {
+        height: fit-content;
+        width: 100%;
+    }
+    }
