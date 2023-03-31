@@ -4,14 +4,10 @@ import { useCrop } from '../../hooks/useCrop';
 import { changeAvatar } from '../../store/user/actions/changeAvatar';
 import style from './CropperPopup.module.scss';
 import { useRef } from 'react';
+import { IoMdArrowBack } from 'react-icons/io';
+import { GrClose } from 'react-icons/gr/index';
 
-export const CropperPopup = ({
-  isOpen,
-  close,
-  closeParent,
-  imageUrl,
-  onCropComplete,
-}) => {
+export const CropperPopup = ({ isOpen, close, closeParent, imageUrl }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const formRef = useRef();
@@ -34,12 +30,17 @@ export const CropperPopup = ({
     closeParent();
   };
 
+  const handleClose = () => {
+    close();
+    closeParent();
+  };
+
   if (!isOpen) return null;
   return (
     <div className={style.container}>
       <div className={style.header}>
-        <span> goBack </span>
-        <span> close </span>
+        <IoMdArrowBack onClick={close} />
+        <GrClose onClick={handleClose} />
       </div>
 
       <div className={style.cropContainer}>

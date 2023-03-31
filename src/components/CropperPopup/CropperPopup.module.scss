@@ -12,10 +12,29 @@
     border-radius: 6px;
 
     .header {
-        padding: 15px;
+        padding: 12px;
         display: flex;
         justify-content: space-between;
         border-bottom: 2px solid #0EBEFF;
+
+        svg {
+            width: 25px;
+            height: 25px;
+            color:#bdbdbd;
+
+            path {
+                stroke: #bdbdbd;
+
+            }
+
+            &:hover {
+                color:#ffffff;
+
+                path {
+                    stroke: #ffffff;
+                }
+            }
+        }
     }
   
 

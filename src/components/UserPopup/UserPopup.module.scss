@@ -12,14 +12,27 @@
   
 
     li,a {
-        
         list-style: none;
         color: #e3e4e8;
         padding: 0.6rem 25px 0.6rem 20px;
        font-weight: 700;
        font-size: 17px;
        text-decoration:none;
-      
+       display: flex;
+       align-items: center;
+       cursor: pointer;
+
+        .pen {
+            width: 15px;
+            height: 15px;
+        }
+       
+       svg{ 
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        color:#5A5F73;
+       }
       
 
        &:hover {
@@ -29,6 +42,9 @@
        &:last-of-type {
         &:hover {
             background-color: $redMain;
+            svg { 
+                color:white;
+            }
         }
        }
     }

@@ -4,6 +4,8 @@ import { ReactComponent as IconAddFile } from '../../assets/img/iconAddFile.svg'
 import { usePopup } from '../../hooks/usePopup';
 import { CropperPopup } from '../CropperPopup/CropperPopup';
 import { getImageUrlFromFile } from '../../utils/getImageUrlFromFile';
+import { GrClose } from 'react-icons/gr/index';
+import { FaUpload } from 'react-icons/fa/index';
 
 export const DragAndDropPopup = ({ isOpen, close }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -61,11 +63,9 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
         onDrop={getUncroppedAvatar}
       >
         <div className={style.header}>
-          <img
-            src="https://static.filestackapi.com/picker/1.23.0/assets/images/navbar-local_file_system.svg"
-            alt=""
-          />
-          <span onClick={close}>x</span>
+          <FaUpload />
+
+          <GrClose onClick={close} />
         </div>
 
         <label htmlFor="upload" className={style.dropArea}>
