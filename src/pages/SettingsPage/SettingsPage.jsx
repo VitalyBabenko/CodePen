@@ -9,14 +9,15 @@ export const SettingsPage = () => {
       <div className={style.container}>
         <h1>Settings</h1>
 
-        <h2>Profile Image</h2>
-        <ImageUploader />
+        <section>
+          <h2>Profile Image</h2>
+          <ImageUploader />
+        </section>
 
-        <div className={style.updatePassword}>
+        <section>
           <h2>Update Password</h2>
-
           <UpdatePassword />
-        </div>
+        </section>
       </div>
     </MainLayout>
   );

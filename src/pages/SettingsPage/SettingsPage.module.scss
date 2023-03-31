@@ -1,33 +1,44 @@
 @import '../../scss/index.scss';
 
 .settings {
-  height: 100vh;
   background-color: #131417;
-
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  
   .container {
     @include container();
     margin-top: 20px;
     color: #fdfdfd;
-
+   
     h1 {
       padding-bottom: 13px;
       border-bottom: 2px solid $greenMain;
-      margin-bottom: 35px;
+      margin-bottom: 50px;
     }
 
-    h2:first-of-type {
-      display: inline-block;
-      margin-bottom: 260px;
-      width: 35%;
+    section:first-of-type {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
     }
 
-    h2:nth-of-type(2) {
-      display: inline-block;
-      width: 35%;
+    section:last-of-type {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
     }
   }
+}
 
-  .updatePassword {
-    display: flex;
+@media (max-width: 940px) {
+  .settings {
+      section {
+        flex-direction: column;
+
+        h2 {
+          margin-bottom: 20px;
+        }
+      }
   }
 }

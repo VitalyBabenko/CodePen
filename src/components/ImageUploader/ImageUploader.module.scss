@@ -8,7 +8,6 @@
     float: right;
     padding: 30px;
     display: flex;
-    margin-bottom: 30px;
 
     img {
         height: 100%;
@@ -40,3 +39,9 @@
         }
     }
 }
+
+@media (max-width: 940px) {
+    .imageUploader {
+      width: 100%;
+    }
+  }
