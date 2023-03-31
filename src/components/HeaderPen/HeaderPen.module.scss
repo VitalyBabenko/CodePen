@@ -4,7 +4,6 @@
   @include container($width: 98vw);
   @include flex($justify: space-between, $align: center);
   height: 65px;
-
   margin-bottom: 1px;
 
   &::before {
@@ -61,17 +60,31 @@
   }
 
   nav {
+    display: flex;
     z-index: 0;
+
     button:first-of-type {
       @extend %buttonGrey;
       font-size: 16.5px;
       padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      width: 100px; 
+
+      svg {
+        margin-right: 10px;
+      }
     }
 
     a:first-of-type {
       @extend %buttonGrey;
-      padding: 13px 16px;
+      padding: 13px 14px;
       margin: 0 10px;
+      svg {
+        width: 14px;
+        height: 14px;
+        margin-right: 4px;
+      }
     }
 
     a:last-child {
@@ -79,5 +92,38 @@
 
       padding: 13px 16px;
     }
+  }
+
+  .loginPopup {
+    @include flex($direction: column);
+    width: 400px;
+   height: 150px;
+   padding: 10px;
+    
+    span {
+      margin-bottom: auto;
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    div {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        margin-left: 20px;
+        padding: 7px 20px;
+        @extend %buttonGrey;
+        font-size: 17px;
+      }
+
+      a {
+        margin-left: 20px;
+        padding: 7px 20px;
+        @extend %buttonGrey;
+      }
+    }
+
+
   }
 }

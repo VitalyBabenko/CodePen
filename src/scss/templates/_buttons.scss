@@ -23,6 +23,12 @@
   &:active {
     background-color: $greyMain-active;
   }
+
+
+  &[disabled] {
+    opacity: .5!important;
+    cursor: not-allowed;
+  }
 }
 
 %buttonGreen {

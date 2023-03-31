@@ -2,6 +2,9 @@ import { useDispatch } from 'react-redux';
 import { deleteWork } from '../../store/works/actions/deleteWork';
 import { updateWorkInfo } from '../../store/works/actions/updateWorkInfo';
 import style from './WorkCardPopup.module.scss';
+import { MdDriveFileRenameOutline } from 'react-icons/md/index';
+import { MdOutlineDescription } from 'react-icons/md/index';
+import { BiTrash } from 'react-icons/bi/index';
 
 export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   const dispatch = useDispatch();
@@ -49,9 +52,15 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   if (isVisible)
     return (
       <ul ref={menuRef} className={style.menuPopup}>
-        <li onClick={renameWork}>Rename work</li>
-        <li onClick={changeDescription}>Change Description</li>
+        <li onClick={renameWork}>
+          <MdDriveFileRenameOutline className={style.rename} /> Rename work
+        </li>
+        <li onClick={changeDescription}>
+          <MdOutlineDescription className={style.changeDesc} />
+          Change Description
+        </li>
         <li className={style.delete} onClick={handleDelete}>
+          <BiTrash />
           Delete work
         </li>
       </ul>

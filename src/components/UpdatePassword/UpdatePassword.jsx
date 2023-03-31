@@ -38,7 +38,12 @@ export const UpdatePassword = () => {
         title="New Password"
         type="password"
       />
-      <button type="submit">Update</button>
+      <button
+        disabled={!currentPassword.value || !newPassword.value}
+        type="submit"
+      >
+        Update
+      </button>
     </form>
   );
 };

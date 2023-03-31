@@ -19,22 +19,29 @@ export const CreateWorkPopup = ({ popupRef, close }) => {
   };
 
   return (
-    <div ref={popupRef} className={style.CreateWorkPopup}>
-      <header className={style.header}>
-        <span>Create Work</span>
-        <button onClick={close}>✕</button>
-      </header>
-      <form onSubmit={handleCreateWork} className={style.container}>
-        <Input title={'Title'} value={title.value} onChange={title.onChange} />
-        <Input
-          value={description.value}
-          onChange={description.onChange}
-          title={'Description'}
-        />
-        <button type={'submit'} className={style.save}>
-          Create
-        </button>
-      </form>
-    </div>
+    <>
+      <div className={style.overlay}></div>
+      <div ref={popupRef} className={style.CreateWorkPopup}>
+        <header className={style.header}>
+          <span>Create Work</span>
+          <button onClick={close}>✕</button>
+        </header>
+        <form onSubmit={handleCreateWork} className={style.container}>
+          <Input
+            title={'Title'}
+            value={title.value}
+            onChange={title.onChange}
+          />
+          <Input
+            value={description.value}
+            onChange={description.onChange}
+            title={'Description'}
+          />
+          <button type={'submit'} className={style.save}>
+            Create
+          </button>
+        </form>
+      </div>
+    </>
   );
 };

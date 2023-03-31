@@ -1,0 +1,52 @@
+@import '../../scss/index.scss';
+
+.message {
+    @include flex($align: center);
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translate(-50%);
+    border: 3px solid $greenGoMessage;
+    background-color: #2D313A;
+    border-radius: 6px;
+    padding: 9px 13px 9px 15px;
+    color: white;
+    transition: .5s all ease-in-out;
+    z-index: 10;
+
+
+    svg:first-of-type {
+        width:20px;
+        height: 20px;
+        margin-right: 8px;
+        background-color: $greenGoMessage;
+        border-radius: 50%;
+        padding: 2px;
+    }
+
+    svg:last-of-type {
+        width:13px;
+        height: 13px;
+        margin-left: 7px;
+        path {
+            stroke: #868DA0;
+        }
+        
+        &:hover {
+            path {
+                stroke: #aeb4c5;
+            }
+        }
+    }
+
+}
+
+.open {
+    @extend .message;
+    top: 20px;
+}
+
+.closed {
+    @extend .message;
+    top: -200px;
+}
