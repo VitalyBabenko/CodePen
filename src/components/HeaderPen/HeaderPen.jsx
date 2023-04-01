@@ -21,8 +21,6 @@ export const HeaderPen = () => {
     dispatch(logout());
   };
 
-  // TODO: HoldUp component
-
   const handleSaveFiles = () => {
     dispatch(setFormatCode());
 

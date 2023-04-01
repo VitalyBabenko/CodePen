@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
+import { GrClose } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
 import { login } from '../../store/auth/actions/loginAction';
 import { Input } from '../Input/Input';
 import style from '../LoginPopup/LoginPopup.module.scss';
 
 export const LoginPopup = ({ isOpen, close }) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuth, error } = useSelector((state) => state.auth);
   const loginName = useInput('');
@@ -21,11 +21,11 @@ export const LoginPopup = ({ isOpen, close }) => {
       password: password.value,
     };
 
-    dispatch(login(userData));
+    console.log(dispatch(login(userData)));
   };
 
   useEffect(() => {
-    if (isAuth) navigate('/your-works');
+    if (isAuth) close();
     if (error) {
       loginName.setValue('');
       password.setValue('');
@@ -37,28 +37,18 @@ export const LoginPopup = ({ isOpen, close }) => {
     <>
       <div className={style.overlay} onClick={close} />
       <div className={style.loginPopup}>
+        <GrClose className={style.close} onClick={close} />
         <div className={style.tableOfContents}>
           <h1>Hold up!</h1>
           <span>
             You’ll have to <strong>Log In</strong> or <strong>Sign Up</strong>{' '}
-            (for free!) to save your Pen. <br /> Don’t worry! All your work will
-            be saved to your account.
+            (for free!) to save your Pen. <br /> Don't worry! You can create and
+            save new works in your account.
           </span>
+          <div className={style.buttons}>
+            <Link to="/login">Login</Link>
+          </div>
         </div>
-        <form onSubmit={handleLogin}>
-          <Input
-            title="Username or Email"
-            value={loginName.value}
-            onChange={loginName.onChange}
-          />
-          <Input
-            title="Password"
-            type="password"
-            value={password.value}
-            onChange={password.onChange}
-          />
-          <button type="submit">Log In</button>
-        </form>
 
         <div className={style.create}>
           <span>Need to create an account?</span>
