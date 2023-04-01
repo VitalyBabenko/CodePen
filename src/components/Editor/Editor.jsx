@@ -15,8 +15,7 @@ import { saveFiles } from '../../store/currentWork/actions/saveFiles';
 import { setFormatCode } from '../../store/currentWork/currentWorkSlice';
 import { askToLogin } from '../../utils/askToLogin.js';
 import { useNavigate } from 'react-router-dom';
-import { GoMessage } from '../GoMessage/GoMessage';
-import { useTimedPopup } from '../../hooks/useTimedPopup.js';
+import { showSuccessMessage } from '../../store/goMessage/goMessageSlice';
 
 const logos = {
   xml: <HtmlLogo />,
@@ -30,7 +29,6 @@ export default function Editor({ language, displayName, value, onChange }) {
   const editorRef = useRef(null);
   const { id, files } = useSelector((state) => state.currentWork);
   const { isAuth } = useSelector((state) => state.auth);
-  const saveMessage = useTimedPopup();
 
   const handleSave = () => {
     dispatch(setFormatCode());
@@ -46,12 +44,12 @@ export default function Editor({ language, displayName, value, onChange }) {
           js: files.js.text,
         })
       );
-      saveMessage.openPopup();
     }
   };
 
   const handleFormat = () => {
     dispatch(setFormatCode());
+    dispatch(showSuccessMessage('Code formatted.'));
   };
 
   function handleChange(editor, data, value) {
@@ -88,11 +86,6 @@ export default function Editor({ language, displayName, value, onChange }) {
         editorDidMount={(editor) => {
           editorRef.current = editor;
         }}
-      />
-      <GoMessage
-        message={'Pen saved.'}
-        close={saveMessage.closePopup}
-        isOpen={saveMessage.isOpen}
       />
     </Section>
   );

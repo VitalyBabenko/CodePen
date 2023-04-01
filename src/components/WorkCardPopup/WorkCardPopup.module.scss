@@ -21,20 +21,28 @@
     list-style: none;
     text-decoration: none;
     @include flex($align: center);
+    margin: 3px 0;
 
     svg {
       width: 20px;
     height: 20px;
     margin-right: 5px;
+    color:#5A5F73;
     }
   }
 
   li:hover {
     background-color: $greyMain-hover;
+    svg {
+      color:#ccced5;
+    }
   }
 
   .delete:hover {
     background-color: $redMain;
+    svg {
+      color:white;
+    }
   }
 }
 

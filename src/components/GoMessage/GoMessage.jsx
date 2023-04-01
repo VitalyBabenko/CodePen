@@ -1,18 +1,22 @@
 import style from './GoMessage.module.scss';
 import { GrClose } from 'react-icons/gr';
 import { BsCheckLg } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearMessage } from '../../store/goMessage/goMessageSlice';
 
-export const GoMessage = ({ children, type, message, isOpen, close }) => {
+export const GoMessage = () => {
+  const dispatch = useDispatch();
+  const { isShowing, message, color } = useSelector((state) => state.goMessage);
+
+  if (isShowing) {
+    setTimeout(() => {
+      dispatch(clearMessage());
+    }, 3000);
+  }
+
   const getStyle = () => {
-    let top = isOpen ? '20px' : '-200px';
-    let border;
-
-    if (type === 'success') {
-      border = '2px solid #46CF73';
-    }
-    if (type === 'warning') {
-      border = '2px solid #ffdd40';
-    }
+    let top = isShowing ? '20px' : '-200px';
+    let border = `2px solid ${color}`;
 
     return {
       top,
@@ -20,19 +24,15 @@ export const GoMessage = ({ children, type, message, isOpen, close }) => {
     };
   };
 
-  if (children) {
-    return (
-      <div style={getStyle()} className={style.message}>
-        {children}
-      </div>
-    );
-  }
-
   return (
     <div style={getStyle()} className={style.message}>
-      <BsCheckLg />
+      {color === '#46CF73' && <BsCheckLg className={style.greenCircle} />}
+      {color === '#ff3b41' && <GrClose className={style.redCircle} />}
       <span>{message}</span>
-      <GrClose onClick={close} />
+      <GrClose
+        className={style.close}
+        onClick={() => dispatch(clearMessage())}
+      />
     </div>
   );
 };

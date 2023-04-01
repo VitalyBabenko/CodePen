@@ -1,7 +1,5 @@
-import { Header } from '../../components/Header/Header';
 import style from './YourWorksPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { Footer } from '../../components/Footer/Footer';
 import { useEffect } from 'react';
 import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
 import { usePopup } from '../../hooks/usePopup';

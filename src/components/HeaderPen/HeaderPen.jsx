@@ -1,36 +1,43 @@
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { saveFiles } from '../../store/currentWork/actions/saveFiles';
 import style from './HeaderPen.module.scss';
 import { setFormatCode } from '../../store/currentWork/currentWorkSlice';
-import { askToLogin } from '../../utils/askToLogin';
 import { BsFillCloudFill } from 'react-icons/bs';
 import { FaPen } from 'react-icons/fa/index';
 import { GoMessage } from '../GoMessage/GoMessage';
-import { useTimedPopup } from '../../hooks/useTimedPopup';
-import { usePopup } from '../../hooks/usePopup';
 
 export const HeaderPen = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { isAuth } = useSelector((state) => state.auth);
   const { id, title, owner, files } = useSelector((state) => state.currentWork);
-  const saveMessage = useTimedPopup();
-  const askToLoginPopup = usePopup();
 
   const logout = () => {
     localStorage.removeItem('authToken');
     dispatch(logout());
   };
 
+  // const loginPrompt = (
+  //   <div className={style.loginPopup}>
+  //     <span>
+  //       You’ll have to Log In or Sign Up to save your Pen. Don’t worry! All your
+  //       work will be saved to your account.
+  //     </span>
+  //     <div>
+  //       <button>close</button>
+  //       <NavLink to={'/login'}>OK</NavLink>
+  //     </div>
+  //   </div>
+  // );
+
+  // TODO: HoldUp component
+
   const handleSaveFiles = () => {
     dispatch(setFormatCode());
 
     if (!isAuth) {
-      askToLoginPopup.open();
-      // if (askToLogin()) navigate('/login');
+      console.log('HoldUp component!!!!');
     } else {
       dispatch(
         saveFiles({
@@ -40,7 +47,6 @@ export const HeaderPen = () => {
           js: files.js.text,
         })
       );
-      saveMessage.openPopup();
     }
   };
 
@@ -56,25 +62,7 @@ export const HeaderPen = () => {
         </div>
       </div>
 
-      <GoMessage type="warning" isOpen={askToLoginPopup.isPopupVisible}>
-        <div className={style.loginPopup}>
-          <span>
-            You’ll have to Log In or Sign Up to save your Pen. Don’t worry! All
-            your work will be saved to your account.
-          </span>
-          <div>
-            <button onClick={askToLoginPopup.close}>close</button>
-            <NavLink to={'/login'}>OK</NavLink>
-          </div>
-        </div>
-      </GoMessage>
-
-      <GoMessage
-        type="success"
-        message={'Pen saved.'}
-        close={saveMessage.closePopup}
-        isOpen={saveMessage.isOpen}
-      />
+      <GoMessage />
 
       <nav>
         <button onClick={handleSaveFiles}>

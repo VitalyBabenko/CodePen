@@ -1,10 +1,14 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getGql } from "../../../services/api";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getGql } from '../../../services/api';
+import {
+  showErrorMessage,
+  showSuccessMessage,
+} from '../../goMessage/goMessageSlice';
 
 export const saveFiles = createAsyncThunk(
-  "currentWork/saveFiles",
+  'currentWork/saveFiles',
 
-  async ({ id, html, css, js }) => {
+  async ({ id, html, css, js }, { dispatch }) => {
     const gql = getGql();
     try {
       const { SnippetUpsert } = await gql.request(
@@ -28,15 +32,17 @@ export const saveFiles = createAsyncThunk(
         {
           snippetId: id,
           newFiles: [
-            { type: "HTML", text: html },
-            { type: "CSS", text: css },
-            { type: "JS", text: js },
+            { type: 'HTML', text: html },
+            { type: 'CSS', text: css },
+            { type: 'JS', text: js },
           ],
         }
       );
 
+      dispatch(showSuccessMessage('Pen saved.'));
       return SnippetUpsert;
     } catch (error) {
+      dispatch(showErrorMessage('Failed to save pen.'));
       console.error(error);
     }
   }
