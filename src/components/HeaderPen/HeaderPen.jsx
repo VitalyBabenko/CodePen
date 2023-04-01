@@ -7,29 +7,19 @@ import { setFormatCode } from '../../store/currentWork/currentWorkSlice';
 import { BsFillCloudFill } from 'react-icons/bs';
 import { FaPen } from 'react-icons/fa/index';
 import { GoMessage } from '../GoMessage/GoMessage';
+import { LoginPopup } from '../LoginPopup/LoginPopup';
+import { usePopup } from '../../hooks/usePopup.js';
 
 export const HeaderPen = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
   const { id, title, owner, files } = useSelector((state) => state.currentWork);
+  const loginPopup = usePopup();
 
   const logout = () => {
     localStorage.removeItem('authToken');
     dispatch(logout());
   };
-
-  // const loginPrompt = (
-  //   <div className={style.loginPopup}>
-  //     <span>
-  //       You’ll have to Log In or Sign Up to save your Pen. Don’t worry! All your
-  //       work will be saved to your account.
-  //     </span>
-  //     <div>
-  //       <button>close</button>
-  //       <NavLink to={'/login'}>OK</NavLink>
-  //     </div>
-  //   </div>
-  // );
 
   // TODO: HoldUp component
 
@@ -37,7 +27,7 @@ export const HeaderPen = () => {
     dispatch(setFormatCode());
 
     if (!isAuth) {
-      console.log('HoldUp component!!!!');
+      loginPopup.open();
     } else {
       dispatch(
         saveFiles({
@@ -63,6 +53,8 @@ export const HeaderPen = () => {
       </div>
 
       <GoMessage />
+
+      <LoginPopup isOpen={loginPopup.isPopupVisible} close={loginPopup.close} />
 
       <nav>
         <button onClick={handleSaveFiles}>

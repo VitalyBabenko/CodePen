@@ -8,12 +8,15 @@ import { LoadingPage } from '../LoadingPage/LoadingPage';
 import { fetchWorks } from '../../store/works/actions/fetchWorks';
 import { Works } from '../../components/Works/Works';
 import { MainLayout } from '../../layouts/MainLayout';
+import { PopupWrapper } from '../../components/PopupWrapper/PopupWrapper';
+import { Input } from '../../components/Input/Input';
 
 export const YourWorksPage = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
   const { isLoading } = useSelector((state) => state.works);
   const { isPopupVisible, ref, open, close } = usePopup();
+  const newPenPopup = usePopup();
 
   useEffect(() => {
     if (isAuth) {
@@ -31,13 +34,26 @@ export const YourWorksPage = () => {
           <a className={style.active} href="/your-works">
             Your Works
           </a>
-          <button onClick={open}>+</button>
+          <button onClick={newPenPopup.open}>+</button>
         </div>
 
         <Works openPopup={open} />
       </div>
 
-      {isPopupVisible && <CreateWorkPopup popupRef={ref} close={close} />}
+      <PopupWrapper
+        title="New Pen!"
+        className={style.newPen}
+        isOpen={newPenPopup.isPopupVisible}
+        close={newPenPopup.close}
+      >
+        <form>
+          <Input title="Pen title" />
+          <Input title="Pen description" />
+          <button>Create</button>
+        </form>
+      </PopupWrapper>
+
+      {/* <CreateWorkPopup popupRef={ref} close={close} /> */}
     </MainLayout>
   );
 };

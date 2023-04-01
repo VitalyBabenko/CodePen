@@ -4,5 +4,17 @@
   "singleQuote": true,
   "trailingComma": "es5",
   "jsxBracketSameLine": false,
-  "parser": "babel"
+  "parser": "babel",
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "singleQuote": false,
+        "trailingComma": "none",
+        "semi": false,
+        "tabWidth": 2,
+        "useTabs": false
+      }
+    }
+  ]
 }
