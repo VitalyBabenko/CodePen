@@ -5,32 +5,23 @@ import style from './WorkCardPopup.module.scss';
 import { MdDriveFileRenameOutline } from 'react-icons/md/index';
 import { MdOutlineDescription } from 'react-icons/md/index';
 import { BiTrash } from 'react-icons/bi/index';
-import { useInput } from '../../hooks/useInput';
-import { usePopup } from '../../hooks/usePopup';
-import { PopupWrapper } from '../PopupWrapper/PopupWrapper';
-import { Input } from '../Input/Input';
 
 export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   const dispatch = useDispatch();
-  const rename = useInput();
-  const changeDesc = useInput();
-  const renamePopup = usePopup();
 
   const renameWork = (e) => {
     e.preventDefault();
-    renamePopup.open();
-    // const newTitle = rename.value;
-    // // const newTitle = prompt(`rename work: ${work.title}`, work.title);
-    // if (newTitle) {
-    //   const updatedWorkInfo = {
-    //     id: work._id,
-    //     title: newTitle,
-    //     description: work.description,
-    //     files: work.files,
-    //   };
+    const newTitle = prompt(`rename work: ${work.title}`, work.title);
+    if (newTitle) {
+      const updatedWorkInfo = {
+        id: work._id,
+        title: newTitle,
+        description: work.description,
+        files: work.files,
+      };
 
-    //   dispatch(updateWorkInfo(updatedWorkInfo));
-    // }
+      dispatch(updateWorkInfo(updatedWorkInfo));
+    }
   };
 
   const changeDescription = (e) => {
@@ -57,32 +48,22 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
     dispatch(deleteWork(work._id));
   };
 
-  if (isVisible)
-    return (
-      <>
-        <ul ref={menuRef} className={style.menuPopup}>
-          <li onClick={renameWork}>
-            <MdDriveFileRenameOutline className={style.rename} /> Rename work
-          </li>
-          <li onClick={changeDescription}>
-            <MdOutlineDescription className={style.changeDesc} />
-            Change Description
-          </li>
-          <li className={style.delete} onClick={handleDelete}>
-            <BiTrash />
-            Delete work
-          </li>
-        </ul>
-
-        <PopupWrapper
-          isOpen={renamePopup.isPopupVisible}
-          title={'Change title'}
-        >
-          <form>
-            <Input title={'new Title'} />
-          </form>
-        </PopupWrapper>
-      </>
-    );
-  return null;
+  if (!isVisible) return null;
+  return (
+    <>
+      <ul ref={menuRef} className={style.menuPopup}>
+        <li onClick={renameWork}>
+          <MdDriveFileRenameOutline className={style.rename} /> Rename work
+        </li>
+        <li onClick={changeDescription}>
+          <MdOutlineDescription className={style.changeDesc} />
+          Change Description
+        </li>
+        <li className={style.delete} onClick={handleDelete}>
+          <BiTrash />
+          Delete work
+        </li>
+      </ul>
+    </>
+  );
 };

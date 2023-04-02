@@ -14,7 +14,6 @@ export const YourWorksPage = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
   const { isLoading } = useSelector((state) => state.works);
-  const { isPopupVisible, ref, open, close } = usePopup();
   const newPenPopup = usePopup();
 
   useEffect(() => {
