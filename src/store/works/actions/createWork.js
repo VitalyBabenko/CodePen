@@ -1,10 +1,14 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getGql } from "../../../services/api";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getGql } from '../../../services/api';
+import {
+  showErrorMessage,
+  showSuccessMessage,
+} from '../../goMessage/goMessageSlice';
 
 export const createWork = createAsyncThunk(
-  "work/create",
+  'work/create',
 
-  async ({ title, description }, { rejectWithValue }) => {
+  async ({ title, description }, { rejectWithValue, dispatch }) => {
     const gql = getGql();
     try {
       const response = await gql.request(
@@ -27,22 +31,24 @@ export const createWork = createAsyncThunk(
             title: title,
             description: description,
             files: [
-              { text: "", type: "HTML" },
-              { text: "", type: "CSS" },
-              { text: "", type: "JS" },
+              { text: '', type: 'HTML' },
+              { text: '', type: 'CSS' },
+              { text: '', type: 'JS' },
             ],
           },
         }
       );
 
       if (response.SnippetUpsert) {
+        dispatch(showSuccessMessage('Work created.'));
         return response.SnippetUpsert;
       } else {
-        return rejectWithValue("Failed to create work, please try again");
+        return rejectWithValue('Failed to create work, please try again');
       }
     } catch (error) {
       console.log(error);
-      return rejectWithValue("Failed to create work, please try again");
+      dispatch(showErrorMessage('Failed to create work, please try again'));
+      return rejectWithValue('Failed to create work, please try again');
     }
   }
 );

@@ -9,12 +9,16 @@ import { Works } from '../../components/Works/Works';
 import { MainLayout } from '../../layouts/MainLayout';
 import { PopupWrapper } from '../../components/PopupWrapper/PopupWrapper';
 import { Input } from '../../components/Input/Input';
+import { useInput } from '../../hooks/useInput';
+import { createWork } from '../../store/works/actions/createWork';
 
 export const YourWorksPage = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
   const { isLoading } = useSelector((state) => state.works);
   const newPenPopup = usePopup();
+  const title = useInput();
+  const description = useInput();
 
   useEffect(() => {
     if (isAuth) {
@@ -23,6 +27,18 @@ export const YourWorksPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleCreate = (e) => {
+    e.preventDefault();
+    const newWork = {
+      title: title.value,
+      description: description.value,
+    };
+    dispatch(createWork(newWork));
+    newPenPopup.close();
+    title.setValue('');
+    description.setValue('');
+  };
 
   if (isLoading) return <LoadingPage />;
   return (
@@ -44,10 +60,18 @@ export const YourWorksPage = () => {
         isOpen={newPenPopup.isPopupVisible}
         close={newPenPopup.close}
       >
-        <form>
-          <Input title="Pen title" />
-          <Input title="Pen description" />
-          <button>Create</button>
+        <form onSubmit={handleCreate}>
+          <Input
+            value={title.value}
+            onChange={title.onChange}
+            title="Pen title"
+          />
+          <Input
+            value={description.value}
+            onChange={description.onChange}
+            title="Pen description"
+          />
+          <button type="submit">Create</button>
         </form>
       </PopupWrapper>
     </MainLayout>

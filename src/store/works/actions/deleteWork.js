@@ -1,10 +1,14 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getGql } from "../../../services/api";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getGql } from '../../../services/api';
+import {
+  showErrorMessage,
+  showSuccessMessage,
+} from '../../goMessage/goMessageSlice';
 
 export const deleteWork = createAsyncThunk(
-  "work/delete",
+  'work/delete',
 
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, dispatch }) => {
     const gql = getGql();
     try {
       const response = await gql.request(
@@ -27,13 +31,15 @@ export const deleteWork = createAsyncThunk(
       );
 
       if (response.SnippetUpsert) {
+        dispatch(showSuccessMessage('Work deleted.'));
         return response.SnippetUpsert;
       } else {
-        return rejectWithValue("Failed to delete work, please try again");
+        return rejectWithValue('Failed to delete work, please try again');
       }
     } catch (error) {
       console.error(error);
-      return rejectWithValue("Failed to delete work, please try again");
+      dispatch(showErrorMessage('Failed to delete work, please try again'));
+      return rejectWithValue('Failed to delete work, please try again');
     }
   }
 );
