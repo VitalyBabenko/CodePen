@@ -1,17 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { login } from "./actions/loginAction";
-import { registration } from "./actions/registrationAction";
+import { createSlice } from '@reduxjs/toolkit';
+import { login } from './actions/loginAction';
+import { registration } from './actions/registrationAction';
 
 const initialState = {
-  isAuth: localStorage.getItem("authToken") ? true : false,
+  isAuth: localStorage.getItem('authToken') ? true : false,
   loading: false,
   error: null,
+  isLoginPopupOpen: false,
 };
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
+    openLoginPopup(state) {
+      state.isLoginPopupOpen = true;
+    },
+    closeLoginPopup(state) {
+      state.isLoginPopupOpen = false;
+    },
     logout(state) {
       state.isAuth = false;
     },
@@ -44,4 +51,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, openLoginPopup, closeLoginPopup } = authSlice.actions;

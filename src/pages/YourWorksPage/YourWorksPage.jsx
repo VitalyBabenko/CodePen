@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
 import { usePopup } from '../../hooks/usePopup';
-import { CreateWorkPopup } from '../../components/CreateWorkPopup/CreateWorkPopup';
 import { LoadingPage } from '../LoadingPage/LoadingPage';
 import { fetchWorks } from '../../store/works/actions/fetchWorks';
 import { Works } from '../../components/Works/Works';
@@ -37,7 +36,7 @@ export const YourWorksPage = () => {
           <button onClick={newPenPopup.open}>+</button>
         </div>
 
-        <Works openPopup={open} />
+        <Works openPopup={newPenPopup.open} />
       </div>
 
       <PopupWrapper
@@ -52,8 +51,6 @@ export const YourWorksPage = () => {
           <button>Create</button>
         </form>
       </PopupWrapper>
-
-      {/* <CreateWorkPopup popupRef={ref} close={close} /> */}
     </MainLayout>
   );
 };

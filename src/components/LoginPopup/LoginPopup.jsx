@@ -2,42 +2,31 @@ import { useEffect } from 'react';
 import { GrClose } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useInput } from '../../hooks/useInput';
-import { login } from '../../store/auth/actions/loginAction';
-import { Input } from '../Input/Input';
+import { closeLoginPopup } from '../../store/auth/authSlice';
 import style from '../LoginPopup/LoginPopup.module.scss';
 
-export const LoginPopup = ({ isOpen, close }) => {
+export const LoginPopup = () => {
   const dispatch = useDispatch();
-  const { isAuth, error } = useSelector((state) => state.auth);
-  const loginName = useInput('');
-  const password = useInput('');
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    const userData = {
-      login: loginName.value,
-      password: password.value,
-    };
-
-    console.log(dispatch(login(userData)));
-  };
+  const { isAuth, error, isLoginPopupOpen } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
-    if (isAuth) close();
-    if (error) {
-      loginName.setValue('');
-      password.setValue('');
-    }
+    if (isAuth) dispatch(closeLoginPopup());
   }, [isAuth, error]);
 
-  if (!isOpen) return null;
+  if (!isLoginPopupOpen) return null;
   return (
     <>
-      <div className={style.overlay} onClick={close} />
+      <div
+        className={style.overlay}
+        onClick={() => dispatch(closeLoginPopup())}
+      />
       <div className={style.loginPopup}>
-        <GrClose className={style.close} onClick={close} />
+        <GrClose
+          className={style.close}
+          onClick={() => dispatch(closeLoginPopup())}
+        />
         <div className={style.tableOfContents}>
           <h1>Hold up!</h1>
           <span>

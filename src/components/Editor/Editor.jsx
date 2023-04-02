@@ -13,9 +13,8 @@ import { ReactComponent as JsLogo } from '../../assets/img/jsLogo.svg';
 import { Section } from 'react-simple-resizer';
 import { saveFiles } from '../../store/currentWork/actions/saveFiles';
 import { setFormatCode } from '../../store/currentWork/currentWorkSlice';
-import { askToLogin } from '../../utils/askToLogin.js';
-import { useNavigate } from 'react-router-dom';
 import { showSuccessMessage } from '../../store/goMessage/goMessageSlice';
+import { openLoginPopup } from '../../store/auth/authSlice';
 
 const logos = {
   xml: <HtmlLogo />,
@@ -25,7 +24,6 @@ const logos = {
 
 export default function Editor({ language, displayName, value, onChange }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const editorRef = useRef(null);
   const { id, files } = useSelector((state) => state.currentWork);
   const { isAuth } = useSelector((state) => state.auth);
@@ -34,7 +32,7 @@ export default function Editor({ language, displayName, value, onChange }) {
     dispatch(setFormatCode());
 
     if (!isAuth) {
-      if (askToLogin()) navigate('/login');
+      dispatch(openLoginPopup());
     } else {
       dispatch(
         saveFiles({

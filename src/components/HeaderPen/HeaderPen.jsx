@@ -9,6 +9,7 @@ import { FaPen } from 'react-icons/fa/index';
 import { GoMessage } from '../GoMessage/GoMessage';
 import { LoginPopup } from '../LoginPopup/LoginPopup';
 import { usePopup } from '../../hooks/usePopup.js';
+import { openLoginPopup } from '../../store/auth/authSlice';
 
 export const HeaderPen = () => {
   const dispatch = useDispatch();
@@ -24,18 +25,16 @@ export const HeaderPen = () => {
   const handleSaveFiles = () => {
     dispatch(setFormatCode());
 
-    if (!isAuth) {
-      loginPopup.open();
-    } else {
-      dispatch(
-        saveFiles({
-          id,
-          html: files.html.text,
-          css: files.css.text,
-          js: files.js.text,
-        })
-      );
-    }
+    if (!isAuth) return dispatch(openLoginPopup());
+
+    dispatch(
+      saveFiles({
+        id,
+        html: files.html.text,
+        css: files.css.text,
+        js: files.js.text,
+      })
+    );
   };
 
   return (
