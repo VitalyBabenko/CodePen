@@ -31,10 +31,10 @@ export const WorkCard = ({ work }) => {
 
       <div className={style.info}>
         <span
-          contentEditable={true}
-          onInput={(e) => console.log(e.target)}
-          onChange={(e) => console.log(e)}
-          onClick={(e) => e.preventDefault()}
+          // contentEditable={true}
+          // onInput={(e) => console.log(e.target)}
+          // onChange={(e) => console.log(e)}
+          // onClick={(e) => e.preventDefault()}
           className={style.title}
         >
           {work.title}
@@ -49,6 +49,7 @@ export const WorkCard = ({ work }) => {
       </div>
 
       <WorkCardPopup menuRef={menuRef} isVisible={isPopupVisible} work={work} />
+      <div className={style.background}></div>
     </NavLink>
   );
 };

@@ -1,16 +1,18 @@
 @import "../../scss/index.scss";
 
+
+
 .menuPopup {
   position: absolute;
-  bottom: 89px;
+  bottom: 65px;
   right: 5%;
-  
-  background-color: #2c303a;
+  background-color: #1e1f26;
   padding: 8px;
   filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 1));
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  transition: all 0.1s ease;
   z-index: 1;
 
   li {
@@ -32,7 +34,7 @@
   }
 
   li:hover {
-    background-color: $greyMain-hover;
+    background-color: lighten($color: #1e1f26, $amount: 20%) ;
     svg {
       color:#ccced5;
     }
@@ -44,6 +46,14 @@
       color:white;
     }
   }
+}
+
+.hidden {
+  @extend .menuPopup;
+  padding: 0;
+  z-index: 0;
+  transition: all 0.1s ease-in;
+  opacity: 0;
 }
 
 

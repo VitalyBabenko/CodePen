@@ -1,9 +1,11 @@
 @import '../../scss/index.scss';
 
 .footer {
+  position: relative;
   height: 80px;
   width: 100%;
   margin-top: auto;
+ 
 
   .container {
     @include container();
@@ -14,6 +16,9 @@
     }
   
     & > svg {
+      height: 45px;
+      fill: white;
+      color: white;
       margin-left: 15px;
       width: 150px;
     }

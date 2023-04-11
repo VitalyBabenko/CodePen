@@ -48,22 +48,19 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
     dispatch(deleteWork(work._id));
   };
 
-  if (!isVisible) return null;
   return (
-    <>
-      <ul ref={menuRef} className={style.menuPopup}>
-        <li onClick={renameWork}>
-          <MdDriveFileRenameOutline className={style.rename} /> Rename work
-        </li>
-        <li onClick={changeDescription}>
-          <MdOutlineDescription className={style.changeDesc} />
-          Change Description
-        </li>
-        <li className={style.delete} onClick={handleDelete}>
-          <BiTrash />
-          Delete work
-        </li>
-      </ul>
-    </>
+    <ul ref={menuRef} className={isVisible ? style.menuPopup : style.hidden}>
+      <li onClick={renameWork}>
+        <MdDriveFileRenameOutline className={style.rename} /> Rename work
+      </li>
+      <li onClick={changeDescription}>
+        <MdOutlineDescription className={style.changeDesc} />
+        Change Description
+      </li>
+      <li className={style.delete} onClick={handleDelete}>
+        <BiTrash />
+        Delete work
+      </li>
+    </ul>
   );
 };
