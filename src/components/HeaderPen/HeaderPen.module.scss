@@ -70,6 +70,7 @@
       display: flex;
       align-items: center;
       width: 100px; 
+     
 
       svg {
         margin-right: 10px;
@@ -89,8 +90,20 @@
 
     a:last-child {
       @extend %buttonGreen;
-
+      display: flex;
+      align-items: center;
       padding: 13px 16px;
+      color:white;
+      background-color: #dc143c;
+      svg {
+        width: 17px;
+        height: 17px;
+        margin-right: 4px;
+      }
+
+      &:hover {
+        background-color: #A00609;
+      }
     }
   }
 

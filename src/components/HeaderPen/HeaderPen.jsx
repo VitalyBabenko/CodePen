@@ -10,6 +10,7 @@ import { GoMessage } from '../GoMessage/GoMessage';
 import { LoginPopup } from '../LoginPopup/LoginPopup';
 import { usePopup } from '../../hooks/usePopup.js';
 import { openLoginPopup } from '../../store/auth/authSlice';
+import { MdLogout } from 'react-icons/md/index';
 
 export const HeaderPen = () => {
   const dispatch = useDispatch();
@@ -64,11 +65,8 @@ export const HeaderPen = () => {
             <NavLink to="/your-works">
               <FaPen /> Your works
             </NavLink>
-            <NavLink
-              style={{ backgroundColor: '#dc143c' }}
-              onClick={logout}
-              to="/"
-            >
+            <NavLink onClick={logout} to="/">
+              <MdLogout />
               Log out
             </NavLink>
           </>

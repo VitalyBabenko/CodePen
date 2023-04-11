@@ -30,7 +30,15 @@ export const WorkCard = ({ work }) => {
       </div>
 
       <div className={style.info}>
-        <span className={style.title}>{work.title}</span>
+        <span
+          contentEditable={true}
+          onInput={(e) => console.log(e.target)}
+          onChange={(e) => console.log(e)}
+          onClick={(e) => e.preventDefault()}
+          className={style.title}
+        >
+          {work.title}
+        </span>
         <span className={style.desc}>{work.description}</span>
       </div>
 
