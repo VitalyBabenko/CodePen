@@ -25,12 +25,16 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
     event.preventDefault();
     setIsDragging(false);
 
+    const isDrop = Boolean(event?.dataTransfer?.files?.length);
+    const isChange = Boolean(event?.target?.files?.length);
+
     let file;
-    if (event._reactName === 'onChange') {
-      file = event.target.files[0];
-    }
-    if (event._reactName === 'onDrop') {
+    if (isDrop) {
       file = event.dataTransfer.files[0];
+    }
+
+    if (isChange) {
+      file = event.target.files[0];
     }
 
     const image = await getImageUrlFromFile(file);
@@ -60,7 +64,7 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
         onDragEnter={handleDragEnter}
         onDragOver={(e) => e.preventDefault()}
         onDragLeave={handleDragLeave}
-        onDrop={getUncroppedAvatar}
+        // onDrop={getUncroppedAvatar}
       >
         <div className={style.header}>
           <FaUpload />
@@ -68,7 +72,11 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
           <GrClose onClick={close} />
         </div>
 
-        <label htmlFor="upload" className={style.dropArea}>
+        <label
+          htmlFor="upload"
+          className={style.dropArea}
+          onDrop={getUncroppedAvatar}
+        >
           <IconAddFile />
           <span>Select Files to Upload</span>
           <span>or Drag and Drop, Copy and Paste Files</span>
