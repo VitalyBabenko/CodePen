@@ -1,6 +1,8 @@
 import { GraphQLClient } from 'graphql-request';
 
-export const getGql = (endpoint = '/graphql') => {
+const proxy = 'http://snippet.node.ed.asmer.org.ua';
+
+export const getGql = (endpoint = `${proxy}/graphql`) => {
   return new GraphQLClient(endpoint, {
     headers: {
       'Content-Type': 'application/json;charset=utf-8',

@@ -14,19 +14,25 @@
   <tbody>
     <tr>
       <td>HomePage</td>
-      <td style='padding: 15px'><img src="https://github.com/VitalyBabenko/CodePen/blob/main/src/assets/screenshots/HomePage.png?raw=true" alt="HomePage" ></td>
+      <td style='padding: 25px'><img src="https://github.com/VitalyBabenko/CodePen/blob/main/src/assets/screenshots/HomePage.png?raw=true" alt="HomePage" ></td>
     </tr>
     <tr>
-      <td style='padding: 15px' >PenPage</td>
-      <td><img src="https://github.com/VitalyBabenko/CodePen/blob/main/src/assets/screenshots/PenPage.png?raw=true" alt="HomePage" ></td>
+      <td  >PenPage</td>
+      <td style='padding: 25px' >
+      <img src="https://github.com/VitalyBabenko/CodePen/blob/main/src/assets/screenshots/PenPage.png?raw=true" alt="HomePage" >
+      </td>
     </tr>
     <tr>
       <td>WorksPage</td>
-      <td style='padding: 15px' ><img src="https://github.com/VitalyBabenko/CodePen/blob/main/src/assets/screenshots/WorksPage.png?raw=true" alt="HomePage" ></td>
+      <td style='padding: 25px' >
+      <img src="https://github.com/VitalyBabenko/CodePen/blob/main/src/assets/screenshots/WorksPage.png?raw=true" alt="HomePage" >
+      </td>
     </tr>
     <tr>
       <td>Settings Page</td>
-      <td style='padding: 15px' ><img src="https://github.com/VitalyBabenko/CodePen/blob/main/src/assets/screenshots/SettingsPage.png?raw=true" alt="HomePage" ></td>
+      <td style='padding: 25px' >
+      <img src="https://github.com/VitalyBabenko/CodePen/blob/main/src/assets/screenshots/SettingsPage.png?raw=true" alt="HomePage" >
+      </td>
     </tr>
   </tbody>
 </table>
