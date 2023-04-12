@@ -23,7 +23,6 @@ export const Header = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (isLoading) return <LoadingPage />;
   return (
     <header className={style.header}>
       <NavLink className={style.logoBlock} to="/">

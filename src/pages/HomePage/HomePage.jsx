@@ -21,9 +21,10 @@ export const HomePage = () => {
         <LogoBig />
         <h1>The best place to build, test, and discover front-end code.</h1>
         <p>
-          CodePen is a social development environment for front-end designers
-          and developers. Build and deploy a website, show off your work, build
-          test cases to learn and debug, and find inspiration.
+          CodePen is a <strong>social development environment</strong> for
+          front-end designers and developers. Build and deploy a website, show
+          off your work, build test cases to learn and debug, and find
+          inspiration.
         </p>
         <Link to={isAuth ? '/your-works' : '/pen'}>
           {isAuth ? 'Your works' : 'Start Codding'}

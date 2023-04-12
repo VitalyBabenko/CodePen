@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
 import { usePopup } from '../../hooks/usePopup';
-import { LoadingPage } from '../LoadingPage/LoadingPage';
 import { fetchWorks } from '../../store/works/actions/fetchWorks';
 import { Works } from '../../components/Works/Works';
 import { MainLayout } from '../../layouts/MainLayout';
@@ -15,7 +14,6 @@ import { createWork } from '../../store/works/actions/createWork';
 export const YourWorksPage = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
-  const { isLoading } = useSelector((state) => state.works);
   const newPenPopup = usePopup();
   const title = useInput();
   const description = useInput();
@@ -40,7 +38,6 @@ export const YourWorksPage = () => {
     description.setValue('');
   };
 
-  if (isLoading) return <LoadingPage />;
   return (
     <MainLayout className={style.yourWorks}>
       <div className={style.container}>

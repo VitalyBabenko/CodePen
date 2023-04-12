@@ -1,9 +1,18 @@
-import { useSelector } from "react-redux";
-import { WorkCard } from "../WorkCard/WorkCard";
-import style from "./Works.module.scss";
+import { useSelector } from 'react-redux';
+import { WorkCard } from '../WorkCard/WorkCard';
+import style from './Works.module.scss';
+import { Spinner } from '../Spinner/Spinner';
 
 export const Works = ({ openPopup }) => {
-  const { works } = useSelector((state) => state.works);
+  const { works, isLoading } = useSelector((state) => state.works);
+
+  if (isLoading) {
+    return (
+      <div className={style.loader}>
+        <Spinner />
+      </div>
+    );
+  }
 
   if (!works.length) {
     return (

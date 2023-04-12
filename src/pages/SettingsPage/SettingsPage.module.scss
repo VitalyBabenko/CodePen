@@ -17,6 +17,14 @@
       margin-bottom: 50px;
     }
 
+    .loader {
+      width:100%;
+      padding-top: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     section:first-of-type {
       display: flex;
       justify-content: space-between;
@@ -30,6 +38,8 @@
     }
   }
 }
+
+
 
 @media (max-width: 940px) {
   .settings {
