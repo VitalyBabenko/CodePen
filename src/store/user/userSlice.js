@@ -29,8 +29,7 @@ export const userSlice = createSlice({
       state.id = action.payload._id;
       state.login = action.payload.login;
       if (action.payload?.avatar?.url) {
-        state.avatar = `${proxy}${action.payload.avatar.url}`;
-        console.log(`${action.payload.avatar.url}`);
+        state.avatar = `/${action.payload.avatar.url}`;
       } else {
         state.avatar = initialUserAvatar;
       }
