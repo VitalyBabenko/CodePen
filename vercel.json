@@ -2,7 +2,7 @@
     "routes": [
       {
         "src": "/graphql",
-        "dest": "snippet.node.ed.asmer.org.ua",
+        "dest": "http://snippet.node.ed.asmer.org.ua/graphql",
         "methods": ["POST"],
         "headers": {
           "Access-Control-Allow-Origin": "*"
