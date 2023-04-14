@@ -3,7 +3,6 @@ import { Preview } from '../../components/Preview/Preview';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentWork } from '../../store/currentWork/actions/fetchCurrentWork';
 import { useParams } from 'react-router-dom';
-import { LoadingPage } from '../LoadingPage/LoadingPage';
 import { HeaderPen } from '../../components/HeaderPen/HeaderPen';
 import style from './PenPage.module.scss';
 import { Bar, Container, Section } from 'react-simple-resizer';
@@ -11,6 +10,7 @@ import { Editors } from '../../components/Editors/Editors';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Console } from '../../components/Console/Console';
 import { usePopup } from '../../hooks/usePopup';
+import { Spinner } from '../../components/Spinner/Spinner';
 
 export const PenPage = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,6 @@ export const PenPage = () => {
     dispatch(fetchCurrentWork(id));
   }, []);
 
-  if (isLoading) return <LoadingPage />;
   if (error) return <ErrorPage />;
   return (
     <Container
@@ -39,6 +38,12 @@ export const PenPage = () => {
       <Section children={<Editors />} />
 
       <Bar className={style.barVertical} />
+
+      {isLoading && (
+        <div className={style.loader}>
+          <Spinner />
+        </div>
+      )}
 
       <Section
         style={isSizeChanged ? { pointerEvents: 'none' } : null}

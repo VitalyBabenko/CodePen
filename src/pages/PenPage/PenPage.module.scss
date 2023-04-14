@@ -11,6 +11,21 @@
     border-top: 1px solid #2f2f2f;
     border-bottom: 1px solid #2f2f2f;
   }
+
+  .loader {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    @include flex($align: center, $justify: center);
+    background-color: black;
+    border: 1px solid #2f2f2f;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  }
 }
 
 .line {

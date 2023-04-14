@@ -7,12 +7,11 @@ import { useEffect } from 'react';
 import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
 import { usePopup } from '../../hooks/usePopup';
 import { UserPopup } from '../UserPopup/UserPopup';
-import { LoadingPage } from '../../pages/LoadingPage/LoadingPage';
 
 export const Header = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
-  const { login, avatar, isLoading } = useSelector((state) => state.user);
+  const { avatar } = useSelector((state) => state.user);
   const userPopup = usePopup();
 
   useEffect(() => {
@@ -31,7 +30,6 @@ export const Header = () => {
 
       {isAuth ? (
         <nav>
-          <span>Hello, {login}!</span>
           <img src={avatar} onClick={userPopup.open} alt="userImage" />
           <UserPopup
             popupRef={userPopup.ref}

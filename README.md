@@ -71,7 +71,6 @@ npm start
 - **[React Codemirror 2](https://www.npmjs.com/package/react-codemirror2)**
 - **[React Easy Crop](https://www.npmjs.com/package/react-easy-crop)**
 - **[React Simple Resizer](https://www.npmjs.com/package/react-simple-resizer)**
-- **[React Simple Resizer](https://www.npmjs.com/package/react-simple-resizer)**
 
 
 This will run locally and listening on port 3000 (http://localhost:3000)
