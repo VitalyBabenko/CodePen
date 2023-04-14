@@ -1,0 +1,13 @@
+{
+    "routes": [
+      {
+        "src": "/graphql",
+        "dest": "snippet.node.ed.asmer.org.ua",
+        "methods": ["POST"],
+        "headers": {
+          "Access-Control-Allow-Origin": "*"
+        }
+      }
+    ]
+  }
+  
