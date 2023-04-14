@@ -7,7 +7,22 @@
         "headers": {
           "Access-Control-Allow-Origin": "*"
         }
+      },
+      {
+        "src": "/images/(.*)",
+        "dest": "http://snippet.node.ed.asmer.org.ua/images/$1",
+        "methods": ["GET"],
+        "headers": {
+          "Access-Control-Allow-Origin": "*"
+        }
+      },
+      {
+        "src": "/upload",
+        "dest": "http://snippet.node.ed.asmer.org.ua/upload",
+        "methods": ["POST"],
+        "headers": {
+          "Access-Control-Allow-Origin": "*"
+        }
       }
     ]
   }
-  

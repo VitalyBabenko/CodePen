@@ -2,7 +2,7 @@
   "name": "codepen",
   "version": "0.1.0",
   "private": true,
-  "proxy": "snippet.node.ed.asmer.org.ua",
+  "proxy": "http://snippet.node.ed.asmer.org.ua",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "codemirror": "^5.65.12",
