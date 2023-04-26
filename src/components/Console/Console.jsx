@@ -1,13 +1,13 @@
-import style from './Console.module.scss';
 import { useConsole } from '../../hooks/useConsole';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import ConsoleItem from '../ConsoleItem/ConsoleItem';
+import { ConsoleItem } from '../ConsoleItem/ConsoleItem';
 import { Bar, Section } from 'react-simple-resizer';
+import style from './Console.module.scss';
 
 export function Console({ isOpen, close }) {
   const appConsole = useConsole();
-  const { files } = useSelector((state) => state.currentWork);
+  const { files } = useSelector(state => state.currentWork);
 
   useEffect(() => {
     const timeout = setTimeout(() => {

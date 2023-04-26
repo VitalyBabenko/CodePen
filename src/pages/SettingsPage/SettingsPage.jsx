@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { Spinner } from '../../components/Spinner/Spinner';
 
 export const SettingsPage = () => {
-  const { isLoading } = useSelector((state) => state.user);
+  const { isLoading } = useSelector(state => state.user);
 
   return (
     <MainLayout className={style.settings}>

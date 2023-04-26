@@ -34,9 +34,4 @@ export const goMessageSlice = createSlice({
   },
 });
 
-export const {
-  showSuccessMessage,
-  showWarningMessage,
-  showErrorMessage,
-  clearMessage,
-} = goMessageSlice.actions;
+export const { showSuccessMessage, showWarningMessage, showErrorMessage, clearMessage } = goMessageSlice.actions;

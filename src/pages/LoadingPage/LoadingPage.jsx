@@ -1,4 +1,4 @@
-import style from "./LoadingPage.module.scss";
+import style from './LoadingPage.module.scss';
 
 export const LoadingPage = () => {
   return (

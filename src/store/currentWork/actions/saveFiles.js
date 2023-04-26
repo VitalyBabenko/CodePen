@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getGql } from '../../../services/api';
-import {
-  showErrorMessage,
-  showSuccessMessage,
-} from '../../goMessage/goMessageSlice';
+import { showErrorMessage, showSuccessMessage } from '../../goMessage/goMessageSlice';
 
 export const saveFiles = createAsyncThunk(
   'currentWork/saveFiles',

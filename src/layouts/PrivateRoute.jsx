@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export const PrivateRoute = ({ children, isPrivate }) => {
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth } = useSelector(state => state.auth);
   const navigate = useNavigate();
 
   useEffect(() => {

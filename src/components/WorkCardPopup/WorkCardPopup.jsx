@@ -9,7 +9,7 @@ import { BiTrash } from 'react-icons/bi/index';
 export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   const dispatch = useDispatch();
 
-  const renameWork = (e) => {
+  const renameWork = e => {
     e.preventDefault();
     const newTitle = prompt(`rename work: ${work.title}`, work.title);
     if (newTitle) {
@@ -24,13 +24,10 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
     }
   };
 
-  const changeDescription = (e) => {
+  const changeDescription = e => {
     e.preventDefault();
 
-    const newDescription = prompt(
-      `change description: ${work.title}`,
-      work.description
-    );
+    const newDescription = prompt(`change description: ${work.title}`, work.description);
     if (newDescription) {
       const updatedWorkInfo = {
         id: work._id,
@@ -43,7 +40,7 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
     }
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = e => {
     e.preventDefault();
     dispatch(deleteWork(work._id));
   };

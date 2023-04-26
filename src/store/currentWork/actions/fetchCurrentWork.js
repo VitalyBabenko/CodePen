@@ -5,7 +5,7 @@ import { setEmptyFilesInLS } from '../../../utils/setEmptyFilesInLS';
 export const fetchCurrentWork = createAsyncThunk(
   'currentWork/fetch',
 
-  async (id) => {
+  async id => {
     if (!id) {
       if (!localStorage.getItem('localFiles')) {
         setEmptyFilesInLS();
@@ -48,7 +48,7 @@ export const fetchCurrentWork = createAsyncThunk(
         js: {},
       };
 
-      SnippetFindOne.files.forEach((file) => {
+      SnippetFindOne.files.forEach(file => {
         if (file.type === 'HTML') files.html = file;
         if (file.type === 'CSS') files.css = file;
         if (file.type === 'JS') files.js = file;

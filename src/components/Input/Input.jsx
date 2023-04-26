@@ -1,6 +1,6 @@
-import style from "./Input.module.scss";
+import style from './Input.module.scss';
 
-export const Input = ({ type = "text", title, value, onChange, error }) => {
+export const Input = ({ type = 'text', title, value, onChange, error }) => {
   return (
     <label className={error ? style.error : style.root}>
       {title}

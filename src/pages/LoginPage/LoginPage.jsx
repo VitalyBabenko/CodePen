@@ -11,11 +11,11 @@ import { LoadingPage } from '../LoadingPage/LoadingPage';
 export const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuth, loading, error } = useSelector((state) => state.auth);
+  const { isAuth, loading, error } = useSelector(state => state.auth);
   const loginName = useInput('');
   const password = useInput('');
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = e => {
     e.preventDefault();
 
     const userData = {
@@ -45,18 +45,9 @@ export const LoginPage = () => {
 
       {error && <span>{error}</span>}
 
-      <Input
-        title={'Login'}
-        value={loginName.value}
-        onChange={loginName.onChange}
-      />
+      <Input title={'Login'} value={loginName.value} onChange={loginName.onChange} />
 
-      <Input
-        type={'password'}
-        title={'Password'}
-        value={password.value}
-        onChange={password.onChange}
-      />
+      <Input type={'password'} title={'Password'} value={password.value} onChange={password.onChange} />
 
       <button type="submit" className={style.login}>
         Log In

@@ -7,13 +7,4 @@ import { SettingsPage } from './SettingsPage/SettingsPage';
 import { SignUpPage } from './SignUpPage/SignUpPage';
 import { YourWorksPage } from './YourWorksPage/YourWorksPage';
 
-export {
-  ErrorPage,
-  HomePage,
-  LoadingPage,
-  LoginPage,
-  PenPage,
-  SettingsPage,
-  SignUpPage,
-  YourWorksPage,
-};
+export { ErrorPage, HomePage, LoadingPage, LoginPage, PenPage, SettingsPage, SignUpPage, YourWorksPage };

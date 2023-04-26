@@ -1,10 +1,10 @@
 export const setEmptyFilesInLS = () => {
   localStorage.setItem(
-    "localFiles",
+    'localFiles',
     JSON.stringify({
-      html: { type: "HTML", text: "" },
-      css: { type: "CSS", text: "" },
-      js: { type: "JS", text: "" },
+      html: { type: 'HTML', text: '' },
+      css: { type: 'CSS', text: '' },
+      js: { type: 'JS', text: '' },
     })
   );
 };

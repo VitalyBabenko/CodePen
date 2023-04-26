@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { GraphQLClient } from 'graphql-request';
-import {
-  showSuccessMessage,
-  showErrorMessage,
-} from '../../goMessage/goMessageSlice';
+import { showSuccessMessage, showErrorMessage } from '../../goMessage/goMessageSlice';
 
 export const changePassword = createAsyncThunk(
   'user/changePassword',

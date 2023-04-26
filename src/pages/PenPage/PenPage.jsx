@@ -17,7 +17,7 @@ export const PenPage = () => {
   const { id } = useParams();
   const console = usePopup();
 
-  const { isLoading, error, files } = useSelector((state) => state.currentWork);
+  const { isLoading, error, files } = useSelector(state => state.currentWork);
   const [isSizeChanged, setIsSizeChanged] = useState(false);
   const { html, css, js } = files;
 

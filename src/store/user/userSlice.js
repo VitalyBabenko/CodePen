@@ -19,8 +19,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchUser.pending, (state) => {
+  extraReducers: builder => {
+    builder.addCase(fetchUser.pending, state => {
       state.isLoading = true;
     });
     // fetch user
@@ -41,11 +41,11 @@ export const userSlice = createSlice({
     });
 
     // upload image
-    builder.addCase(uploadImage.pending, (state) => {
+    builder.addCase(uploadImage.pending, state => {
       state.isLoading = true;
     });
 
-    builder.addCase(uploadImage.fulfilled, (state) => {
+    builder.addCase(uploadImage.fulfilled, state => {
       state.isLoading = false;
     });
 
@@ -55,10 +55,10 @@ export const userSlice = createSlice({
     });
 
     // changeAvatar
-    builder.addCase(changeAvatar.pending, (state) => {
+    builder.addCase(changeAvatar.pending, state => {
       state.isLoading = true;
     });
-    builder.addCase(changeAvatar.rejected, (state) => {
+    builder.addCase(changeAvatar.rejected, state => {
       state.isLoading = false;
     });
     builder.addCase(changeAvatar.fulfilled, (state, action) => {
@@ -66,10 +66,10 @@ export const userSlice = createSlice({
     });
 
     // changePassword
-    builder.addCase(changePassword.pending, (state) => {
+    builder.addCase(changePassword.pending, state => {
       state.isLoading = true;
     });
-    builder.addCase(changePassword.rejected, (state) => {
+    builder.addCase(changePassword.rejected, state => {
       state.isLoading = false;
     });
     builder.addCase(changePassword.fulfilled, (state, action) => {

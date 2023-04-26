@@ -12,7 +12,7 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
   const [imageUrl, setImageUrl] = useState('');
   const cropper = usePopup();
 
-  const handleDragEnter = (e) => {
+  const handleDragEnter = e => {
     e.preventDefault();
     setIsDragging(true);
   };
@@ -21,7 +21,7 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
     setIsDragging(false);
   };
 
-  const getUncroppedAvatar = async (event) => {
+  const getUncroppedAvatar = async event => {
     event.preventDefault();
     setIsDragging(false);
 
@@ -52,17 +52,12 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
     <>
       <div className={style.overlay} onClick={handleClose} />
 
-      <CropperPopup
-        isOpen={cropper.isPopupVisible}
-        close={cropper.close}
-        closeParent={close}
-        imageUrl={imageUrl}
-      />
+      <CropperPopup isOpen={cropper.isPopupVisible} close={cropper.close} closeParent={close} imageUrl={imageUrl} />
 
       <div
         className={style.container}
         onDragEnter={handleDragEnter}
-        onDragOver={(e) => e.preventDefault()}
+        onDragOver={e => e.preventDefault()}
         onDragLeave={handleDragLeave}
         // onDrop={getUncroppedAvatar}
       >
@@ -72,22 +67,12 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
           <GrClose onClick={close} />
         </div>
 
-        <label
-          htmlFor="upload"
-          className={style.dropArea}
-          onDrop={getUncroppedAvatar}
-        >
+        <label htmlFor="upload" className={style.dropArea} onDrop={getUncroppedAvatar}>
           <IconAddFile />
           <span>Select Files to Upload</span>
           <span>or Drag and Drop, Copy and Paste Files</span>
 
-          <input
-            type="file"
-            id="upload"
-            onChange={getUncroppedAvatar}
-            hidden
-            accept="image/*,.png,.jpg.,.web"
-          />
+          <input type="file" id="upload" onChange={getUncroppedAvatar} hidden accept="image/*,.png,.jpg.,.web" />
         </label>
       </div>
     </>

@@ -14,8 +14,8 @@ import { MdLogout } from 'react-icons/md/index';
 
 export const HeaderPen = () => {
   const dispatch = useDispatch();
-  const { isAuth } = useSelector((state) => state.auth);
-  const { id, title, owner, files } = useSelector((state) => state.currentWork);
+  const { isAuth } = useSelector(state => state.auth);
+  const { id, title, owner, files } = useSelector(state => state.currentWork);
   const loginPopup = usePopup();
 
   const logout = () => {

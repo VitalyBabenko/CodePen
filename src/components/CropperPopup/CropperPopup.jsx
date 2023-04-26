@@ -9,19 +9,11 @@ import { GrClose } from 'react-icons/gr/index';
 
 export const CropperPopup = ({ isOpen, close, closeParent, imageUrl }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const user = useSelector(state => state.user);
   const formRef = useRef();
-  const {
-    crop,
-    zoom,
-    setZoom,
-    onCropChange,
-    onZoomChange,
-    onCropCompleted,
-    getResult,
-  } = useCrop(imageUrl);
+  const { crop, zoom, setZoom, onCropChange, onZoomChange, onCropCompleted, getResult } = useCrop(imageUrl);
 
-  const handleSave = async (e) => {
+  const handleSave = async e => {
     e.preventDefault();
     const avatarFile = await getResult();
 
@@ -55,12 +47,7 @@ export const CropperPopup = ({ isOpen, close, closeParent, imageUrl }) => {
         />
       </div>
 
-      <form
-        action="/upload"
-        method="post"
-        encType="multipart/form-data"
-        ref={formRef}
-      >
+      <form action="/upload" method="post" encType="multipart/form-data" ref={formRef}>
         <div className={style.control}>
           <label>
             zoom
@@ -70,7 +57,7 @@ export const CropperPopup = ({ isOpen, close, closeParent, imageUrl }) => {
               min={1}
               max={3}
               step={0.1}
-              onChange={(e) => {
+              onChange={e => {
                 setZoom(e.target.value);
               }}
               className="zoom-range"

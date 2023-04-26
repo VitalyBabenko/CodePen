@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchWorks } from "./actions/fetchWorks";
-import { createWork } from "./actions/createWork";
-import { deleteWork } from "./actions/deleteWork";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchWorks } from './actions/fetchWorks';
+import { createWork } from './actions/createWork';
+import { deleteWork } from './actions/deleteWork';
 
 const initialState = {
   works: [],
@@ -10,12 +10,12 @@ const initialState = {
 };
 
 export const worksSlice = createSlice({
-  name: "works",
+  name: 'works',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // fetchWorks
-    builder.addCase(fetchWorks.pending, (state) => {
+    builder.addCase(fetchWorks.pending, state => {
       state.isLoading = true;
     });
     builder.addCase(fetchWorks.fulfilled, (state, action) => {
@@ -37,9 +37,7 @@ export const worksSlice = createSlice({
 
     // deleteWork
     builder.addCase(deleteWork.fulfilled, (state, action) => {
-      state.works = [
-        ...state.works.filter((work) => work._id !== action.payload._id),
-      ];
+      state.works = [...state.works.filter(work => work._id !== action.payload._id)];
     });
     builder.addCase(deleteWork.rejected, (state, action) => {
       state.error = action.payload;

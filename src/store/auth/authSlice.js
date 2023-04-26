@@ -23,12 +23,12 @@ export const authSlice = createSlice({
       state.isAuth = false;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // login
-    builder.addCase(login.pending, (state) => {
+    builder.addCase(login.pending, state => {
       state.loading = true;
     });
-    builder.addCase(login.fulfilled, (state) => {
+    builder.addCase(login.fulfilled, state => {
       state.loading = false;
       state.isAuth = true;
     });
@@ -38,10 +38,10 @@ export const authSlice = createSlice({
     });
 
     // registration
-    builder.addCase(registration.pending, (state) => {
+    builder.addCase(registration.pending, state => {
       state.loading = true;
     });
-    builder.addCase(registration.fulfilled, (state) => {
+    builder.addCase(registration.fulfilled, state => {
       state.loading = false;
     });
     builder.addCase(registration.rejected, (state, action) => {

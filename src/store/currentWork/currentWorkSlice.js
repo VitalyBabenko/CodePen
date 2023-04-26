@@ -62,23 +62,14 @@ export const currentWorkSlice = createSlice({
     },
 
     setFormatCode(state, action) {
-      state.files.html.text = formatCode(
-        state.files.html.text,
-        state.files.html.type
-      );
-      state.files.css.text = formatCode(
-        state.files.css.text,
-        state.files.css.type
-      );
-      state.files.js.text = formatCode(
-        state.files.js.text,
-        state.files.js.type
-      );
+      state.files.html.text = formatCode(state.files.html.text, state.files.html.type);
+      state.files.css.text = formatCode(state.files.css.text, state.files.css.type);
+      state.files.js.text = formatCode(state.files.js.text, state.files.js.type);
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // fetchWorks
-    builder.addCase(fetchCurrentWork.pending, (state) => {
+    builder.addCase(fetchCurrentWork.pending, state => {
       state.isLoading = true;
     });
     builder.addCase(fetchCurrentWork.fulfilled, (state, action) => {
@@ -105,12 +96,5 @@ export const currentWorkSlice = createSlice({
   },
 });
 
-export const {
-  setHtml,
-  setCss,
-  setJs,
-  setLocalHtml,
-  setLocalCss,
-  setLocalJs,
-  setFormatCode,
-} = currentWorkSlice.actions;
+export const { setHtml, setCss, setJs, setLocalHtml, setLocalCss, setLocalJs, setFormatCode } =
+  currentWorkSlice.actions;

@@ -1,9 +1,9 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getGql } from "../../../services/api";
-import { login } from "./loginAction";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getGql } from '../../../services/api';
+import { login } from './loginAction';
 
 export const registration = createAsyncThunk(
-  "auth/registration",
+  'auth/registration',
 
   async (userData, { dispatch, rejectWithValue }) => {
     const gql = getGql();
@@ -25,9 +25,7 @@ export const registration = createAsyncThunk(
       );
 
       if (createUser === null) {
-        return rejectWithValue(
-          "This user name is already in use, please try another one"
-        );
+        return rejectWithValue('This user name is already in use, please try another one');
       } else {
         dispatch(
           login({
@@ -37,7 +35,7 @@ export const registration = createAsyncThunk(
         );
       }
     } catch (error) {
-      return rejectWithValue("Something went wrong please try again.");
+      return rejectWithValue('Something went wrong please try again.');
     }
   }
 );

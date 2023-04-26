@@ -25,8 +25,8 @@ const logos = {
 export default function Editor({ language, displayName, value, onChange }) {
   const dispatch = useDispatch();
   const editorRef = useRef(null);
-  const { id, files } = useSelector((state) => state.currentWork);
-  const { isAuth } = useSelector((state) => state.auth);
+  const { id, files } = useSelector(state => state.currentWork);
+  const { isAuth } = useSelector(state => state.auth);
 
   const handleSave = () => {
     dispatch(setFormatCode());
@@ -75,13 +75,13 @@ export default function Editor({ language, displayName, value, onChange }) {
           lineNumbers: true,
           keyMap: 'default',
           extraKeys: {
-            'Cmd-S': (editor) => handleSave(),
-            'Ctrl-S': (editor) => handleSave(),
-            'Cmd-F': (editor) => handleFormat(),
-            'Ctrl-F': (editor) => handleFormat(),
+            'Cmd-S': editor => handleSave(),
+            'Ctrl-S': editor => handleSave(),
+            'Cmd-F': editor => handleFormat(),
+            'Ctrl-F': editor => handleFormat(),
           },
         }}
-        editorDidMount={(editor) => {
+        editorDidMount={editor => {
           editorRef.current = editor;
         }}
       />

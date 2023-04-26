@@ -29,9 +29,7 @@ export const login = createAsyncThunk(
         dispatch(fetchWorks(userId));
         dispatch(fetchUser(userId));
       } else {
-        return rejectWithValue(
-          'The username or password you entered is incorrect, please try again.'
-        );
+        return rejectWithValue('The username or password you entered is incorrect, please try again.');
       }
     } catch (error) {
       console.log(error);

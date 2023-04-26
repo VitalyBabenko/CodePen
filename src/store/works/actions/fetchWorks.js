@@ -1,10 +1,10 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getGql } from "../../../services/api";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getGql } from '../../../services/api';
 
 export const fetchWorks = createAsyncThunk(
-  "works/fetch",
+  'works/fetch',
 
-  async (id) => {
+  async id => {
     const gql = getGql();
     try {
       const { SnippetFind } = await gql.request(
@@ -38,7 +38,7 @@ export const fetchWorks = createAsyncThunk(
       );
 
       // filter deleted
-      return [...SnippetFind.filter((snippet) => snippet.title !== null)];
+      return [...SnippetFind.filter(snippet => snippet.title !== null)];
     } catch (error) {
       console.error(error);
     }

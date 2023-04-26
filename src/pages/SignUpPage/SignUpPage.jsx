@@ -12,12 +12,10 @@ import { LoadingPage } from '../LoadingPage/LoadingPage';
 export const SignUpPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuth, error, loading } = useSelector((state) => state.auth);
+  const { isAuth, error, loading } = useSelector(state => state.auth);
   const userName = useInput('', Validate.userName);
   const password = useInput('', Validate.password);
-  const confirmPassword = useInput('', (value) =>
-    Validate.confirmPassword(value, password.value)
-  );
+  const confirmPassword = useInput('', value => Validate.confirmPassword(value, password.value));
   const isError =
     userName.error ||
     password.error ||
@@ -26,7 +24,7 @@ export const SignUpPage = () => {
     !password.value ||
     !confirmPassword.value;
 
-  const handleSignUp = async (e) => {
+  const handleSignUp = async e => {
     e.preventDefault();
 
     if (!isError) {
@@ -55,12 +53,7 @@ export const SignUpPage = () => {
 
       {error && <span>{error}</span>}
 
-      <Input
-        title="Username"
-        value={userName.value}
-        onChange={userName.onChange}
-        error={userName.error}
-      />
+      <Input title="Username" value={userName.value} onChange={userName.onChange} error={userName.error} />
 
       <Input
         title="Password"

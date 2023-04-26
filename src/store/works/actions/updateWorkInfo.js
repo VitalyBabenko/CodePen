@@ -1,9 +1,9 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getGql } from "../../../services/api";
-import { fetchWorks } from "./fetchWorks";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getGql } from '../../../services/api';
+import { fetchWorks } from './fetchWorks';
 
 export const updateWorkInfo = createAsyncThunk(
-  "work/updateInfo",
+  'work/updateInfo',
 
   async ({ id, title, description, files }, { rejectWithValue, dispatch }) => {
     const gql = getGql();
@@ -38,11 +38,11 @@ export const updateWorkInfo = createAsyncThunk(
         dispatch(fetchWorks(response.SnippetUpsert.owner._id));
         return response.SnippetUpsert;
       } else {
-        return rejectWithValue("Failed to change work info, please try again");
+        return rejectWithValue('Failed to change work info, please try again');
       }
     } catch (error) {
       console.log(error);
-      return rejectWithValue("Failed to change work info, please try again");
+      return rejectWithValue('Failed to change work info, please try again');
     }
   }
 );

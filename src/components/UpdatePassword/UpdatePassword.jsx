@@ -8,9 +8,9 @@ export const UpdatePassword = () => {
   const dispatch = useDispatch();
   const currentPassword = useInput('');
   const newPassword = useInput('');
-  const { login } = useSelector((state) => state.user);
+  const { login } = useSelector(state => state.user);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     const newPasswordData = {
@@ -32,16 +32,8 @@ export const UpdatePassword = () => {
         title="Current Password"
         type="password"
       />
-      <Input
-        value={newPassword.value}
-        onChange={newPassword.onChange}
-        title="New Password"
-        type="password"
-      />
-      <button
-        disabled={!currentPassword.value || !newPassword.value}
-        type="submit"
-      >
+      <Input value={newPassword.value} onChange={newPassword.onChange} title="New Password" type="password" />
+      <button disabled={!currentPassword.value || !newPassword.value} type="submit">
         Update
       </button>
     </form>

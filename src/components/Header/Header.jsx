@@ -10,8 +10,8 @@ import { UserPopup } from '../UserPopup/UserPopup';
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const { isAuth } = useSelector((state) => state.auth);
-  const { avatar } = useSelector((state) => state.user);
+  const { isAuth } = useSelector(state => state.auth);
+  const { avatar } = useSelector(state => state.user);
   const userPopup = usePopup();
 
   useEffect(() => {
@@ -31,10 +31,7 @@ export const Header = () => {
       {isAuth ? (
         <nav>
           <img src={avatar} onClick={userPopup.open} alt="userImage" />
-          <UserPopup
-            popupRef={userPopup.ref}
-            isOpen={userPopup.isPopupVisible}
-          />
+          <UserPopup popupRef={userPopup.ref} isOpen={userPopup.isPopupVisible} />
         </nav>
       ) : (
         <nav>

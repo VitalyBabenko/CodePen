@@ -6,9 +6,7 @@ export const getGql = (endpoint = `/graphql`) => {
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
       Accept: 'application/json',
-      Authorization: localStorage.authToken
-        ? `Bearer ${localStorage.authToken}`
-        : '',
+      Authorization: localStorage.authToken ? `Bearer ${localStorage.authToken}` : '',
     },
   });
 };

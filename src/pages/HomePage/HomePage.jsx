@@ -13,7 +13,7 @@ import { MainLayout } from '../../layouts/MainLayout';
 import { HomeCard } from '../../components/HomeCard/HomeCard';
 
 export const HomePage = () => {
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth } = useSelector(state => state.auth);
 
   return (
     <MainLayout className={style.homePage}>
@@ -21,14 +21,10 @@ export const HomePage = () => {
         <LogoBig />
         <h1>The best place to build, test, and discover front-end code.</h1>
         <p>
-          CodePen is a <strong>social development environment</strong> for
-          front-end designers and developers. Build and deploy a website, show
-          off your work, build test cases to learn and debug, and find
-          inspiration.
+          CodePen is a <strong>social development environment</strong> for front-end designers and developers. Build and
+          deploy a website, show off your work, build test cases to learn and debug, and find inspiration.
         </p>
-        <Link to={isAuth ? '/your-works' : '/pen'}>
-          {isAuth ? 'Your works' : 'Start Codding'}
-        </Link>
+        <Link to={isAuth ? '/your-works' : '/pen'}>{isAuth ? 'Your works' : 'Start Codding'}</Link>
         <MainSvg className={style.mainSvg} />
         <Decor1 className={style.decor1} />
       </section>

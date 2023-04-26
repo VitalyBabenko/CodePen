@@ -8,7 +8,7 @@ export const WorkCard = ({ work }) => {
   const { isPopupVisible, toggle, ref: menuRef } = usePopup();
   const [html, css, js] = work.files;
 
-  const openMenu = (e) => {
+  const openMenu = e => {
     e.preventDefault();
     toggle();
   };

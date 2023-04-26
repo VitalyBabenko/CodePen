@@ -13,8 +13,8 @@ import {
 } from '../../store/currentWork/currentWorkSlice';
 
 export const Editors = () => {
-  const { isAuth } = useSelector((state) => state.auth);
-  const { files } = useSelector((state) => state.currentWork);
+  const { isAuth } = useSelector(state => state.auth);
+  const { files } = useSelector(state => state.currentWork);
   const { html, css, js } = files;
 
   const setHtmlText = isAuth ? setHtml : setLocalHtml;
@@ -24,30 +24,15 @@ export const Editors = () => {
     <Container className={style.editors}>
       <Bar className={style.bar} />
 
-      <Editor
-        language="xml"
-        displayName={`HTML`}
-        value={html.text}
-        onChange={setHtmlText}
-      />
+      <Editor language="xml" displayName={`HTML`} value={html.text} onChange={setHtmlText} />
 
       <Bar className={style.bar} />
 
-      <Editor
-        language="css"
-        displayName="CSS"
-        value={css.text}
-        onChange={setCssText}
-      />
+      <Editor language="css" displayName="CSS" value={css.text} onChange={setCssText} />
 
       <Bar className={style.bar} />
 
-      <Editor
-        language="javascript"
-        displayName="JS"
-        value={js.text}
-        onChange={setJsText}
-      />
+      <Editor language="javascript" displayName="JS" value={js.text} onChange={setJsText} />
     </Container>
   );
 };

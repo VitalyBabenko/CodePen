@@ -6,7 +6,7 @@ import { MdUploadFile } from 'react-icons/md';
 
 export const ImageUploader = () => {
   const dndPopup = usePopup();
-  const { avatar } = useSelector((state) => state.user);
+  const { avatar } = useSelector(state => state.user);
 
   return (
     <>
@@ -24,10 +24,7 @@ export const ImageUploader = () => {
         </div>
       </div>
 
-      <DragAndDropPopup
-        isOpen={dndPopup.isPopupVisible}
-        close={dndPopup.close}
-      />
+      <DragAndDropPopup isOpen={dndPopup.isPopupVisible} close={dndPopup.close} />
     </>
   );
 };

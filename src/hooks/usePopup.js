@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 
 export const usePopup = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -8,16 +8,16 @@ export const usePopup = () => {
   const close = () => setIsPopupVisible(false);
   const open = () => setIsPopupVisible(true);
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = event => {
     if (ref.current && !ref.current.contains(event.target)) {
       setIsPopupVisible(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside, true);
+    document.addEventListener('click', handleClickOutside, true);
     return () => {
-      document.removeEventListener("click", handleClickOutside, true);
+      document.removeEventListener('click', handleClickOutside, true);
     };
   });
 

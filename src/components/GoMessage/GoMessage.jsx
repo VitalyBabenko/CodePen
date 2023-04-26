@@ -6,7 +6,7 @@ import { clearMessage } from '../../store/goMessage/goMessageSlice';
 
 export const GoMessage = () => {
   const dispatch = useDispatch();
-  const { isShowing, message, color } = useSelector((state) => state.goMessage);
+  const { isShowing, message, color } = useSelector(state => state.goMessage);
 
   if (isShowing) {
     setTimeout(() => {
@@ -29,10 +29,7 @@ export const GoMessage = () => {
       {color === '#46CF73' && <BsCheckLg className={style.greenCircle} />}
       {color === '#ff3b41' && <GrClose className={style.redCircle} />}
       <span>{message}</span>
-      <GrClose
-        className={style.close}
-        onClick={() => dispatch(clearMessage())}
-      />
+      <GrClose className={style.close} onClick={() => dispatch(clearMessage())} />
     </div>
   );
 };

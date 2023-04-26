@@ -13,7 +13,7 @@ import { createWork } from '../../store/works/actions/createWork';
 
 export const YourWorksPage = () => {
   const dispatch = useDispatch();
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth } = useSelector(state => state.auth);
   const newPenPopup = usePopup();
   const title = useInput();
   const description = useInput();
@@ -26,7 +26,7 @@ export const YourWorksPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleCreate = (e) => {
+  const handleCreate = e => {
     e.preventDefault();
     const newWork = {
       title: title.value,
@@ -58,16 +58,8 @@ export const YourWorksPage = () => {
         close={newPenPopup.close}
       >
         <form onSubmit={handleCreate}>
-          <Input
-            value={title.value}
-            onChange={title.onChange}
-            title="Pen title"
-          />
-          <Input
-            value={description.value}
-            onChange={description.onChange}
-            title="Pen description"
-          />
+          <Input value={title.value} onChange={title.onChange} title="Pen title" />
+          <Input value={description.value} onChange={description.onChange} title="Pen description" />
           <button type="submit">Create</button>
         </form>
       </PopupWrapper>

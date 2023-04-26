@@ -2,10 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getGql } from '../../../services/api';
 import { uploadImage } from './uploadImage';
 import initialUserAvatar from '../../../assets/img/initialUserImage.jpeg';
-import {
-  showErrorMessage,
-  showSuccessMessage,
-} from '../../goMessage/goMessageSlice';
+import { showErrorMessage, showSuccessMessage } from '../../goMessage/goMessageSlice';
 
 export const changeAvatar = createAsyncThunk(
   'user/changeAvatar',

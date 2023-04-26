@@ -4,7 +4,7 @@ import style from './Works.module.scss';
 import { Spinner } from '../Spinner/Spinner';
 
 export const Works = ({ openPopup }) => {
-  const { works, isLoading } = useSelector((state) => state.works);
+  const { works, isLoading } = useSelector(state => state.works);
 
   if (isLoading) {
     return (
@@ -23,9 +23,5 @@ export const Works = ({ openPopup }) => {
     );
   }
 
-  return (
-    <div className={style.works}>
-      {works && works.map((work) => <WorkCard key={work._id} work={work} />)}
-    </div>
-  );
+  return <div className={style.works}>{works && works.map(work => <WorkCard key={work._id} work={work} />)}</div>;
 };

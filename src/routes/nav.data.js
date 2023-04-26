@@ -1,12 +1,4 @@
-import {
-  ErrorPage,
-  HomePage,
-  LoginPage,
-  PenPage,
-  SettingsPage,
-  SignUpPage,
-  YourWorksPage,
-} from '../pages';
+import { ErrorPage, HomePage, LoginPage, PenPage, SettingsPage, SignUpPage, YourWorksPage } from '../pages';
 
 export const routes = [
   {
