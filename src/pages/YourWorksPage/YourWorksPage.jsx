@@ -10,19 +10,18 @@ import { PopupWrapper } from '../../components/PopupWrapper/PopupWrapper';
 import { Input } from '../../components/Input/Input';
 import { useInput } from '../../hooks/useInput';
 import { createWork } from '../../store/works/actions/createWork';
+import { Search } from '../../components/Search/Search';
 
 export const YourWorksPage = () => {
   const dispatch = useDispatch();
-  const { isAuth } = useSelector(state => state.auth);
   const newPenPopup = usePopup();
   const title = useInput();
   const description = useInput();
 
   useEffect(() => {
-    if (isAuth) {
-      const userId = getUserIdFromJwt(localStorage.authToken);
-      dispatch(fetchWorks(userId));
-    }
+    const ownerId = getUserIdFromJwt(localStorage.authToken);
+    dispatch(fetchWorks({ ownerId }));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -47,6 +46,8 @@ export const YourWorksPage = () => {
           </a>
           <button onClick={newPenPopup.open}>+</button>
         </div>
+
+        <Search />
 
         <Works openPopup={newPenPopup.open} />
       </div>

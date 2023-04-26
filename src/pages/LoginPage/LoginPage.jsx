@@ -12,8 +12,8 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuth, loading, error } = useSelector(state => state.auth);
-  const loginName = useInput('');
-  const password = useInput('');
+  const loginName = useInput();
+  const password = useInput();
 
   const handleFormSubmit = e => {
     e.preventDefault();

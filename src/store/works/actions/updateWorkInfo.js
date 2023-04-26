@@ -35,7 +35,8 @@ export const updateWorkInfo = createAsyncThunk(
       );
 
       if (response.SnippetUpsert) {
-        dispatch(fetchWorks(response.SnippetUpsert.owner._id));
+        const ownerId = response.SnippetUpsert.owner._id;
+        dispatch(fetchWorks({ ownerId }));
         return response.SnippetUpsert;
       } else {
         return rejectWithValue('Failed to change work info, please try again');

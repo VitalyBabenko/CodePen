@@ -6,8 +6,8 @@ import { changePassword } from '../../store/user/actions/changePassword';
 
 export const UpdatePassword = () => {
   const dispatch = useDispatch();
-  const currentPassword = useInput('');
-  const newPassword = useInput('');
+  const currentPassword = useInput();
+  const newPassword = useInput();
   const { login } = useSelector(state => state.user);
 
   const handleSubmit = e => {

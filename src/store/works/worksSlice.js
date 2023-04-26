@@ -5,6 +5,7 @@ import { deleteWork } from './actions/deleteWork';
 
 const initialState = {
   works: [],
+
   isLoading: true,
   error: null,
 };
@@ -44,5 +45,3 @@ export const worksSlice = createSlice({
     });
   },
 });
-
-export const { setCurrentWork } = worksSlice.actions;

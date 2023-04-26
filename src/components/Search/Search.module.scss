@@ -1,0 +1,55 @@
+@import '../../scss/index.scss';
+
+.block {
+    width: 100%;
+    margin-left: auto;
+    background-color: #1e1f26;
+    padding: 12px 10px 12px 10px;
+    @include flex($align: center,$justify:flex-start);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px solid #0ebeff;
+    margin-top: 20px;
+
+    label {
+        position: relative;
+        @include flex($align: center);
+        color: #868ca0;
+        font-size: 15px;
+
+        input {
+            margin-left: 10px;
+            background: #2c303a;
+            border: none;
+            padding: 0 10px;
+            height: 29px;
+            width: 160px;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            outline: none;
+            color: white;
+
+            &::placeholder {
+                color:#AAAEBD;
+            }
+        }
+
+        span {
+            position: absolute;
+            right: 8px;
+            color: white;
+            cursor: pointer;
+        }
+    }
+    button {
+        @extend %buttonGrey;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 6px 8px;
+        height: 29px;
+        border-radius: 3px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        color: white;
+    }
+}

@@ -4,8 +4,9 @@ import { getGql } from '../../../services/api';
 export const fetchWorks = createAsyncThunk(
   'works/fetch',
 
-  async id => {
+  async ({ ownerId, search }) => {
     const gql = getGql();
+    const regularSearch = `/${search ? search : ''}/`;
     try {
       const { SnippetFind } = await gql.request(
         `
@@ -26,8 +27,9 @@ export const fetchWorks = createAsyncThunk(
         {
           query: JSON.stringify([
             {
+              $or: [{ title: regularSearch }, { description: regularSearch }],
               ___owner: {
-                $in: [id],
+                $in: [ownerId],
               },
             },
             {
