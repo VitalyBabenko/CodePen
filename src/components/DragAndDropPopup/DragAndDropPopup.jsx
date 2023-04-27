@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import style from './DragAndDropPopup.module.scss';
+import { FaUpload } from 'react-icons/fa/index';
+import { GrClose } from 'react-icons/gr/index';
 import { ReactComponent as IconAddFile } from '../../assets/img/iconAddFile.svg';
 import { usePopup } from '../../hooks/usePopup';
-import { CropperPopup } from '../CropperPopup/CropperPopup';
 import { getImageUrlFromFile } from '../../utils/getImageUrlFromFile';
-import { GrClose } from 'react-icons/gr/index';
-import { FaUpload } from 'react-icons/fa/index';
+import { CropperPopup } from '../CropperPopup/CropperPopup';
+import style from './DragAndDropPopup.module.scss';
 
 export const DragAndDropPopup = ({ isOpen, close }) => {
   const [isDragging, setIsDragging] = useState(false);

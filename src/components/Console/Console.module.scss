@@ -17,7 +17,6 @@
     }
   }
   
-  // FIXME: height
   input {
     color: white;
     width: 100%;
@@ -42,6 +41,13 @@
   background-color: #1d1e22;
   color: white;
   overflow: scroll;
+
+  .consoleItem {
+    padding: 8px 10px 8px;
+    border-bottom: 1px solid #353841;
+    font-size: 17px;
+    font-weight: 500;
+  }
  
 }
 

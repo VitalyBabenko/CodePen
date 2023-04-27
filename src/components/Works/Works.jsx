@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
+import { Spinner } from '../Spinner/Spinner';
 import { WorkCard } from '../WorkCard/WorkCard';
 import style from './Works.module.scss';
-import { Spinner } from '../Spinner/Spinner';
 
 export const Works = ({ openPopup }) => {
   const { works, isLoading } = useSelector(state => state.works);

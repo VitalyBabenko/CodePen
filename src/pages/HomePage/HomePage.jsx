@@ -1,16 +1,16 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import style from './HomePage.module.scss';
 
-import { ReactComponent as Decor1 } from '../../assets/img/homeline.svg';
-import { ReactComponent as Decor2 } from '../../assets/img/linehometwo.svg';
 import { ReactComponent as MainSvg } from '../../assets/img/home.svg';
-import { ReactComponent as LogoBig } from '../../assets/img/logo.svg';
+import { ReactComponent as Decor1 } from '../../assets/img/homeline.svg';
 import { ReactComponent as Icon1 } from '../../assets/img/icon1.svg';
 import { ReactComponent as Icon2 } from '../../assets/img/icon2.svg';
 import { ReactComponent as Icon3 } from '../../assets/img/icon3.svg';
-import { useSelector } from 'react-redux';
-import { MainLayout } from '../../layouts/MainLayout';
+import { ReactComponent as Decor2 } from '../../assets/img/linehometwo.svg';
+import { ReactComponent as LogoBig } from '../../assets/img/logo.svg';
 import { HomeCard } from '../../components/HomeCard/HomeCard';
+import { MainLayout } from '../../layouts/MainLayout';
+import style from './HomePage.module.scss';
 
 export const HomePage = () => {
   const { isAuth } = useSelector(state => state.auth);

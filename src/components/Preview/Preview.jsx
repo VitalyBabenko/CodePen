@@ -19,12 +19,11 @@ export const Preview = ({ html, css, js }) => {
   }, [html, css, js]);
 
   return (
-    <div className={style.pane}>
-      <iframe
-        srcDoc={srcDoc}
-        title="output"
-        sandbox="allow-forms allow-modals  allow-popups  allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
-      />
-    </div>
+    <iframe
+      className={style.preview}
+      srcDoc={srcDoc}
+      title="output"
+      sandbox="allow-forms allow-modals  allow-popups  allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+    />
   );
 };

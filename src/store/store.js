@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 import { authSlice } from './auth/authSlice';
-import { worksSlice } from './works/worksSlice';
 import { currentWorkSlice } from './currentWork/currentWorkSlice';
-import { userSlice } from './user/userSlice';
 import { goMessageSlice } from './goMessage/goMessageSlice';
+import { userSlice } from './user/userSlice';
+import { worksSlice } from './works/worksSlice';
 
 const loggerMiddleware = createLogger();
 

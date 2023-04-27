@@ -38,7 +38,7 @@ export const fetchUser = createAsyncThunk(
         return response.UserFindOne;
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return rejectWithValue('Something went wrong please try again.');
     }
   }

@@ -1,8 +1,8 @@
-import style from './GoMessage.module.scss';
-import { GrClose } from 'react-icons/gr';
 import { BsCheckLg } from 'react-icons/bs';
+import { GrClose } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMessage } from '../../store/goMessage/goMessageSlice';
+import style from './GoMessage.module.scss';
 
 export const GoMessage = () => {
   const dispatch = useDispatch();

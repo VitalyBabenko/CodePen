@@ -32,7 +32,7 @@ export const login = createAsyncThunk(
         return rejectWithValue('The username or password you entered is incorrect, please try again.');
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return rejectWithValue('Something went wrong please try again.');
     }
   }

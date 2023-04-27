@@ -1,6 +1,6 @@
+import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 import style from './Footer.module.scss';
 // import { ReactComponent as Logo } from '../../assets/img/logoBig.svg';
-import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 
 export const Footer = () => {
   return (

@@ -1,22 +1,16 @@
-import style from './WorkCard.module.scss';
 import { NavLink } from 'react-router-dom';
 import { usePopup } from '../../hooks/usePopup';
-import { WorkCardPopup } from '../WorkCardPopup/WorkCardPopup';
 import { Preview } from '../Preview/Preview';
+import { WorkCardPopup } from '../WorkCardPopup/WorkCardPopup';
+import style from './WorkCard.module.scss';
 
 export const WorkCard = ({ work }) => {
-  const { isPopupVisible, toggle, ref: menuRef } = usePopup();
+  const menuPopup = usePopup();
   const [html, css, js] = work.files;
 
-  const openMenu = e => {
-    e.preventDefault();
-    toggle();
-  };
-
-  if (work.title === null) return null;
   return (
-    <NavLink className={style.card} to={`/your-works/${work._id}`}>
-      <div style={{ pointerEvents: 'none' }} className={style.preview}>
+    <div className={style.card}>
+      <NavLink to={`/your-works/${work._id}`} className={style.previewContainer}>
         <Preview
           html={html.text}
           css={`
@@ -27,29 +21,21 @@ export const WorkCard = ({ work }) => {
           `}
           js={js.text}
         />
-      </div>
+      </NavLink>
 
       <div className={style.info}>
-        <span
-          // contentEditable={true}
-          // onInput={(e) => console.log(e.target)}
-          // onChange={(e) => console.log(e)}
-          // onClick={(e) => e.preventDefault()}
-          className={style.title}
-        >
-          {work.title}
-        </span>
+        <span className={style.title}>{work.title}</span>
         <span className={style.desc}>{work.description}</span>
       </div>
 
-      <div onClick={openMenu} className={style.menu}>
+      <div onClick={menuPopup.open} className={style.menu}>
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-      <WorkCardPopup menuRef={menuRef} isVisible={isPopupVisible} work={work} />
+      <WorkCardPopup menuRef={menuPopup.ref} isVisible={menuPopup.isPopupVisible} work={work} />
       <div className={style.background}></div>
-    </NavLink>
+    </div>
   );
 };

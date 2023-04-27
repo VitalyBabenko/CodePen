@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import initialUserAvatar from '../../assets/img/initialUserImage.jpeg';
 import { changeAvatar } from './actions/changeAvatar';
+import { changePassword } from './actions/changePassword';
 import { fetchUser } from './actions/fetchUser';
 import { uploadImage } from './actions/uploadImage';
-import { changePassword } from './actions/changePassword';
-import initialUserAvatar from '../../assets/img/initialUserImage.jpeg';
 
 const initialState = {
   id: '',

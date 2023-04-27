@@ -1,8 +1,8 @@
-import style from './ImageUploader.module.scss';
+import { MdUploadFile } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 import { usePopup } from '../../hooks/usePopup';
 import { DragAndDropPopup } from '../DragAndDropPopup/DragAndDropPopup';
-import { useSelector } from 'react-redux';
-import { MdUploadFile } from 'react-icons/md';
+import style from './ImageUploader.module.scss';
 
 export const ImageUploader = () => {
   const dndPopup = usePopup();

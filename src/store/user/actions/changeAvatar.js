@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getGql } from '../../../services/api';
-import { uploadImage } from './uploadImage';
 import initialUserAvatar from '../../../assets/img/initialUserImage.jpeg';
+import { getGql } from '../../../services/api';
 import { showErrorMessage, showSuccessMessage } from '../../goMessage/goMessageSlice';
+import { uploadImage } from './uploadImage';
 
 export const changeAvatar = createAsyncThunk(
   'user/changeAvatar',
@@ -48,7 +48,7 @@ export const changeAvatar = createAsyncThunk(
       }
     } catch (error) {
       dispatch(showErrorMessage('Something went wrong please try again.'));
-      console.log(error);
+      console.error(error);
       return rejectWithValue('Something went wrong please try again.');
     }
   }

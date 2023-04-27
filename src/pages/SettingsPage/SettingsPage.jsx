@@ -1,9 +1,9 @@
-import style from './SettingsPage.module.scss';
+import { useSelector } from 'react-redux';
 import { ImageUploader } from '../../components/ImageUploader/ImageUploader';
+import { Spinner } from '../../components/Spinner/Spinner';
 import { UpdatePassword } from '../../components/UpdatePassword/UpdatePassword';
 import { MainLayout } from '../../layouts/MainLayout';
-import { useSelector } from 'react-redux';
-import { Spinner } from '../../components/Spinner/Spinner';
+import style from './SettingsPage.module.scss';
 
 export const SettingsPage = () => {
   const { isLoading } = useSelector(state => state.user);

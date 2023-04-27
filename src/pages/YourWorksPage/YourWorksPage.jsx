@@ -1,16 +1,16 @@
-import style from './YourWorksPage.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
-import { usePopup } from '../../hooks/usePopup';
-import { fetchWorks } from '../../store/works/actions/fetchWorks';
-import { Works } from '../../components/Works/Works';
-import { MainLayout } from '../../layouts/MainLayout';
-import { PopupWrapper } from '../../components/PopupWrapper/PopupWrapper';
+import { useDispatch, useSelector } from 'react-redux';
 import { Input } from '../../components/Input/Input';
-import { useInput } from '../../hooks/useInput';
-import { createWork } from '../../store/works/actions/createWork';
+import { PopupWrapper } from '../../components/PopupWrapper/PopupWrapper';
 import { Search } from '../../components/Search/Search';
+import { Works } from '../../components/Works/Works';
+import { useInput } from '../../hooks/useInput';
+import { usePopup } from '../../hooks/usePopup';
+import { MainLayout } from '../../layouts/MainLayout';
+import { createWork } from '../../store/works/actions/createWork';
+import { fetchWorks } from '../../store/works/actions/fetchWorks';
+import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
+import style from './YourWorksPage.module.scss';
 
 export const YourWorksPage = () => {
   const dispatch = useDispatch();
@@ -21,8 +21,6 @@ export const YourWorksPage = () => {
   useEffect(() => {
     const ownerId = getUserIdFromJwt(localStorage.authToken);
     dispatch(fetchWorks({ ownerId }));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCreate = e => {

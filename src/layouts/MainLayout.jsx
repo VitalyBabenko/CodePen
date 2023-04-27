@@ -1,7 +1,7 @@
 import React from 'react';
+import { Footer } from '../components/Footer/Footer';
 import { GoMessage } from '../components/GoMessage/GoMessage';
 import { Header } from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer';
 
 export const MainLayout = ({ children, className }) => {
   return (
@@ -10,6 +10,7 @@ export const MainLayout = ({ children, className }) => {
       <Header />
       <main>{children}</main>
       <Footer />
+      <div id="popups"></div>
     </div>
   );
 };

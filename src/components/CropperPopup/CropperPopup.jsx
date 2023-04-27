@@ -1,11 +1,11 @@
+import { useRef } from 'react';
 import Cropper from 'react-easy-crop';
+import { GrClose } from 'react-icons/gr/index';
+import { IoMdArrowBack } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCrop } from '../../hooks/useCrop';
 import { changeAvatar } from '../../store/user/actions/changeAvatar';
 import style from './CropperPopup.module.scss';
-import { useRef } from 'react';
-import { IoMdArrowBack } from 'react-icons/io';
-import { GrClose } from 'react-icons/gr/index';
 
 export const CropperPopup = ({ isOpen, close, closeParent, imageUrl }) => {
   const dispatch = useDispatch();

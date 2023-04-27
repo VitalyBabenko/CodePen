@@ -1,17 +1,25 @@
+import { BiTrash } from 'react-icons/bi/index';
+import { MdOutlineDescription } from 'react-icons/md/index';
+import { MdDriveFileRenameOutline } from 'react-icons/md/index';
 import { useDispatch } from 'react-redux';
+import { useInput } from '../../hooks/useInput';
+import { usePopup } from '../../hooks/usePopup';
 import { deleteWork } from '../../store/works/actions/deleteWork';
 import { updateWorkInfo } from '../../store/works/actions/updateWorkInfo';
+import { Input } from '../Input/Input';
+import { PopupWrapper } from '../PopupWrapper/PopupWrapper';
 import style from './WorkCardPopup.module.scss';
-import { MdDriveFileRenameOutline } from 'react-icons/md/index';
-import { MdOutlineDescription } from 'react-icons/md/index';
-import { BiTrash } from 'react-icons/bi/index';
 
 export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   const dispatch = useDispatch();
+  const optionsPopup = usePopup();
+  const renameInput = useInput(`${work.title}`);
 
-  const renameWork = e => {
-    e.preventDefault();
-    const newTitle = prompt(`rename work: ${work.title}`, work.title);
+  const renameWork = () => {
+    console.log(renameInput.value);
+
+    // const newTitle = prompt(`rename work: ${work.title}`, work.title);
+    const newTitle = renameInput.value;
     if (newTitle) {
       const updatedWorkInfo = {
         id: work._id,
@@ -25,8 +33,6 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   };
 
   const changeDescription = e => {
-    e.preventDefault();
-
     const newDescription = prompt(`change description: ${work.title}`, work.description);
     if (newDescription) {
       const updatedWorkInfo = {
@@ -46,18 +52,34 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   };
 
   return (
-    <ul ref={menuRef} className={isVisible ? style.menuPopup : style.hidden}>
-      <li onClick={renameWork}>
-        <MdDriveFileRenameOutline className={style.rename} /> Rename work
-      </li>
-      <li onClick={changeDescription}>
-        <MdOutlineDescription className={style.changeDesc} />
-        Change Description
-      </li>
-      <li className={style.delete} onClick={handleDelete}>
-        <BiTrash />
-        Delete work
-      </li>
-    </ul>
+    <>
+      <ul ref={menuRef} className={isVisible ? style.menuPopup : style.hidden}>
+        <li onClick={() => optionsPopup.open()}>
+          <MdDriveFileRenameOutline className={style.rename} /> Rename work
+        </li>
+        <li onClick={optionsPopup.open}>
+          <MdOutlineDescription className={style.changeDesc} />
+          Change Description
+        </li>
+        <li className={style.delete} onClick={handleDelete}>
+          <BiTrash />
+          Delete work
+        </li>
+      </ul>
+
+      <PopupWrapper
+        className={style.popup}
+        title={'Rename work'}
+        isOpen={optionsPopup.isPopupVisible}
+        close={optionsPopup.close}
+      >
+        <form onSubmit={e => renameWork(e)}>
+          <Input value={renameInput.value} onChange={renameInput.onChange} title="New title" />
+          <button onClick={renameWork} type="submit">
+            Change
+          </button>
+        </form>
+      </PopupWrapper>
+    </>
   );
 };

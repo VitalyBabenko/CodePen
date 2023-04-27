@@ -38,7 +38,7 @@ export const changePassword = createAsyncThunk(
 
       return response.changePassword;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       dispatch(showErrorMessage('Something went wrong please try again.'));
       return rejectWithValue('Something went wrong please try again.');
     }

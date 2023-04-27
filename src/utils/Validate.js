@@ -1,6 +1,5 @@
 export class Validate {
   static login(isError) {
-    console.log('+');
     if (isError) {
       return 'The username or password you entered is incorrect, please try again.';
     }

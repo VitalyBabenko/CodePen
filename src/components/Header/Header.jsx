@@ -1,12 +1,12 @@
-import { NavLink } from 'react-router-dom';
-import style from './Header.module.scss';
-import { ReactComponent as LogoBig } from '../../assets/img/logoBig.svg';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../store/user/actions/fetchUser';
-import { useEffect } from 'react';
-import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
+import { NavLink } from 'react-router-dom';
+import { ReactComponent as LogoBig } from '../../assets/img/logoBig.svg';
 import { usePopup } from '../../hooks/usePopup';
+import { fetchUser } from '../../store/user/actions/fetchUser';
+import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
 import { UserPopup } from '../UserPopup/UserPopup';
+import style from './Header.module.scss';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,6 @@ export const Header = () => {
       const userId = getUserIdFromJwt(localStorage.authToken);
       dispatch(fetchUser(userId));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -1,9 +1,9 @@
+import { FaPen } from 'react-icons/fa/index';
+import { IoMdSettings } from 'react-icons/io/index';
+import { MdLogout } from 'react-icons/md/index';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../store/auth/authSlice';
-import { IoMdSettings } from 'react-icons/io/index';
-import { MdLogout } from 'react-icons/md/index';
-import { FaPen } from 'react-icons/fa/index';
 
 import style from './UserPopup.module.scss';
 

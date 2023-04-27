@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import { routes } from './routes/nav.data';
 import { PrivateRoute } from './layouts/PrivateRoute';
+import { routes } from './routes/nav.data';
 
 function App() {
   return (

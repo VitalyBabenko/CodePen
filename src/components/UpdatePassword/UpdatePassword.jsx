@@ -1,8 +1,8 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useInput } from '../../hooks/useInput';
+import { changePassword } from '../../store/user/actions/changePassword';
 import { Input } from '../Input/Input';
 import style from './UpdatePassword.module.scss';
-import { useInput } from '../../hooks/useInput';
-import { useDispatch, useSelector } from 'react-redux';
-import { changePassword } from '../../store/user/actions/changePassword';
 
 export const UpdatePassword = () => {
   const dispatch = useDispatch();

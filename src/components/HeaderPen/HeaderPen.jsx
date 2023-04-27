@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { ReactComponent as Logo } from '../../assets/img/logo.svg';
-import { NavLink } from 'react-router-dom';
-import { saveFiles } from '../../store/currentWork/actions/saveFiles';
-import style from './HeaderPen.module.scss';
-import { setFormatCode } from '../../store/currentWork/currentWorkSlice';
 import { BsFillCloudFill } from 'react-icons/bs';
 import { FaPen } from 'react-icons/fa/index';
+import { MdLogout } from 'react-icons/md/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/img/logo.svg';
+import { usePopup } from '../../hooks/usePopup';
+import { openLoginPopup } from '../../store/auth/authSlice';
+import { saveFiles } from '../../store/currentWork/actions/saveFiles';
+import { setFormatCode } from '../../store/currentWork/currentWorkSlice';
 import { GoMessage } from '../GoMessage/GoMessage';
 import { LoginPopup } from '../LoginPopup/LoginPopup';
-import { usePopup } from '../../hooks/usePopup.js';
-import { openLoginPopup } from '../../store/auth/authSlice';
-import { MdLogout } from 'react-icons/md/index';
+import style from './HeaderPen.module.scss';
 
 export const HeaderPen = () => {
   const dispatch = useDispatch();

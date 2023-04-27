@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchWorks } from './actions/fetchWorks';
 import { createWork } from './actions/createWork';
 import { deleteWork } from './actions/deleteWork';
+import { fetchWorks } from './actions/fetchWorks';
 
 const initialState = {
   works: [],

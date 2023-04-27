@@ -42,7 +42,7 @@ export const updateWorkInfo = createAsyncThunk(
         return rejectWithValue('Failed to change work info, please try again');
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return rejectWithValue('Failed to change work info, please try again');
     }
   }

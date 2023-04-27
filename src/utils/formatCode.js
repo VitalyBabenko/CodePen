@@ -1,7 +1,7 @@
-import prettier from 'prettier/standalone';
+import parserJs from 'prettier/parser-babel';
 import parserHtml from 'prettier/parser-html';
 import parserCss from 'prettier/parser-postcss';
-import parserJs from 'prettier/parser-babel';
+import prettier from 'prettier/standalone';
 
 export const formatCode = (value, language) => {
   const parser = {

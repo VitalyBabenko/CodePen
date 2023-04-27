@@ -1,8 +1,7 @@
-import { useConsole } from '../../hooks/useConsole';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { ConsoleItem } from '../ConsoleItem/ConsoleItem';
 import { Bar, Section } from 'react-simple-resizer';
+import { useConsole } from '../../hooks/useConsole';
 import style from './Console.module.scss';
 
 export function Console({ isOpen, close }) {
@@ -37,7 +36,9 @@ export function Console({ isOpen, close }) {
             <div className={style.console}>
               <div className={style.out}>
                 {appConsole.output.map((item, index) => (
-                  <ConsoleItem key={index} message={item} />
+                  <pre key={index} className={style.consoleItem}>
+                    {item}
+                  </pre>
                 ))}
               </div>
               <div className={style.entryField}>

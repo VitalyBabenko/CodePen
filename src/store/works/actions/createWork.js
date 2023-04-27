@@ -43,7 +43,7 @@ export const createWork = createAsyncThunk(
         return rejectWithValue('Failed to create work, please try again');
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       dispatch(showErrorMessage('Failed to create work, please try again'));
       return rejectWithValue('Failed to create work, please try again');
     }

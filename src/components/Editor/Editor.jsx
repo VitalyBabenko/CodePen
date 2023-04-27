@@ -5,16 +5,16 @@ import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css';
 import { Controlled as ControlledEditor } from 'react-codemirror2';
 import { useDispatch, useSelector } from 'react-redux';
-import style from './Editor.module.scss';
 import './themes/twilight.css';
-import { ReactComponent as HtmlLogo } from '../../assets/img/htmlLogo.svg';
-import { ReactComponent as CssLogo } from '../../assets/img/cssLogo.svg';
-import { ReactComponent as JsLogo } from '../../assets/img/jsLogo.svg';
 import { Section } from 'react-simple-resizer';
+import { ReactComponent as CssLogo } from '../../assets/img/cssLogo.svg';
+import { ReactComponent as HtmlLogo } from '../../assets/img/htmlLogo.svg';
+import { ReactComponent as JsLogo } from '../../assets/img/jsLogo.svg';
+import { openLoginPopup } from '../../store/auth/authSlice';
 import { saveFiles } from '../../store/currentWork/actions/saveFiles';
 import { setFormatCode } from '../../store/currentWork/currentWorkSlice';
 import { showSuccessMessage } from '../../store/goMessage/goMessageSlice';
-import { openLoginPopup } from '../../store/auth/authSlice';
+import style from './Editor.module.scss';
 
 const logos = {
   xml: <HtmlLogo />,

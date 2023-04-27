@@ -1,13 +1,13 @@
-import style from './SignUpPage.module.scss';
-import { ReactComponent as LogoBig } from '../../assets/img/logoBig.svg';
-import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { registration } from '../../store/auth/actions/registrationAction';
-import { useInput } from '../../hooks/useInput';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { ReactComponent as LogoBig } from '../../assets/img/logoBig.svg';
 import { Input } from '../../components/Input/Input';
+import { useInput } from '../../hooks/useInput';
+import { registration } from '../../store/auth/actions/registrationAction';
 import { Validate } from '../../utils/Validate';
 import { LoadingPage } from '../LoadingPage/LoadingPage';
+import style from './SignUpPage.module.scss';
 
 export const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,6 @@ export const SignUpPage = () => {
 
   useEffect(() => {
     if (isAuth) navigate('/your-works');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth]);
 
   if (loading) return <LoadingPage />;

@@ -1,12 +1,12 @@
-import style from './LoginPage.module.scss';
-import { ReactComponent as LogoBig } from '../../assets/img/logoBig.svg';
-import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../store/auth/actions/loginAction';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { ReactComponent as LogoBig } from '../../assets/img/logoBig.svg';
 import { Input } from '../../components/Input/Input';
 import { useInput } from '../../hooks/useInput';
+import { login } from '../../store/auth/actions/loginAction';
 import { LoadingPage } from '../LoadingPage/LoadingPage';
+import style from './LoginPage.module.scss';
 
 export const LoginPage = () => {
   const navigate = useNavigate();

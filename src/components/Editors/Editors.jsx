@@ -1,8 +1,6 @@
 import React from 'react';
-import { Bar, Container } from 'react-simple-resizer';
-import Editor from '../Editor/Editor';
-import style from './Editors.module.scss';
 import { useSelector } from 'react-redux';
+import { Bar, Container } from 'react-simple-resizer';
 import {
   setHtml,
   setCss,
@@ -11,6 +9,8 @@ import {
   setLocalCss,
   setLocalJs,
 } from '../../store/currentWork/currentWorkSlice';
+import Editor from '../Editor/Editor';
+import style from './Editors.module.scss';
 
 export const Editors = () => {
   const { isAuth } = useSelector(state => state.auth);

@@ -1,8 +1,28 @@
 {
-    "extends": ["plugin:prettier/recommended"],
-    "plugins": ["prettier"],
-    "rules": {
-      "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
-    },
-    "autoFixOnSave": true
+  "extends": [ "plugin:react/recommended", "plugin:prettier/recommended"],
+  "plugins": ["prettier","import","react","jsx-a11y"],
+  "rules": {
+    "import/order": ["warn", {
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+      "alphabetize": {
+        "order": "asc",
+        "caseInsensitive": true
+      }
+    }],
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+    "import/extensions": ["warn", "never", {"jsx": "always"}],
+    "react/react-in-jsx-scope": "off",
+    "react/no-children-prop": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "16.9.0"
+    }
+  }
 }

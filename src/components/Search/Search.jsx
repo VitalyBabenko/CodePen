@@ -1,7 +1,7 @@
-import style from './Search.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
 import { useInput } from '../../hooks/useInput';
 import { fetchWorks } from '../../store/works/actions/fetchWorks';
-import { useDispatch, useSelector } from 'react-redux';
+import style from './Search.module.scss';
 
 export const Search = () => {
   const dispatch = useDispatch();
