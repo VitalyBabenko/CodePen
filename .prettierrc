@@ -3,7 +3,7 @@
   "trailingComma": "es5",
   "parser": "babel",
   "semi": true,
-  "printWidth": 120,
+  "printWidth": 90,
   "tabWidth": 2,
   "arrowParens": "avoid",
   "bracketSpacing": true,
@@ -16,7 +16,8 @@
         "trailingComma": "none",
         "semi": false,
         "tabWidth": 2,
-        "useTabs": false
+        "useTabs": false,
+        "parser":"scss"
       }
     }
   ]

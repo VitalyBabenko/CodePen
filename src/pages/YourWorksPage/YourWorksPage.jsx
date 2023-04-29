@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Input } from '../../components/Input/Input';
 import { PopupWrapper } from '../../components/PopupWrapper/PopupWrapper';
 import { Search } from '../../components/Search/Search';
@@ -53,12 +53,16 @@ export const YourWorksPage = () => {
       <PopupWrapper
         title="New Pen!"
         className={style.newPen}
-        isOpen={newPenPopup.isPopupVisible}
+        isOpen={newPenPopup.isOpen}
         close={newPenPopup.close}
       >
         <form onSubmit={handleCreate}>
           <Input value={title.value} onChange={title.onChange} title="Pen title" />
-          <Input value={description.value} onChange={description.onChange} title="Pen description" />
+          <Input
+            value={description.value}
+            onChange={description.onChange}
+            title="Pen description"
+          />
           <button type="submit">Create</button>
         </form>
       </PopupWrapper>

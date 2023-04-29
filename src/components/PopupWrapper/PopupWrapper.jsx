@@ -1,8 +1,9 @@
-import React from 'react';
+import { appIcons } from '../../assets/img';
 import { Portal } from '../Portal/Portal';
 import style from './PopupWrapper.module.scss';
 
 export const PopupWrapper = ({ title, children, close, className, isOpen }) => {
+  const { CloseIcon } = appIcons;
   if (!isOpen) return null;
   return (
     <Portal selector="#popups">
@@ -10,7 +11,9 @@ export const PopupWrapper = ({ title, children, close, className, isOpen }) => {
       <div className={style.popupWrapper}>
         <header>
           <h2>{title}</h2>
-          <button onClick={close}>✕</button>
+          <button onClick={close}>
+            <CloseIcon />
+          </button>
         </header>
 
         <div className={className}>{children}</div>

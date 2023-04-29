@@ -50,7 +50,7 @@ export const PenPage = () => {
         children={<Preview html={html.text} css={css.text} js={js.text} />}
       />
 
-      <Console isOpen={console.isPopupVisible} close={console.close} />
+      <Console isOpen={console.isOpen} close={console.close} />
 
       <footer>
         <button onClick={console.toggle}>console</button>

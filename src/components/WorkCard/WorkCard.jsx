@@ -28,13 +28,13 @@ export const WorkCard = ({ work }) => {
         <span className={style.desc}>{work.description}</span>
       </div>
 
-      <div onClick={menuPopup.open} className={style.menu}>
+      <div ref={menuPopup.ref} onClick={menuPopup.toggle} className={style.menu}>
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-      <WorkCardPopup menuRef={menuPopup.ref} isVisible={menuPopup.isPopupVisible} work={work} />
+      <WorkCardPopup menuRef={menuPopup.ref} isVisible={menuPopup.isOpen} work={work} />
       <div className={style.background}></div>
     </div>
   );

@@ -1,7 +1,5 @@
-import { BiTrash } from 'react-icons/bi/index';
-import { MdOutlineDescription } from 'react-icons/md/index';
-import { MdDriveFileRenameOutline } from 'react-icons/md/index';
 import { useDispatch } from 'react-redux';
+import { appIcons } from '../../assets/img';
 import { useInput } from '../../hooks/useInput';
 import { usePopup } from '../../hooks/usePopup';
 import { deleteWork } from '../../store/works/actions/deleteWork';
@@ -14,11 +12,11 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
   const dispatch = useDispatch();
   const optionsPopup = usePopup();
   const renameInput = useInput(`${work.title}`);
+  const { TrashIcon, DescriptionIcon, RenameIcon } = appIcons;
 
   const renameWork = () => {
     console.log(renameInput.value);
 
-    // const newTitle = prompt(`rename work: ${work.title}`, work.title);
     const newTitle = renameInput.value;
     if (newTitle) {
       const updatedWorkInfo = {
@@ -55,14 +53,16 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
     <>
       <ul ref={menuRef} className={isVisible ? style.menuPopup : style.hidden}>
         <li onClick={() => optionsPopup.open()}>
-          <MdDriveFileRenameOutline className={style.rename} /> Rename work
+          <RenameIcon className={style.rename} /> Rename work
         </li>
+
         <li onClick={optionsPopup.open}>
-          <MdOutlineDescription className={style.changeDesc} />
+          <DescriptionIcon className={style.changeDesc} />
           Change Description
         </li>
+
         <li className={style.delete} onClick={handleDelete}>
-          <BiTrash />
+          <TrashIcon />
           Delete work
         </li>
       </ul>
@@ -70,11 +70,15 @@ export const WorkCardPopup = ({ menuRef, isVisible, work }) => {
       <PopupWrapper
         className={style.popup}
         title={'Rename work'}
-        isOpen={optionsPopup.isPopupVisible}
+        isOpen={optionsPopup.isOpen}
         close={optionsPopup.close}
       >
         <form onSubmit={e => renameWork(e)}>
-          <Input value={renameInput.value} onChange={renameInput.onChange} title="New title" />
+          <Input
+            value={renameInput.value}
+            onChange={renameInput.onChange}
+            title="New title"
+          />
           <button onClick={renameWork} type="submit">
             Change
           </button>

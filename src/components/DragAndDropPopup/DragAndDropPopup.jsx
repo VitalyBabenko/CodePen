@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { FaUpload } from 'react-icons/fa/index';
-import { GrClose } from 'react-icons/gr/index';
-import { ReactComponent as IconAddFile } from '../../assets/img/iconAddFile.svg';
+import { appIcons } from '../../assets/img';
 import { usePopup } from '../../hooks/usePopup';
 import { getImageUrlFromFile } from '../../utils/getImageUrlFromFile';
 import { CropperPopup } from '../CropperPopup/CropperPopup';
@@ -11,6 +9,7 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const cropper = usePopup();
+  const { NewFileIcon, UploadIcon, CloseIcon } = appIcons;
 
   const handleDragEnter = e => {
     e.preventDefault();
@@ -52,27 +51,37 @@ export const DragAndDropPopup = ({ isOpen, close }) => {
     <>
       <div className={style.overlay} onClick={handleClose} />
 
-      <CropperPopup isOpen={cropper.isPopupVisible} close={cropper.close} closeParent={close} imageUrl={imageUrl} />
+      <CropperPopup
+        isOpen={cropper.isOpen}
+        close={cropper.close}
+        closeParent={close}
+        imageUrl={imageUrl}
+      />
 
       <div
         className={style.container}
         onDragEnter={handleDragEnter}
         onDragOver={e => e.preventDefault()}
         onDragLeave={handleDragLeave}
-        // onDrop={getUncroppedAvatar}
       >
         <div className={style.header}>
-          <FaUpload />
+          <UploadIcon />
 
-          <GrClose onClick={close} />
+          <CloseIcon onClick={close} />
         </div>
 
         <label htmlFor="upload" className={style.dropArea} onDrop={getUncroppedAvatar}>
-          <IconAddFile />
+          <NewFileIcon />
           <span>Select Files to Upload</span>
           <span>or Drag and Drop, Copy and Paste Files</span>
 
-          <input type="file" id="upload" onChange={getUncroppedAvatar} hidden accept="image/*,.png,.jpg.,.web" />
+          <input
+            type="file"
+            id="upload"
+            onChange={getUncroppedAvatar}
+            hidden
+            accept="image/*,.png,.jpg.,.web"
+          />
         </label>
       </div>
     </>

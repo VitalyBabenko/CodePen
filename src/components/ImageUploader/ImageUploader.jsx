@@ -1,5 +1,5 @@
-import { MdUploadFile } from 'react-icons/md';
 import { useSelector } from 'react-redux';
+import { appIcons } from '../../assets/img';
 import { usePopup } from '../../hooks/usePopup';
 import { DragAndDropPopup } from '../DragAndDropPopup/DragAndDropPopup';
 import style from './ImageUploader.module.scss';
@@ -7,6 +7,7 @@ import style from './ImageUploader.module.scss';
 export const ImageUploader = () => {
   const dndPopup = usePopup();
   const { avatar } = useSelector(state => state.user);
+  const { UploadFileIcon } = appIcons;
 
   return (
     <>
@@ -15,7 +16,7 @@ export const ImageUploader = () => {
         <div className={style.info}>
           <span>Upload a New Profile Image</span>
           <button onClick={dndPopup.open}>
-            <MdUploadFile />
+            <UploadFileIcon />
             Choose File
           </button>
           <span>or drag and drop an image here</span>
@@ -24,7 +25,7 @@ export const ImageUploader = () => {
         </div>
       </div>
 
-      <DragAndDropPopup isOpen={dndPopup.isPopupVisible} close={dndPopup.close} />
+      <DragAndDropPopup isOpen={dndPopup.isOpen} close={dndPopup.close} />
     </>
   );
 };

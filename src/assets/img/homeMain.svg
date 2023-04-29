@@ -1,3 +1,4 @@
+<!-- prettier-ignore-start --> 
 <svg width="615" height="500" viewBox="0 0 615 500" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="55.5" y="46" width="499.5" height="410" rx="10" fill="url(#paint0_linear_1_36)"/>
 <g filter="url(#filter0_d_1_36)">
@@ -131,3 +132,5 @@
 </clipPath>
 </defs>
 </svg>
+<!-- prettier-ignore-end --> 
+

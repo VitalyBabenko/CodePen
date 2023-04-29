@@ -7,26 +7,25 @@ import { Controlled as ControlledEditor } from 'react-codemirror2';
 import { useDispatch, useSelector } from 'react-redux';
 import './themes/twilight.css';
 import { Section } from 'react-simple-resizer';
-import { ReactComponent as CssLogo } from '../../assets/img/cssLogo.svg';
-import { ReactComponent as HtmlLogo } from '../../assets/img/htmlLogo.svg';
-import { ReactComponent as JsLogo } from '../../assets/img/jsLogo.svg';
+import { appIcons } from '../../assets/img';
 import { openLoginPopup } from '../../store/auth/authSlice';
 import { saveFiles } from '../../store/currentWork/actions/saveFiles';
 import { setFormatCode } from '../../store/currentWork/currentWorkSlice';
 import { showSuccessMessage } from '../../store/goMessage/goMessageSlice';
 import style from './Editor.module.scss';
 
-const logos = {
-  xml: <HtmlLogo />,
-  css: <CssLogo />,
-  javascript: <JsLogo />,
-};
-
 export default function Editor({ language, displayName, value, onChange }) {
   const dispatch = useDispatch();
   const editorRef = useRef(null);
   const { id, files } = useSelector(state => state.currentWork);
   const { isAuth } = useSelector(state => state.auth);
+  const { HtmlIcon, CssIcon, JsIcon } = appIcons;
+
+  const languageIcons = {
+    xml: <HtmlIcon />,
+    css: <CssIcon />,
+    javascript: <JsIcon />,
+  };
 
   const handleSave = () => {
     dispatch(setFormatCode());
@@ -59,7 +58,7 @@ export default function Editor({ language, displayName, value, onChange }) {
     <Section className={style.editor}>
       <div className={style.header}>
         <h2>
-          {logos[language]}
+          {languageIcons[language]}
           {displayName}
         </h2>
       </div>

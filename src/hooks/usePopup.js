@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 
 export const usePopup = () => {
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
-  const toggle = () => setIsPopupVisible(!isPopupVisible);
-  const close = () => setIsPopupVisible(false);
-  const open = () => setIsPopupVisible(true);
+  const toggle = () => setIsOpen(prev => !prev);
+  const close = () => setIsOpen(false);
+  const open = () => setIsOpen(true);
 
   const handleClickOutside = event => {
     if (ref.current && !ref.current.contains(event.target)) {
-      setIsPopupVisible(false);
+      setIsOpen(false);
     }
   };
 
@@ -22,7 +22,7 @@ export const usePopup = () => {
   });
 
   return {
-    isPopupVisible,
+    isOpen,
     close,
     open,
     toggle,

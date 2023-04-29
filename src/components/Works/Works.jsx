@@ -23,5 +23,9 @@ export const Works = ({ openPopup }) => {
     );
   }
 
-  return <div className={style.works}>{works && works.map(work => <WorkCard key={work._id} work={work} />)}</div>;
+  return (
+    <div className={style.works}>
+      {works && works.map(work => <WorkCard key={work._id} work={work} />)}
+    </div>
+  );
 };

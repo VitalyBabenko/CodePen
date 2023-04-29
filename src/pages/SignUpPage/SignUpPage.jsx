@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ReactComponent as LogoBig } from '../../assets/img/logoBig.svg';
+import { appImages } from '../../assets/img';
 import { Input } from '../../components/Input/Input';
 import { useInput } from '../../hooks/useInput';
 import { registration } from '../../store/auth/actions/registrationAction';
@@ -15,7 +15,10 @@ export const SignUpPage = () => {
   const { isAuth, error, loading } = useSelector(state => state.auth);
   const userName = useInput('', Validate.userName);
   const password = useInput('', Validate.password);
-  const confirmPassword = useInput('', value => Validate.confirmPassword(value, password.value));
+  const confirmPassword = useInput('', value =>
+    Validate.confirmPassword(value, password.value)
+  );
+  const { CodepenLogo } = appImages;
   const isError =
     userName.error ||
     password.error ||
@@ -45,14 +48,19 @@ export const SignUpPage = () => {
   return (
     <form onSubmit={handleSignUp} className={style.container}>
       <NavLink to="/">
-        <LogoBig className={style.logoBig} />
+        <CodepenLogo className={style.logoBig} />
       </NavLink>
 
       <h1>Sign up!</h1>
 
       {error && <span>{error}</span>}
 
-      <Input title="Username" value={userName.value} onChange={userName.onChange} error={userName.error} />
+      <Input
+        title="Username"
+        value={userName.value}
+        onChange={userName.onChange}
+        error={userName.error}
+      />
 
       <Input
         title="Password"

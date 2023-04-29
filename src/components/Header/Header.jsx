@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as LogoBig } from '../../assets/img/logoBig.svg';
+import { appImages } from '../../assets/img';
 import { usePopup } from '../../hooks/usePopup';
 import { fetchUser } from '../../store/user/actions/fetchUser';
 import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
@@ -13,6 +13,7 @@ export const Header = () => {
   const { isAuth } = useSelector(state => state.auth);
   const { avatar } = useSelector(state => state.user);
   const userPopup = usePopup();
+  const { CodepenLogo } = appImages;
 
   useEffect(() => {
     if (isAuth) {
@@ -24,13 +25,13 @@ export const Header = () => {
   return (
     <header className={style.header}>
       <NavLink className={style.logoBlock} to="/">
-        <LogoBig />
+        <CodepenLogo />
       </NavLink>
 
       {isAuth ? (
         <nav>
           <img src={avatar} onClick={userPopup.open} alt="userImage" />
-          <UserPopup popupRef={userPopup.ref} isOpen={userPopup.isPopupVisible} />
+          <UserPopup popupRef={userPopup.ref} isOpen={userPopup.isOpen} />
         </nav>
       ) : (
         <nav>
