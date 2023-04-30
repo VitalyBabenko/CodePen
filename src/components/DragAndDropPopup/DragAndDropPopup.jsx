@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { appIcons } from '../../assets/img';
-import { usePopup } from '../../hooks/usePopup';
+import { usePopup } from '../../hooks';
 import { getImageUrlFromFile } from '../../utils/getImageUrlFromFile';
 import { CropperPopup } from '../CropperPopup/CropperPopup';
 import style from './DragAndDropPopup.module.scss';

@@ -4,7 +4,7 @@ import { MdLogout } from 'react-icons/md/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { appIcons } from '../../assets/img';
-import { usePopup } from '../../hooks/usePopup';
+import { usePopup } from '../../hooks';
 import { openLoginPopup } from '../../store/auth/authSlice';
 import { saveFiles } from '../../store/currentWork/actions/saveFiles';
 import { setFormatCode } from '../../store/currentWork/currentWorkSlice';

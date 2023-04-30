@@ -7,7 +7,7 @@ import { Editors } from '../../components/Editors/Editors';
 import { HeaderPen } from '../../components/HeaderPen/HeaderPen';
 import { Preview } from '../../components/Preview/Preview';
 import { Spinner } from '../../components/Spinner/Spinner';
-import { usePopup } from '../../hooks/usePopup';
+import { usePopup } from '../../hooks';
 import { fetchCurrentWork } from '../../store/currentWork/actions/fetchCurrentWork';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import style from './PenPage.module.scss';

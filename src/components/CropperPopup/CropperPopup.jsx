@@ -3,7 +3,7 @@ import Cropper from 'react-easy-crop';
 import { GrClose } from 'react-icons/gr/index';
 import { IoMdArrowBack } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
-import { useCrop } from '../../hooks/useCrop';
+import { useCrop } from '../../hooks';
 import { changeAvatar } from '../../store/user/actions/changeAvatar';
 import style from './CropperPopup.module.scss';
 
@@ -11,7 +11,8 @@ export const CropperPopup = ({ isOpen, close, closeParent, imageUrl }) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   const formRef = useRef();
-  const { crop, zoom, setZoom, onCropChange, onZoomChange, onCropCompleted, getResult } = useCrop(imageUrl);
+  const { crop, zoom, setZoom, onCropChange, onZoomChange, onCropCompleted, getResult } =
+    useCrop(imageUrl);
 
   const handleSave = async e => {
     e.preventDefault();

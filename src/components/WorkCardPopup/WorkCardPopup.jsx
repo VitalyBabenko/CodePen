@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { appIcons } from '../../assets/img';
-import { useInput } from '../../hooks/useInput';
-import { usePopup } from '../../hooks/usePopup';
+import { useInput, usePopup } from '../../hooks';
 import { deleteWork } from '../../store/works/actions/deleteWork';
 import { updateWorkInfo } from '../../store/works/actions/updateWorkInfo';
 import { Input } from '../Input/Input';

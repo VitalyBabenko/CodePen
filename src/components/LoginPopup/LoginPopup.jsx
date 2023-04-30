@@ -22,8 +22,9 @@ export const LoginPopup = () => {
         <div className={style.tableOfContents}>
           <h1>Hold up!</h1>
           <span>
-            You’ll have to <strong>Log In</strong> or <strong>Sign Up</strong> (for free!) to save your Pen. <br />{' '}
-            Don't worry! You can create and save new works in your account.
+            You’ll have to <strong>Log In</strong> or <strong>Sign Up</strong> (for free!)
+            to save your Pen. <br /> Don't worry! You can create and save new works in
+            your account.
           </span>
           <div className={style.buttons}>
             <Link to="/login">Login</Link>

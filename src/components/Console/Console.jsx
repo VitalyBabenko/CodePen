@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Bar, Section } from 'react-simple-resizer';
-import { useConsole } from '../../hooks/useConsole';
+import { useConsole } from '../../hooks';
 import style from './Console.module.scss';
 
 export function Console({ isOpen, close }) {

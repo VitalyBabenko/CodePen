@@ -24,7 +24,12 @@ export const Editors = () => {
     <Container className={style.editors}>
       <Bar className={style.bar} />
 
-      <Editor language="xml" displayName={`HTML`} value={html.text} onChange={setHtmlText} />
+      <Editor
+        language="xml"
+        displayName={`HTML`}
+        value={html.text}
+        onChange={setHtmlText}
+      />
 
       <Bar className={style.bar} />
 
@@ -32,7 +37,12 @@ export const Editors = () => {
 
       <Bar className={style.bar} />
 
-      <Editor language="javascript" displayName="JS" value={js.text} onChange={setJsText} />
+      <Editor
+        language="javascript"
+        displayName="JS"
+        value={js.text}
+        onChange={setJsText}
+      />
     </Container>
   );
 };

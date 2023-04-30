@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useInput } from '../../hooks/useInput';
+import { useInput } from '../../hooks';
 import { changePassword } from '../../store/user/actions/changePassword';
 import { Input } from '../Input/Input';
 import style from './UpdatePassword.module.scss';

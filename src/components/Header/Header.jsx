@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { appImages } from '../../assets/img';
-import { usePopup } from '../../hooks/usePopup';
+import { usePopup } from '../../hooks';
 import { fetchUser } from '../../store/user/actions/fetchUser';
 import { getUserIdFromJwt } from '../../utils/getUserIdFromJwt';
 import { UserPopup } from '../UserPopup/UserPopup';

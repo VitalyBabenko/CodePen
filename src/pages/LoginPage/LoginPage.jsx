@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { appImages } from '../../assets/img';
 import { Input } from '../../components/Input/Input';
-import { useInput } from '../../hooks/useInput';
+import { useInput } from '../../hooks';
 import { login } from '../../store/auth/actions/loginAction';
 import { LoadingPage } from '../LoadingPage/LoadingPage';
 import style from './LoginPage.module.scss';

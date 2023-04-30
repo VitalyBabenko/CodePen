@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { usePopup } from '../../hooks/usePopup';
+import { usePopup } from '../../hooks';
 import { Preview } from '../Preview/Preview';
 import { WorkCardPopup } from '../WorkCardPopup/WorkCardPopup';
 import style from './WorkCard.module.scss';
@@ -28,7 +28,7 @@ export const WorkCard = ({ work }) => {
         <span className={style.desc}>{work.description}</span>
       </div>
 
-      <div ref={menuPopup.ref} onClick={menuPopup.toggle} className={style.menu}>
+      <div onClick={menuPopup.toggle} className={style.menu}>
         <span></span>
         <span></span>
         <span></span>

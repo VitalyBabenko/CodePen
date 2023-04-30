@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { appIcons } from '../../assets/img';
-import { usePopup } from '../../hooks/usePopup';
+import { usePopup } from '../../hooks';
 import { DragAndDropPopup } from '../DragAndDropPopup/DragAndDropPopup';
 import style from './ImageUploader.module.scss';
 
