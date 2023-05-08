@@ -25,7 +25,9 @@ export const registration = createAsyncThunk(
       );
 
       if (createUser === null) {
-        return rejectWithValue('This user name is already in use, please try another one');
+        return rejectWithValue(
+          'This user name is already in use, please try another one'
+        );
       } else {
         dispatch(
           login({

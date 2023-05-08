@@ -1,66 +1,64 @@
-@import '../../scss/index.scss';
+@import "../../scss/index.scss";
 
 .userPopup {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 200px;
-    padding: 10px 0;
-    background-color: #1E1F25;   
-    border-radius: 6px 0 6px 6px;
-    z-index: 3;
-  
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  padding: 10px 0;
+  background-color: #1e1f25;
+  border-radius: 6px 0 6px 6px;
+  z-index: 3;
+  @include boxShadowDark();
 
-    li,a {
-        list-style: none;
-        color: #e3e4e8;
-        padding: 0.6rem 25px 0.6rem 20px;
-       font-weight: 700;
-       font-size: 17px;
-       text-decoration:none;
-       display: flex;
-       align-items: center;
-       cursor: pointer;
+  li,
+  a {
+    list-style: none;
+    color: #e3e4e8;
+    padding: 0.6rem 25px 0.6rem 20px;
+    font-weight: 700;
+    font-size: 17px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 
-        .pen {
-            width: 15px;
-            height: 15px;
+    .pen {
+      width: 15px;
+      height: 15px;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      color: #5a5f73;
+    }
+
+    &:hover {
+      background-color: #444958;
+    }
+
+    &:last-of-type {
+      &:hover {
+        background-color: $redMain;
+        svg {
+          color: white;
         }
-       
-       svg{ 
-        width: 18px;
-        height: 18px;
-        margin-right: 10px;
-        color:#5A5F73;
-       }
-      
-
-       &:hover {
-        background-color: #444958;
-       }
-
-       &:last-of-type {
-        &:hover {
-            background-color: $redMain;
-            svg { 
-                color:white;
-            }
-        }
-       }
+      }
     }
+  }
 
-    a {
-        display: block;
-        width:100%;
-    }
+  a {
+    display: block;
+    width: 100%;
+  }
 
-    hr {
-        width: 92%;
-        height: 2px;
-        margin: 5px auto;
-        background-color: #2C3039 ;
-        border: none;
-    }
-
-   
+  hr {
+    width: 92%;
+    height: 2px;
+    margin: 5px auto;
+    background-color: #2c3039;
+    border: none;
+  }
 }

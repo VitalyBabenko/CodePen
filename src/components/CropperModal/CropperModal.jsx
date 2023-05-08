@@ -1,38 +1,38 @@
 import { useRef } from 'react';
 import Cropper from 'react-easy-crop';
 import { GrClose } from 'react-icons/gr/index';
-import { IoMdArrowBack } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
+import { appIcons } from '../../assets/img';
 import { useCrop } from '../../hooks';
 import { changeAvatar } from '../../store/user/actions/changeAvatar';
-import style from './CropperPopup.module.scss';
+import style from './CropperModal.module.scss';
 
-export const CropperPopup = ({ isOpen, close, closeParent, imageUrl }) => {
+export const CropperModal = ({ closeCropper, closeDND, imageUrl }) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   const formRef = useRef();
   const { crop, zoom, setZoom, onCropChange, onZoomChange, onCropCompleted, getResult } =
     useCrop(imageUrl);
+  const { ArrowBackIcon } = appIcons;
 
   const handleSave = async e => {
     e.preventDefault();
     const avatarFile = await getResult();
 
     dispatch(changeAvatar({ user, file: avatarFile }));
-    close();
-    closeParent();
+    closeCropper();
+    closeDND();
   };
 
   const handleClose = () => {
-    close();
-    closeParent();
+    closeCropper();
+    closeDND();
   };
 
-  if (!isOpen) return null;
   return (
     <div className={style.container}>
       <div className={style.header}>
-        <IoMdArrowBack onClick={close} />
+        <ArrowBackIcon onClick={closeCropper} />
         <GrClose onClick={handleClose} />
       </div>
 

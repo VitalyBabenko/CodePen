@@ -1,7 +1,7 @@
 import { BiTrash } from 'react-icons/bi/index';
 import { FaPen, FaUpload } from 'react-icons/fa/index';
 import { GrClose } from 'react-icons/gr/index';
-import { IoMdSettings } from 'react-icons/io/index';
+import { IoMdSettings, IoMdArrowBack } from 'react-icons/io/index';
 import {
   MdOutlineDescription,
   MdLogout,
@@ -32,6 +32,7 @@ export const appIcons = {
   CloseIcon: GrClose,
   UploadFileIcon: MdUploadFile,
   UploadIcon: FaUpload,
+  ArrowBackIcon: IoMdArrowBack,
   HtmlIcon,
   CssIcon,
   JsIcon,

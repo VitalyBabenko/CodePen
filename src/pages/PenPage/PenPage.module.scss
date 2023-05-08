@@ -23,7 +23,7 @@
     background-color: black;
     border: 1px solid #2f2f2f;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    @include boxShadowDark();
   }
 }
 

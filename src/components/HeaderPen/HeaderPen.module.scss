@@ -1,7 +1,7 @@
 @import "../../scss/index.scss";
 
 .header {
-  @include container($width: 99vw,$max-width: 99vw);
+  @include container($width: 99vw, $max-width: 99vw);
   @include flex($justify: space-between, $align: center);
   height: 65px;
   margin-bottom: 1px;
@@ -26,9 +26,11 @@
     svg {
       position: relative;
       width: 35px;
-      @extend %logo;
       fill: #fff;
-      z-index: 10 !important;
+
+      &:hover {
+        @include filterLight();
+      }
     }
 
     .workInfo {
@@ -36,11 +38,7 @@
       margin-left: 10px;
       position: relative;
       color: white;
-      @include flex(
-        $direction: column,
-        $justify: space-between,
-        $align: center
-      );
+      @include flex($direction: column, $justify: space-between, $align: center);
       h1 {
         width: 100%;
         font-size: 1.2rem;
@@ -69,8 +67,7 @@
       padding: 13px 16px;
       display: flex;
       align-items: center;
-      width: 100px; 
-     
+      width: 100px;
 
       svg {
         margin-right: 10px;
@@ -93,7 +90,7 @@
       display: flex;
       align-items: center;
       padding: 13px 16px;
-      color:white;
+      color: white;
       background-color: #dc143c;
       svg {
         width: 17px;
@@ -102,7 +99,7 @@
       }
 
       &:hover {
-        background-color: #A00609;
+        background-color: #a00609;
       }
     }
   }
@@ -110,9 +107,9 @@
   .loginPopup {
     @include flex($direction: column);
     width: 400px;
-   height: 150px;
-   padding: 10px;
-    
+    height: 150px;
+    padding: 10px;
+
     span {
       margin-bottom: auto;
       font-weight: 400;
@@ -136,7 +133,5 @@
         @extend %buttonGrey;
       }
     }
-
-
   }
 }

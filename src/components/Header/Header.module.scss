@@ -5,16 +5,15 @@
   @include flex($justify: space-between, $align: center);
   padding: 25px 0;
   position: relative;
-  z-index: 2;
 
-  a {
-    svg {
-      @extend %logo;
-     
+  a svg {
+    width: 150px;
+    height: auto;
+
+    &:hover {
+      @include filterLight();
     }
   }
-
-
 
   img {
     width: 44px;
@@ -25,20 +24,16 @@
     cursor: pointer;
   }
 
-
   nav {
-    display: flex;
-    align-items: flex-end;
-    
+    @include flex($align: "flex-end");
+
     span {
       font-size: 20px;
       color: #c7c9d3;
       margin-right: 15px;
       font-weight: 700;
-     
     }
 
-    z-index: 0;
     a:first-child {
       @extend %buttonGrey;
       padding: 13px 16px;

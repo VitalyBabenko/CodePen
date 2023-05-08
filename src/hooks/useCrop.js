@@ -81,7 +81,12 @@ export function rotateSize(width, height, rotation) {
 /**
  * This function was adapted from the one in the ReadMe of https://github.com/DominicTobias/react-image-crop
  */
-async function getCroppedImg(imageSrc, pixelCrop, rotation = 0, flip = { horizontal: false, vertical: false }) {
+async function getCroppedImg(
+  imageSrc,
+  pixelCrop,
+  rotation = 0,
+  flip = { horizontal: false, vertical: false }
+) {
   const image = await createImage(imageSrc);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -93,7 +98,11 @@ async function getCroppedImg(imageSrc, pixelCrop, rotation = 0, flip = { horizon
   const rotRad = getRadianAngle(rotation);
 
   // calculate bounding box of the rotated image
-  const { width: bBoxWidth, height: bBoxHeight } = rotateSize(image.width, image.height, rotation);
+  const { width: bBoxWidth, height: bBoxHeight } = rotateSize(
+    image.width,
+    image.height,
+    rotation
+  );
 
   // set canvas size to match the bounding box
   canvas.width = bBoxWidth;
@@ -110,7 +119,12 @@ async function getCroppedImg(imageSrc, pixelCrop, rotation = 0, flip = { horizon
 
   // croppedAreaPixels values are bounding box relative
   // extract the cropped image using these values
-  const data = ctx.getImageData(pixelCrop.x, pixelCrop.y, pixelCrop.width, pixelCrop.height);
+  const data = ctx.getImageData(
+    pixelCrop.x,
+    pixelCrop.y,
+    pixelCrop.width,
+    pixelCrop.height
+  );
 
   // set canvas width to final desired crop size - this will clear existing context
   canvas.width = pixelCrop.width;

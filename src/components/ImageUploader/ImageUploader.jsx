@@ -1,11 +1,15 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { appIcons } from '../../assets/img';
-import { usePopup } from '../../hooks';
-import { DragAndDropPopup } from '../DragAndDropPopup/DragAndDropPopup';
+import { useModal } from '../../hooks';
+import { CropperModal } from '../CropperModal/CropperModal';
+import { DragAndDropModal } from '../DragAndDropModal/DragAndDropModal';
 import style from './ImageUploader.module.scss';
 
 export const ImageUploader = () => {
-  const dndPopup = usePopup();
+  const [imageUrl, setImageUrl] = useState('');
+  const [DNDModalWrapper, openDND, closeDND] = useModal();
+  const [CropperModalWrapper, openCropper, closeCropper] = useModal();
   const { avatar } = useSelector(state => state.user);
   const { UploadFileIcon } = appIcons;
 
@@ -15,7 +19,7 @@ export const ImageUploader = () => {
         <img src={avatar} alt="userImage" />
         <div className={style.info}>
           <span>Upload a New Profile Image</span>
-          <button onClick={dndPopup.open}>
+          <button onClick={openDND}>
             <UploadFileIcon />
             Choose File
           </button>
@@ -25,7 +29,22 @@ export const ImageUploader = () => {
         </div>
       </div>
 
-      <DragAndDropPopup isOpen={dndPopup.isOpen} close={dndPopup.close} />
+      <DNDModalWrapper overlay={true}>
+        <DragAndDropModal
+          openCropper={openCropper}
+          closeCropper={closeCropper}
+          closeDND={closeDND}
+          setImageUrl={setImageUrl}
+        />
+      </DNDModalWrapper>
+
+      <CropperModalWrapper>
+        <CropperModal
+          closeCropper={closeCropper}
+          closeDND={closeDND}
+          imageUrl={imageUrl}
+        />
+      </CropperModalWrapper>
     </>
   );
 };

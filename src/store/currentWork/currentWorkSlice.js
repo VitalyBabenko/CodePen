@@ -96,5 +96,12 @@ export const currentWorkSlice = createSlice({
   },
 });
 
-export const { setHtml, setCss, setJs, setLocalHtml, setLocalCss, setLocalJs, setFormatCode } =
-  currentWorkSlice.actions;
+export const {
+  setHtml,
+  setCss,
+  setJs,
+  setLocalHtml,
+  setLocalCss,
+  setLocalJs,
+  setFormatCode,
+} = currentWorkSlice.actions;
