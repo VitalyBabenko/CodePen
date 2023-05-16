@@ -24,9 +24,8 @@
     background-color: $greyMain-active;
   }
 
-
   &[disabled] {
-    opacity: .5!important;
+    opacity: 0.5 !important;
     cursor: not-allowed;
   }
 }
@@ -50,6 +49,25 @@
   }
 }
 
+%buttonBlue {
+  @extend %button;
+  background-color: $blueMain;
+  color: black;
+
+  &:hover {
+    color: white;
+    background-color: $blueMain-hover;
+  }
+
+  &:active {
+    background-color: $blueMain-active;
+  }
+
+  &:disabled {
+    background-color: $blueMain-disabled;
+  }
+}
+
 %buttonRed {
   @extend %button;
   background-color: $redMain;
@@ -62,5 +80,15 @@
 
   &:active {
     background-color: $redMain-active;
+  }
+}
+
+%buttonClose {
+  @extend %buttonGrey;
+  width: 23px;
+  height: 23px;
+  padding: 3px;
+  path {
+    stroke: #bdbdbd;
   }
 }

@@ -5,8 +5,6 @@
   background-color: #131417;
   min-height: 100vh;
   height: fit-content;
-
-  
 }
 
 .container {
@@ -20,7 +18,7 @@
     border-bottom: 3px solid #2c303a;
     padding-bottom: 10px;
 
-    .active {
+    span {
       text-decoration: none;
       color: white;
       font-size: 30px;
@@ -28,7 +26,7 @@
       padding-bottom: 10px;
     }
 
-    .active:hover {
+    span:hover {
       border-bottom: 3px solid $greenMain-hover;
     }
     button {
@@ -39,39 +37,42 @@
       float: right;
     }
   }
-
-  
 }
 
-
 .newPen {
+  @extend %modal;
+  width: 500px;
+  @include boxShadowDark;
+
+  header {
+    padding: 15px 25px;
+    h1 {
+      font-size: 22px;
+    }
+  }
+
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 50px 30px;
-    
+    padding: 20px 25px 30px;
+
     label {
-      margin-bottom: 23px;
+      margin-bottom: 20px;
       width: 100%;
-      
     }
 
     input {
       margin-top: 8px;
       width: 100%;
-      
     }
 
     button {
-      @extend %buttonGreen;
+      @extend %buttonBlue;
       font-size: 18px;
       margin-left: auto;
       margin: 0 0 0 auto;
     }
-
-   
   }
- 
 }

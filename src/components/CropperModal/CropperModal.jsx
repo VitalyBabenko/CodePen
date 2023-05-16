@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import Cropper from 'react-easy-crop';
-import { GrClose } from 'react-icons/gr/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { appIcons } from '../../assets/img';
 import { useCrop } from '../../hooks';
@@ -13,7 +12,7 @@ export const CropperModal = ({ closeCropper, closeDND, imageUrl }) => {
   const formRef = useRef();
   const { crop, zoom, setZoom, onCropChange, onZoomChange, onCropCompleted, getResult } =
     useCrop(imageUrl);
-  const { ArrowBackIcon } = appIcons;
+  const { ArrowBackIcon, CloseIcon } = appIcons;
 
   const handleSave = async e => {
     e.preventDefault();
@@ -30,13 +29,13 @@ export const CropperModal = ({ closeCropper, closeDND, imageUrl }) => {
   };
 
   return (
-    <div className={style.container}>
-      <div className={style.header}>
+    <div className={style.cropperModal}>
+      <header>
         <ArrowBackIcon onClick={closeCropper} />
-        <GrClose onClick={handleClose} />
-      </div>
+        <CloseIcon onClick={handleClose} />
+      </header>
 
-      <div className={style.cropContainer}>
+      <main>
         <Cropper
           image={imageUrl}
           crop={crop}
@@ -46,27 +45,25 @@ export const CropperModal = ({ closeCropper, closeDND, imageUrl }) => {
           onZoomChange={onZoomChange}
           onCropComplete={onCropCompleted}
         />
-      </div>
+      </main>
 
       <form action="/upload" method="post" encType="multipart/form-data" ref={formRef}>
-        <div className={style.control}>
-          <label>
-            zoom
-            <input
-              type="range"
-              value={zoom}
-              min={1}
-              max={3}
-              step={0.1}
-              onChange={e => {
-                setZoom(e.target.value);
-              }}
-              className="zoom-range"
-            />
-          </label>
+        <label>
+          zoom
+          <input
+            type="range"
+            value={zoom}
+            min={1}
+            max={3}
+            step={0.1}
+            onChange={e => {
+              setZoom(e.target.value);
+            }}
+            className="zoom-range"
+          />
+        </label>
 
-          <button onClick={handleSave}>Save</button>
-        </div>
+        <button onClick={handleSave}>Save</button>
       </form>
     </div>
   );

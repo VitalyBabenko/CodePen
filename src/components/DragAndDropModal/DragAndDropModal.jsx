@@ -52,21 +52,22 @@ export const DragAndDropModal = ({
 
   return (
     <div
-      className={style.container}
+      className={style.dndModal}
       onDragEnter={handleDragEnter}
       onDragOver={e => e.preventDefault()}
       onDragLeave={handleDragLeave}
     >
-      <div className={style.header}>
+      <header>
         <UploadIcon />
 
         <CloseIcon onClick={closeDND} />
-      </div>
+      </header>
 
-      <label htmlFor="upload" className={style.dropArea} onDrop={getUncroppedAvatar}>
+      <label htmlFor="upload" onDrop={getUncroppedAvatar}>
         <NewFileIcon />
-        <span>Select Files to Upload</span>
-        <span>or Drag and Drop, Copy and Paste Files</span>
+        <span>
+          Select Files to Upload <br /> or Drag and Drop, Copy and Paste Files
+        </span>
 
         <input
           type="file"

@@ -1,42 +1,11 @@
 @import "../../scss/index.scss";
 
-.container {
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  transform: translate(-50%);
+.cropperModal {
+  @extend %modal;
   width: 800px;
   height: 600px;
-  background-color: #1e1f26;
-  z-index: $zIndexModal;
-  border-radius: 6px;
 
-  .header {
-    padding: 12px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid #0ebeff;
-
-    svg {
-      width: 25px;
-      height: 25px;
-      color: #bdbdbd;
-
-      path {
-        stroke: #bdbdbd;
-      }
-
-      &:hover {
-        color: #ffffff;
-
-        path {
-          stroke: #ffffff;
-        }
-      }
-    }
-  }
-
-  .cropContainer {
+  main {
     position: absolute;
     top: 52px;
     left: 0;
@@ -44,7 +13,7 @@
     bottom: 80px;
   }
 
-  .control {
+  form {
     padding: 13px 18px;
     position: relative;
     bottom: -473px;

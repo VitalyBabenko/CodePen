@@ -1,47 +1,41 @@
 @import "../../scss/index.scss";
-.container {
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  transform: translate(-50%);
+.dndModal {
+  @extend %modal;
   width: 750px;
   height: 500px;
-  background-color: #1e1f26;
-  z-index: $zIndexModal;
-  border-radius: 6px;
 
-  .header {
+  header {
     height: 50px;
     @include flex($align: center);
     padding: 10px;
     border-bottom: 2px solid #0ebeff;
     margin-bottom: 40px;
 
+    svg {
+      width: 20px;
+    }
+
     svg:first-of-type {
       margin: 0 auto;
       color: #bdbdbd;
     }
-
-    svg:last-of-type {
-      @extend %buttonGrey;
-      width: 23px;
-      height: 23px;
-      padding: 3px;
-      path {
-        stroke: #bdbdbd;
-      }
-    }
   }
 
-  .dropArea {
+  label {
+    @include flex($direction: column, $align: center, $justify: center);
     margin: 4%;
     width: 92%;
     height: 380px;
     color: white;
     background-color: lighten($color: #1e1f26, $amount: 3%);
-    @include flex($direction: column, $align: center, $justify: center);
     border: 1px dashed #bdbdbd;
     transition: all 0.1s ease-in-out;
+
+    span {
+      text-align: center;
+      max-width: 300px;
+    }
+
     svg {
       margin-bottom: 20px;
       path {

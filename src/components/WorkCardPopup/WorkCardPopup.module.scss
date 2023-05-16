@@ -1,7 +1,5 @@
 @import "../../scss/index.scss";
 
-
-
 .menuPopup {
   position: absolute;
   bottom: 65px;
@@ -24,31 +22,54 @@
     text-decoration: none;
     @include flex($align: center);
     margin: 3px 0;
+    cursor: pointer;
 
     svg {
       width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    color:#5A5F73;
+      height: 20px;
+      margin-right: 5px;
+      color: #5a5f73;
     }
   }
 
   li:hover {
-    background-color: lighten($color: #1e1f26, $amount: 20%) ;
+    background-color: lighten($color: #1e1f26, $amount: 20%);
     svg {
-      color:#ccced5;
+      color: #ccced5;
     }
   }
 
   .delete:hover {
     background-color: $redMain;
     svg {
-      color:white;
+      color: white;
+    }
+  }
+}
+
+.optionsModal {
+  @extend %modal;
+  header {
+    padding: 15px 20px;
+    h1 {
+      font-size: 20px;
+      font-weight: 500;
+      width: 330px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 
-  
+  form {
+    @include flex($direction: column, $align: flex-end, $justify: initial);
+    padding: 20px 20px 25px;
 
+    button {
+      @extend %buttonBlue;
+      font-size: 16px;
+    }
+  }
 }
 
 .hidden {
@@ -58,36 +79,3 @@
   transition: all 0.1s ease-in;
   opacity: 0;
 }
-
-.popup {
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 50px 0px;
-    
-
-    label {
-      margin-bottom: 23px;
-      width: 100%;
-      
-    }
-
-    input {
-      margin-top: 8px;
-      width: 100%;
-      
-    }
-
-    button {
-      @extend %buttonGreen;
-      font-size: 18px;
-      margin-left: auto;
-      margin: 0 0 0 auto;
-    }
-  }
-}
-
-
-

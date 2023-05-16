@@ -34,7 +34,12 @@ export const WorkCard = ({ work }) => {
         <span></span>
       </div>
 
-      <WorkCardPopup menuRef={menuPopup.ref} isVisible={menuPopup.isOpen} work={work} />
+      <WorkCardPopup
+        menuRef={menuPopup.ref}
+        closePopup={menuPopup.close}
+        isVisible={menuPopup.isOpen}
+        work={work}
+      />
       <div className={style.background}></div>
     </div>
   );

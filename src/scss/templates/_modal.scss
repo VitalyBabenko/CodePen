@@ -1,0 +1,37 @@
+%modal {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #1e1f26;
+  color: white;
+  z-index: $zIndexModal;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.9);
+
+  header {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #0ebeff;
+    cursor: auto;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      color: #bdbdbd;
+
+      path {
+        stroke: #bdbdbd;
+      }
+
+      &:hover {
+        color: #ffffff;
+        path {
+          stroke: #ffffff;
+        }
+      }
+    }
+  }
+}

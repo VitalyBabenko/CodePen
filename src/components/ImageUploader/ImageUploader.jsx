@@ -29,7 +29,7 @@ export const ImageUploader = () => {
         </div>
       </div>
 
-      <DNDModalWrapper overlay={true}>
+      <DNDModalWrapper>
         <DragAndDropModal
           openCropper={openCropper}
           closeCropper={closeCropper}

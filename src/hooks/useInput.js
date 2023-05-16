@@ -5,7 +5,9 @@ export const useInput = (initialValue = '', validator) => {
   const [error, setError] = useState(null);
 
   const onChange = event => {
+    // const newValue = event.target.value;
     const newValue = event.target.value;
+    console.log(newValue);
     setValue(newValue);
 
     if (validator) {
