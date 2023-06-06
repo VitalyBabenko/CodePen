@@ -34,7 +34,7 @@ export const YourWorksPage = () => {
 
     const newWork = {
       title: newTitleRef.current.value,
-      description: newDescriptionRef.current.value && '',
+      description: newDescriptionRef.current.value,
     };
     dispatch(createWork(newWork));
     closeNewPen();

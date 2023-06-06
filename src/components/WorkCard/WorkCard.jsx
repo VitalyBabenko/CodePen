@@ -8,6 +8,8 @@ export const WorkCard = ({ work }) => {
   const menuPopup = usePopup();
   const [html, css, js] = work.files;
 
+  console.log(work);
+
   return (
     <div className={style.card}>
       <NavLink to={`/your-works/${work._id}`} className={style.previewContainer}>
