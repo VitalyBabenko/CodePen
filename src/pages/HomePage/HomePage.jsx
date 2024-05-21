@@ -10,6 +10,7 @@ export const HomePage = () => {
   const { AppIcon } = appIcons;
   const { HomeDecor1, HomeDecor2, HomeCard1, HomeCard2, HomeCard3, HomeMain } = appImages;
 
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL)
   return (
     <MainLayout className={style.homePage}>
       <section>
